@@ -4,8 +4,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { ConsultationModal } from "@/components/ConsultationModal";
+import { useState } from "react";
 
 const Index = () => {
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+
+  const handleGetConsultation = () => {
+    setIsConsultationModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -22,7 +30,10 @@ const Index = () => {
               <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
               <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button 
+              className="bg-blue-600 hover:bg-blue-700"
+              onClick={handleGetConsultation}
+            >
               Get Consultation
             </Button>
           </div>
@@ -49,7 +60,11 @@ const Index = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-semibold">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-blue-900 hover:bg-blue-50 font-semibold"
+                  onClick={handleGetConsultation}
+                >
                   Request a Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -393,6 +408,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Consultation Modal */}
+      <ConsultationModal 
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
