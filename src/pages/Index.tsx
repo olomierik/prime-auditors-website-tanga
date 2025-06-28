@@ -1,4 +1,3 @@
-
 import { ArrowRight, Users, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +14,7 @@ const Index = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="text-2xl font-bold text-blue-900">Prime Auditors</div>
-              <Badge variant="outline" className="ml-3 text-xs">NBAA Certified</Badge>
+              <Badge variant="outline" className="ml-3 text-xs">NBAA Reg: PF517</Badge>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
@@ -38,7 +37,7 @@ const Index = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <Badge className="bg-blue-500/20 text-blue-100 border-blue-400/30">
-                  NBAA Certified • Tanga, Tanzania
+                  NBAA Reg: PF517 • Tanga, Tanzania
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                   Your Trusted Partner in{" "}
@@ -292,8 +291,10 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Office Address</div>
-                      <div className="text-gray-600">Tanga, Tanzania</div>
-                      <div className="text-gray-600">East Africa</div>
+                      <div className="text-gray-600">Plot 24, Block KB 3</div>
+                      <div className="text-gray-600">NHC Building Apartment No 02</div>
+                      <div className="text-gray-600">Market Street, Independence Avenue Road</div>
+                      <div className="text-gray-600">Central Ward, Tanga City, Tanzania</div>
                     </div>
                   </div>
                   
@@ -303,7 +304,8 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Phone</div>
-                      <div className="text-gray-600">+255 XX XXX XXXX</div>
+                      <div className="text-gray-600">+255 712 747 539</div>
+                      <div className="text-gray-600">+255 752 401 012</div>
                     </div>
                   </div>
                   
@@ -313,7 +315,7 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Email</div>
-                      <div className="text-gray-600">info@primeauditors.co.tz</div>
+                      <div className="text-gray-600">primeauditors@gmail.com</div>
                     </div>
                   </div>
                 </div>
@@ -324,11 +326,11 @@ const Index = () => {
                 <div className="space-y-2 text-gray-600">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
-                    <span>8:00 AM - 6:00 PM</span>
+                    <span>8:00 AM - 5:00 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Saturday</span>
-                    <span>9:00 AM - 2:00 PM</span>
+                    <span>8:30 AM - 1:30 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sunday</span>
@@ -403,7 +405,7 @@ const Index = () => {
                 serving businesses across Tanzania.
               </p>
               <Badge variant="outline" className="border-blue-400 text-blue-300">
-                NBAA Certified
+                NBAA Reg: PF517
               </Badge>
             </div>
             
@@ -430,9 +432,11 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Tanga, Tanzania</li>
-                <li>+255 XX XXX XXXX</li>
-                <li>info@primeauditors.co.tz</li>
+                <li>Plot 24, Block KB 3, NHC Building</li>
+                <li>Market Street, Tanga City</li>
+                <li>+255 712 747 539</li>
+                <li>+255 752 401 012</li>
+                <li>primeauditors@gmail.com</li>
               </ul>
             </div>
           </div>
