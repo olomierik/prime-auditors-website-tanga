@@ -1,4 +1,3 @@
-
 import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { ConsultationModal } from "@/components/ConsultationModal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
@@ -61,7 +61,7 @@ const Index = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 animate-fade-in">
               <a href="#about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About</a>
-              <a href="#services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</a>
+              <Link to="/services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</Link>
               <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Testimonials</a>
               <a href="#contact" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Contact</a>
             </div>
@@ -91,7 +91,7 @@ const Index = () => {
             <div className="lg:hidden py-6 border-t border-prime-gold/20 animate-fade-in">
               <div className="flex flex-col space-y-4">
                 <a href="#about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About</a>
-                <a href="#services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</a>
+                <Link to="/services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</Link>
                 <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Testimonials</a>
                 <a href="#contact" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Contact</a>
               </div>
@@ -131,13 +131,15 @@ const Index = () => {
                   Request a Consultation
                   <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-2 border-prime-gold text-prime-gold hover:bg-prime-gold hover:text-prime-blue font-montserrat font-semibold transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
-                >
-                  View Our Services
-                </Button>
+                <Link to="/services">
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-2 border-prime-gold text-prime-gold hover:bg-prime-gold hover:text-prime-blue font-montserrat font-semibold transition-all duration-300 hover:scale-105 px-8 py-4 text-lg w-full"
+                  >
+                    View Our Services
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="relative animate-slide-in-left">
@@ -551,20 +553,20 @@ const Index = () => {
             <div className="animate-fade-in-up">
               <h4 className="font-montserrat font-semibold mb-6 text-lg">Services</h4>
               <ul className="space-y-3 text-white/80 font-open-sans">
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Accounting Services</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Tax Services</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Auditing & Assurance</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Management Consulting</a></li>
+                <li><Link to="/services" className="hover:text-prime-gold transition-colors">Accounting Services</Link></li>
+                <li><Link to="/services" className="hover:text-prime-gold transition-colors">Tax Services</Link></li>
+                <li><Link to="/services" className="hover:text-prime-gold transition-colors">Auditing & Assurance</Link></li>
+                <li><Link to="/services" className="hover:text-prime-gold transition-colors">Management Consulting</Link></li>
               </ul>
             </div>
             
             <div className="animate-fade-in-up">
               <h4 className="font-montserrat font-semibold mb-6 text-lg">Company</h4>
               <ul className="space-y-3 text-white/80 font-open-sans">
-                <li><a href="#" className="hover:text-prime-gold transition-colors">About Us</a></li>
+                <li><a href="#about" className="hover:text-prime-gold transition-colors">About Us</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Our Team</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Certifications</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Contact</a></li>
+                <li><a href="#contact" className="hover:text-prime-gold transition-colors">Contact</a></li>
               </ul>
             </div>
             
