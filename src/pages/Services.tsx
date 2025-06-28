@@ -3,9 +3,22 @@ import { ArrowLeft, CheckCircle, Calculator, FileText, Shield, TrendingUp, Phone
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const handleGetConsultation = () => {
+    navigate('/#contact');
+    // Small delay to ensure navigation completes before scrolling
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-white font-open-sans">
       {/* Header */}
@@ -303,7 +316,11 @@ const Services = () => {
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Contact us today for a consultation and discover how our professional services can help your business thrive.
             </p>
-            <Button size="lg" className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg">
+            <Button 
+              onClick={handleGetConsultation}
+              size="lg" 
+              className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
+            >
               <Phone className="mr-3 h-5 w-5" />
               Get a Free Consultation
             </Button>
