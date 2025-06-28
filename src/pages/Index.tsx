@@ -1,4 +1,5 @@
-import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield } from "lucide-react";
+
+import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { useState } from "react";
 
 const Index = () => {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleGetConsultation = () => {
     setIsConsultationModalOpen(true);
@@ -36,108 +38,156 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white font-open-sans">
-      {/* Navigation */}
-      <nav className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-prime-light-grey">
+      {/* Modern Navigation */}
+      <nav className="bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white shadow-2xl sticky top-0 z-50 border-b-4 border-prime-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center animate-slide-in-left">
-              <AnimatedText 
-                text="PRIME AUDITORS" 
-                className="text-2xl font-montserrat font-bold text-prime-blue"
-              />
-              <Badge variant="outline" className="ml-3 text-xs border-prime-gold text-prime-gold">NBAA Reg: PF517</Badge>
+          <div className="flex justify-between items-center h-20">
+            {/* Logo Section */}
+            <div className="flex items-center space-x-4 animate-slide-in-left">
+              <div className="bg-prime-gold/20 p-3 rounded-full border-2 border-prime-gold">
+                <Award className="w-8 h-8 text-prime-gold" />
+              </div>
+              <div className="flex flex-col">
+                <AnimatedText 
+                  text="PRIME AUDITORS" 
+                  className="text-2xl lg:text-3xl font-montserrat font-bold text-white"
+                />
+                <Badge variant="outline" className="self-start mt-1 text-xs border-prime-gold text-prime-gold bg-prime-gold/10">
+                  NBAA Reg: PF517
+                </Badge>
+              </div>
             </div>
-            <div className="hidden md:flex space-x-8 animate-fade-in">
-              <a href="#about" className="text-prime-blue hover:text-prime-gold transition-colors font-medium">About</a>
-              <a href="#services" className="text-prime-blue hover:text-prime-gold transition-colors font-medium">Services</a>
-              <a href="#testimonials" className="text-prime-blue hover:text-prime-gold transition-colors font-medium">Testimonials</a>
-              <a href="#contact" className="text-prime-blue hover:text-prime-gold transition-colors font-medium">Contact</a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8 animate-fade-in">
+              <a href="#about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About</a>
+              <a href="#services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</a>
+              <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Testimonials</a>
+              <a href="#contact" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Contact</a>
             </div>
-            <Button 
-              className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold animate-fade-in"
-              onClick={handleGetConsultation}
-            >
-              Get Consultation
-            </Button>
+
+            {/* CTA and Mobile Menu */}
+            <div className="flex items-center space-x-4">
+              <Button 
+                className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in"
+                onClick={handleGetConsultation}
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                Get Consultation
+              </Button>
+              
+              {/* Mobile Menu Button */}
+              <button
+                className="lg:hidden p-2 rounded-md hover:bg-prime-gold/20 transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="lg:hidden py-6 border-t border-prime-gold/20 animate-fade-in">
+              <div className="flex flex-col space-y-4">
+                <a href="#about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About</a>
+                <a href="#services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</a>
+                <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Testimonials</a>
+                <a href="#contact" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Contact</a>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-prime-blue via-prime-blue/95 to-prime-blue/90 text-white py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
+      {/* Enhanced Hero Section */}
+      <section className="relative bg-gradient-to-br from-prime-light-grey via-white to-prime-light-grey py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-prime-blue/5 to-prime-gold/5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <div className="space-y-6">
-                <Badge className="bg-prime-gold/20 text-prime-gold border-prime-gold/30 font-montserrat">
-                  NBAA Reg: PF517 • Tanga, Tanzania
+                <Badge className="bg-prime-gold text-prime-blue border-prime-gold font-montserrat text-sm px-4 py-2">
+                  🏆 NBAA Certified • Tanga, Tanzania
                 </Badge>
-                <h1 className="text-4xl lg:text-6xl font-montserrat font-bold leading-tight">
+                <h1 className="text-5xl lg:text-7xl font-montserrat font-bold leading-tight text-prime-blue">
                   Your Trusted Partner in{" "}
-                  <span className="text-prime-gold">Financial Excellence</span>
+                  <span className="text-prime-gold bg-gradient-to-r from-prime-gold to-prime-gold/80 bg-clip-text text-transparent">
+                    Financial Excellence
+                  </span>
                 </h1>
-                <p className="text-xl text-white/90 leading-relaxed font-open-sans">
+                <p className="text-xl text-gray-700 leading-relaxed font-open-sans max-w-2xl">
                   Professional accounting, auditing, and consulting services designed to drive your business success. 
-                  Certified expertise you can trust.
+                  Certified expertise you can trust with over a decade of experience.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <Button 
                   size="lg" 
-                  className="bg-prime-gold text-prime-blue hover:bg-prime-gold/90 font-montserrat font-semibold shadow-lg"
+                  className="bg-prime-blue text-white hover:bg-prime-blue/90 font-montserrat font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
                   onClick={handleGetConsultation}
                 >
+                  <Phone className="mr-3 h-5 w-5" />
                   Request a Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-montserrat">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-prime-gold text-prime-gold hover:bg-prime-gold hover:text-prime-blue font-montserrat font-semibold transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
+                >
                   View Our Services
                 </Button>
               </div>
             </div>
-            <div className="hidden lg:block animate-slide-in-left">
+            <div className="relative animate-slide-in-left">
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-prime-gold/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-prime-blue/10 rounded-full blur-xl"></div>
               <img
                 src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
                 alt="Professional business meeting"
-                className="rounded-lg shadow-2xl border-4 border-prime-gold/20"
+                className="rounded-2xl shadow-2xl border-4 border-prime-gold/30 relative z-10 hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-prime-light-grey">
+      {/* Enhanced Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-montserrat font-bold mb-4">Why Choose Prime Auditors?</h2>
+            <p className="text-white/80 text-lg font-open-sans">Proven track record of excellence and trust</p>
+          </div>
           <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center animate-fade-in-up">
-              <div className="w-16 h-16 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-prime-blue" />
+            <div className="text-center animate-fade-in-up bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Award className="w-10 h-10 text-prime-blue" />
               </div>
-              <div className="text-3xl font-montserrat font-bold text-prime-blue">NBAA</div>
-              <div className="text-sm text-gray-600 font-open-sans">Certified Professionals</div>
+              <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">NBAA</div>
+              <div className="text-white/90 font-open-sans">Certified Professionals</div>
             </div>
-            <div className="text-center animate-fade-in-up">
-              <div className="w-16 h-16 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-prime-blue" />
+            <div className="text-center animate-fade-in-up bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <TrendingUp className="w-10 h-10 text-prime-blue" />
               </div>
-              <div className="text-3xl font-montserrat font-bold text-prime-blue">100+</div>
-              <div className="text-sm text-gray-600 font-open-sans">Satisfied Clients</div>
+              <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">100+</div>
+              <div className="text-white/90 font-open-sans">Satisfied Clients</div>
             </div>
-            <div className="text-center animate-fade-in-up">
-              <div className="w-16 h-16 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-prime-blue" />
+            <div className="text-center animate-fade-in-up bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Shield className="w-10 h-10 text-prime-blue" />
               </div>
-              <div className="text-3xl font-montserrat font-bold text-prime-blue">10+</div>
-              <div className="text-sm text-gray-600 font-open-sans">Years Experience</div>
+              <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">10+</div>
+              <div className="text-white/90 font-open-sans">Years Experience</div>
             </div>
-            <div className="text-center animate-fade-in-up">
-              <div className="w-16 h-16 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-prime-blue" />
+            <div className="text-center animate-fade-in-up bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <CheckCircle className="w-10 h-10 text-prime-blue" />
               </div>
-              <div className="text-3xl font-montserrat font-bold text-prime-blue">24/7</div>
-              <div className="text-sm text-gray-600 font-open-sans">Professional Support</div>
+              <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">24/7</div>
+              <div className="text-white/90 font-open-sans">Professional Support</div>
             </div>
           </div>
         </div>
@@ -475,18 +525,23 @@ const Index = () => {
         onClose={() => setIsConsultationModalOpen(false)}
       />
 
-      {/* Footer */}
-      <footer className="bg-prime-blue text-white py-16">
+      {/* Enhanced Footer */}
+      <footer className="bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4 animate-fade-in-up">
-              <AnimatedText 
-                text="PRIME AUDITORS" 
-                className="text-2xl font-montserrat font-bold"
-              />
-              <p className="text-white/80 font-open-sans">
+          <div className="grid md:grid-cols-4 gap-12">
+            <div className="space-y-6 animate-fade-in-up">
+              <div className="flex items-center space-x-3">
+                <div className="bg-prime-gold/20 p-2 rounded-full border border-prime-gold">
+                  <Award className="w-6 h-6 text-prime-gold" />
+                </div>
+                <AnimatedText 
+                  text="PRIME AUDITORS" 
+                  className="text-2xl font-montserrat font-bold"
+                />
+              </div>
+              <p className="text-white/80 font-open-sans leading-relaxed">
                 Your trusted partner in financial clarity. NBAA certified professionals 
-                serving businesses across Tanzania.
+                serving businesses across Tanzania with excellence and integrity.
               </p>
               <Badge variant="outline" className="border-prime-gold text-prime-gold font-montserrat">
                 NBAA Reg: PF517
@@ -494,8 +549,8 @@ const Index = () => {
             </div>
             
             <div className="animate-fade-in-up">
-              <h4 className="font-montserrat font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-white/80 font-open-sans">
+              <h4 className="font-montserrat font-semibold mb-6 text-lg">Services</h4>
+              <ul className="space-y-3 text-white/80 font-open-sans">
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Accounting Services</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Tax Services</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Auditing & Assurance</a></li>
@@ -504,8 +559,8 @@ const Index = () => {
             </div>
             
             <div className="animate-fade-in-up">
-              <h4 className="font-montserrat font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-white/80 font-open-sans">
+              <h4 className="font-montserrat font-semibold mb-6 text-lg">Company</h4>
+              <ul className="space-y-3 text-white/80 font-open-sans">
                 <li><a href="#" className="hover:text-prime-gold transition-colors">About Us</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Our Team</a></li>
                 <li><a href="#" className="hover:text-prime-gold transition-colors">Certifications</a></li>
@@ -514,18 +569,33 @@ const Index = () => {
             </div>
             
             <div className="animate-fade-in-up">
-              <h4 className="font-montserrat font-semibold mb-4">Contact Info</h4>
-              <ul className="space-y-2 text-white/80 font-open-sans">
-                <li>Plot 24, Block KB 3, NHC Building</li>
-                <li>Market Street, Tanga City</li>
-                <li>+255 712 747 539</li>
-                <li>+255 752 401 012</li>
-                <li>primeauditors@gmail.com</li>
+              <h4 className="font-montserrat font-semibold mb-6 text-lg">Contact Info</h4>
+              <ul className="space-y-3 text-white/80 font-open-sans">
+                <li className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-prime-gold flex-shrink-0" />
+                  <span>Plot 24, Block KB 3, NHC Building</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-prime-gold flex-shrink-0" />
+                  <span>Market Street, Tanga City</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-prime-gold flex-shrink-0" />
+                  <span>+255 712 747 539</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-prime-gold flex-shrink-0" />
+                  <span>+255 752 401 012</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-prime-gold flex-shrink-0" />
+                  <span>primeauditors@gmail.com</span>
+                </li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-white/20 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-white/80 font-open-sans">
               © 2024 Prime Auditors. All rights reserved.
             </div>
