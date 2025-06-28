@@ -3,6 +3,13 @@ import React, { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { supabase } from '@/integrations/supabase/client';
 
+// TypeScript declarations for Google Maps
+declare global {
+  interface Window {
+    google: any;
+  }
+}
+
 const GoogleMap = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [apiKey, setApiKey] = React.useState<string>('');
@@ -31,7 +38,7 @@ const GoogleMap = () => {
   }, []);
 
   useEffect(() => {
-    if (!apiKey || !mapRef.current) return;
+    if (!apiKey || !mapRef.current || !window.google) return;
 
     const loader = new Loader({
       apiKey: apiKey,
@@ -39,16 +46,15 @@ const GoogleMap = () => {
     });
 
     loader.load().then(() => {
-      if (!mapRef.current) return;
+      if (!mapRef.current || !window.google) return;
 
-      // Prime Auditors office coordinates in Tanga, Tanzania
-      // Plot 24, Block KB 3, NHC Building, Market Street, Independence Avenue Road
-      const officeLocation = { lat: -5.0692, lng: 39.0988 };
+      // Prime Auditors office coordinates - updated to your specified location
+      const officeLocation = { lat: -5.0714256, lng: 39.1005272 };
 
-      const map = new google.maps.Map(mapRef.current, {
+      const map = new window.google.maps.Map(mapRef.current, {
         zoom: 16,
         center: officeLocation,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: window.google.maps.MapTypeId.ROADMAP,
         styles: [
           {
             featureType: 'poi',
@@ -59,15 +65,15 @@ const GoogleMap = () => {
       });
 
       // Add marker for the office
-      const marker = new google.maps.Marker({
+      const marker = new window.google.maps.Marker({
         position: officeLocation,
         map: map,
         title: 'Prime Auditors Office',
-        animation: google.maps.Animation.DROP,
+        animation: window.google.maps.Animation.DROP,
       });
 
       // Add info window with office details
-      const infoWindow = new google.maps.InfoWindow({
+      const infoWindow = new window.google.maps.InfoWindow({
         content: `
           <div style="padding: 10px; max-width: 300px;">
             <h3 style="margin: 0 0 10px 0; color: #1e40af; font-weight: bold;">Prime Auditors</h3>
