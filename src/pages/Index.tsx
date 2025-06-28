@@ -1,4 +1,3 @@
-
 import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,6 +14,26 @@ const Index = () => {
     setIsConsultationModalOpen(true);
   };
 
+  const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
+    return (
+      <div className={`inline-block ${className}`}>
+        {text.split('').map((char, index) => (
+          <span
+            key={index}
+            className="inline-block animate-bounce"
+            style={{
+              animationDelay: `${index * 0.1}s`,
+              animationDuration: '2s',
+              animationIterationCount: 'infinite'
+            }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-white font-open-sans">
       {/* Navigation */}
@@ -22,7 +41,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center animate-slide-in-left">
-              <div className="text-2xl font-montserrat font-bold text-prime-blue">Prime Auditors</div>
+              <AnimatedText 
+                text="PRIME AUDITORS" 
+                className="text-2xl font-montserrat font-bold text-prime-blue"
+              />
               <Badge variant="outline" className="ml-3 text-xs border-prime-gold text-prime-gold">NBAA Reg: PF517</Badge>
             </div>
             <div className="hidden md:flex space-x-8 animate-fade-in">
@@ -458,7 +480,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4 animate-fade-in-up">
-              <div className="text-2xl font-montserrat font-bold">Prime Auditors</div>
+              <AnimatedText 
+                text="PRIME AUDITORS" 
+                className="text-2xl font-montserrat font-bold"
+              />
               <p className="text-white/80 font-open-sans">
                 Your trusted partner in financial clarity. NBAA certified professionals 
                 serving businesses across Tanzania.
