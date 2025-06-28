@@ -1,3 +1,4 @@
+
 import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -570,10 +571,9 @@ const Index = () => {
                 <div className="bg-prime-gold/20 p-2 rounded-full border border-prime-gold">
                   <Award className="w-6 h-6 text-prime-gold" />
                 </div>
-                <AnimatedText 
-                  text="PRIME AUDITORS" 
-                  className="text-2xl font-montserrat font-bold"
-                />
+                <h3 className="text-2xl font-montserrat font-bold text-white">
+                  PRIME AUDITORS
+                </h3>
               </div>
               <p className="text-white/80 font-open-sans leading-relaxed">
                 Your trusted partner in financial clarity.{" "}
