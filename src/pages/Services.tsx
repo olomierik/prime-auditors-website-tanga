@@ -1,4 +1,3 @@
-
 import { ArrowLeft, CheckCircle, Calculator, FileText, Shield, TrendingUp, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,9 +28,15 @@ const Services = () => {
               <ArrowLeft className="w-5 h-5" />
               <span className="font-montserrat font-medium">Back to Home</span>
             </Link>
-            <Badge variant="outline" className="border-prime-gold text-prime-gold bg-prime-gold/10">
-              NBAA Reg: PF517
-            </Badge>
+            <a 
+              href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Badge variant="outline" className="border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
+                NBAA Reg: PF517
+              </Badge>
+            </a>
           </div>
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-montserrat font-bold mb-6">
@@ -196,7 +201,16 @@ const Services = () => {
                     Transparent, Ethical, and Independent.
                   </h3>
                   <p className="text-gray-700 font-open-sans mb-6 leading-relaxed">
-                    As a certified auditing firm by NBAA, we conduct thorough audits that go beyond compliance — delivering insights that enhance financial credibility and decision-making.
+                    As a{" "}
+                    <a 
+                      href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-prime-gold hover:text-prime-gold/80 font-semibold underline cursor-pointer transition-colors"
+                    >
+                      certified auditing firm by NBAA
+                    </a>
+                    , we conduct thorough audits that go beyond compliance — delivering insights that enhance financial credibility and decision-making.
                   </p>
                   
                   <div className="mb-6">

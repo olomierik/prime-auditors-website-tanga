@@ -53,9 +53,15 @@ const Index = () => {
                   text="PRIME AUDITORS" 
                   className="text-2xl lg:text-3xl font-montserrat font-bold text-white"
                 />
-                <Badge variant="outline" className="self-start mt-1 text-xs border-prime-gold text-prime-gold bg-prime-gold/10">
-                  NBAA Reg: PF517
-                </Badge>
+                <a 
+                  href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Badge variant="outline" className="self-start mt-1 text-xs border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
+                    NBAA Reg: PF517
+                  </Badge>
+                </a>
               </div>
             </div>
 
@@ -108,9 +114,15 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <div className="space-y-6">
-                <Badge className="bg-prime-gold text-prime-blue border-prime-gold font-montserrat text-sm px-4 py-2">
-                  🏆 NBAA Certified • Tanga, Tanzania
-                </Badge>
+                <a 
+                  href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Badge className="bg-prime-gold text-prime-blue border-prime-gold font-montserrat text-sm px-4 py-2 hover:bg-prime-gold/90 transition-colors cursor-pointer">
+                    🏆 NBAA Certified • Tanga, Tanzania
+                  </Badge>
+                </a>
                 <h1 className="text-5xl lg:text-7xl font-montserrat font-bold leading-tight text-prime-blue">
                   Your Trusted Partner in{" "}
                   <span className="text-prime-gold bg-gradient-to-r from-prime-gold to-prime-gold/80 bg-clip-text text-transparent">
@@ -168,8 +180,15 @@ const Index = () => {
               <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Award className="w-10 h-10 text-prime-blue" />
               </div>
-              <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">NBAA</div>
-              <div className="text-white/90 font-open-sans">Certified Professionals</div>
+              <a 
+                href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:scale-105 transition-transform cursor-pointer"
+              >
+                <div className="text-4xl font-montserrat font-bold text-prime-gold mb-2">NBAA</div>
+                <div className="text-white/90 font-open-sans">Certified Professionals</div>
+              </a>
             </div>
             <div className="text-center animate-fade-in-up bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
               <div className="w-20 h-20 bg-prime-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
@@ -216,8 +235,16 @@ const Index = () => {
               </div>
               <p className="text-lg text-gray-700 leading-relaxed font-open-sans">
                 Prime Auditors is a leading accounting and auditing firm based in Tanga, Tanzania. 
-                We are proud to be certified by the National Board of Accountants and Auditors (NBAA), 
-                ensuring our clients receive services that meet the highest professional standards.
+                We are proud to be{" "}
+                <a 
+                  href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-prime-gold hover:text-prime-gold/80 font-semibold underline cursor-pointer transition-colors"
+                >
+                  certified by the National Board of Accountants and Auditors (NBAA)
+                </a>
+                , ensuring our clients receive services that meet the highest professional standards.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed font-open-sans">
                 Our mission is to provide comprehensive financial solutions that empower businesses 
@@ -225,10 +252,15 @@ const Index = () => {
                 deep local market knowledge with international best practices.
               </p>
               <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="text-center p-6 bg-prime-light-grey rounded-lg shadow-sm border-l-4 border-prime-gold">
+                <a 
+                  href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center p-6 bg-prime-light-grey rounded-lg shadow-sm border-l-4 border-prime-gold hover:shadow-md transition-all cursor-pointer"
+                >
                   <div className="text-2xl font-montserrat font-bold text-prime-blue">NBAA</div>
                   <div className="text-sm text-gray-600 font-open-sans">Certified</div>
-                </div>
+                </a>
                 <div className="text-center p-6 bg-prime-light-grey rounded-lg shadow-sm border-l-4 border-prime-gold">
                   <div className="text-2xl font-montserrat font-bold text-prime-blue">Tanga</div>
                   <div className="text-sm text-gray-600 font-open-sans">Tanzania</div>
@@ -537,12 +569,26 @@ const Index = () => {
                 />
               </div>
               <p className="text-white/80 font-open-sans leading-relaxed">
-                Your trusted partner in financial clarity. NBAA certified professionals 
-                serving businesses across Tanzania with excellence and integrity.
+                Your trusted partner in financial clarity.{" "}
+                <a 
+                  href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-prime-gold hover:text-prime-gold/80 font-semibold underline cursor-pointer transition-colors"
+                >
+                  NBAA certified professionals
+                </a>
+                {" "}serving businesses across Tanzania with excellence and integrity.
               </p>
-              <Badge variant="outline" className="border-prime-gold text-prime-gold font-montserrat">
-                NBAA Reg: PF517
-              </Badge>
+              <a 
+                href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Badge variant="outline" className="border-prime-gold text-prime-gold font-montserrat hover:bg-prime-gold/10 transition-colors cursor-pointer">
+                  NBAA Reg: PF517
+                </Badge>
+              </a>
             </div>
             
             <div className="animate-fade-in-up">
