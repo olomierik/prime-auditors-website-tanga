@@ -4,16 +4,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { ConsultationModal } from "@/components/ConsultationModal";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleGetConsultation = () => {
-    setIsConsultationModalOpen(true);
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
@@ -520,12 +521,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Consultation Modal */}
-      <ConsultationModal 
-        isOpen={isConsultationModalOpen}
-        onClose={() => setIsConsultationModalOpen(false)}
-      />
 
       {/* Enhanced Footer */}
       <footer className="bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white py-20">
