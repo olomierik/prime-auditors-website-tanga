@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import GoogleMap from "@/components/GoogleMap";
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -496,6 +497,12 @@ const Index = () => {
                     <span className="font-medium">Closed</span>
                   </div>
                 </div>
+              </div>
+
+              {/* Google Map */}
+              <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-prime-gold">
+                <h4 className="font-montserrat font-semibold text-prime-blue mb-4">Our Location</h4>
+                <GoogleMap />
               </div>
             </div>
 
