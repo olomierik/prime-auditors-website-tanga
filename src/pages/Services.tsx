@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
+import OfficeGallery from "@/components/OfficeGallery";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -321,6 +322,17 @@ const Services = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Our Office Section */}
+          <div className="text-center">
+            <h2 className="text-4xl font-montserrat font-bold text-prime-blue mb-4">
+              Our Professional Office
+            </h2>
+            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+              Visit our modern office space in Tanga, Tanzania, where our dedicated team provides exceptional financial services in a professional environment.
+            </p>
+            <OfficeGallery />
+          </div>
         </div>
 
         {/* CTA Section */}
