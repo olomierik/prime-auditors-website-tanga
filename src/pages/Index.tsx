@@ -1,4 +1,3 @@
-
 import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,9 +9,18 @@ import GoogleMap from "@/components/GoogleMap";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const openConsultationModal = () => {
+    setIsConsultationModalOpen(true);
+  };
+
+  const closeConsultationModal = () => {
+    setIsConsultationModalOpen(false);
   };
 
   return (
@@ -63,11 +71,12 @@ const Index = () => {
               <a href="/#contact" className="font-montserrat font-medium text-gray-700 hover:text-prime-blue transition-colors">
                 Contact
               </a>
-              <Link to="/#contact">
-                <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold">
-                  Get a Consultation
-                </Button>
-              </Link>
+              <Button 
+                onClick={openConsultationModal}
+                className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold"
+              >
+                Get a Consultation
+              </Button>
             </div>
           </div>
         </div>
@@ -100,14 +109,14 @@ const Index = () => {
               >
                 Contact
               </a>
-              <Link
-                to="/#contact"
-                className="block w-full px-3 py-2 rounded-md text-base font-montserrat font-medium text-center text-gray-700 hover:text-prime-blue hover:bg-gray-50 transition-colors"
-              >
-                <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold w-full">
+              <div className="px-3 py-2">
+                <Button 
+                  onClick={openConsultationModal}
+                  className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold w-full"
+                >
                   Get a Consultation
                 </Button>
-              </Link>
+              </div>
             </div>
           </div>
         )}
@@ -131,11 +140,12 @@ const Index = () => {
                   Explore Our Services
                 </Button>
               </Link>
-              <Link to="/#contact">
-                <Button className="bg-white hover:bg-white/90 text-prime-blue font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg">
-                  Contact Us
-                </Button>
-              </Link>
+              <Button 
+                onClick={openConsultationModal}
+                className="bg-white hover:bg-white/90 text-prime-blue font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
+              >
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
@@ -335,7 +345,12 @@ const Index = () => {
                 </div>
 
                 <div className="pt-6">
-                  <ConsultationModal />
+                  <Button 
+                    onClick={openConsultationModal}
+                    className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-8 py-4 text-lg w-full"
+                  >
+                    Request a Consultation
+                  </Button>
                 </div>
               </div>
             </div>
@@ -367,6 +382,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Consultation Modal */}
+      <ConsultationModal 
+        isOpen={isConsultationModalOpen} 
+        onClose={closeConsultationModal} 
+      />
     </div>
   );
 };
