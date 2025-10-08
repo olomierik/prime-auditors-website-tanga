@@ -4,11 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ConsultationModal from "@/components/ConsultationModal";
+import { ConsultationModal } from "@/components/ConsultationModal";
 import GoogleMap from "@/components/GoogleMap";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -334,7 +335,12 @@ const Index = () => {
                 </div>
 
                 <div className="pt-6">
-                  <ConsultationModal />
+                  <Button 
+                    onClick={() => setIsConsultationModalOpen(true)}
+                    className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold w-full"
+                  >
+                    Schedule a Consultation
+                  </Button>
                 </div>
               </div>
             </div>
@@ -345,6 +351,11 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <ConsultationModal 
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
 
       {/* Footer */}
       <footer className="bg-prime-blue text-white py-8">
