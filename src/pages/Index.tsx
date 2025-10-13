@@ -5,12 +5,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import GoogleMap from "@/components/GoogleMap";
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Load TanzaPages review script
+    const script = document.createElement('script');
+    script.src = 'https://www.tanzapages.com/gadgets/v2/17130/s';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   const handleGetConsultation = () => {
     const contactSection = document.getElementById('contact');
@@ -428,6 +443,21 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 mb-4 font-montserrat">Client Reviews</Badge>
+            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+              What Our Clients Say
+            </h2>
+          </div>
+          <div className="flex justify-center">
+            <div id="gbd_review_box_s"></div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -476,7 +506,7 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-montserrat font-semibold text-prime-blue">Email</div>
-                      <div className="text-gray-700 font-open-sans">primeauditors@gmail.com</div>
+                      <div className="text-gray-700 font-open-sans">info@primeauditors.co.tz</div>
                     </div>
                   </div>
                 </div>
@@ -639,7 +669,7 @@ const Index = () => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-prime-gold flex-shrink-0" />
-                  <span>primeauditors@gmail.com</span>
+                  <span>info@primeauditors.co.tz</span>
                 </li>
               </ul>
             </div>
