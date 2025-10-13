@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
+import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Services = () => {
               rel="noopener noreferrer"
             >
               <Badge variant="outline" className="border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
-                NBAA Reg: PF517
+                NBAA Reg: PF510
               </Badge>
             </a>
           </div>
@@ -317,6 +318,49 @@ const Services = () => {
                   <div className="w-32 h-32 bg-prime-gold/20 rounded-full flex items-center justify-center">
                     <TrendingUp className="w-16 h-16 text-prime-gold" />
                   </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* NBAA Certificate Section */}
+        <div className="mt-20">
+          <Card className="shadow-xl border-0 overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid lg:grid-cols-2 gap-0">
+                <div className="p-12 flex items-center">
+                  <div className="space-y-6">
+                    <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat">
+                      NBAA Certified
+                    </Badge>
+                    <h2 className="text-3xl font-montserrat font-bold text-prime-blue">
+                      Officially Registered Audit Firm
+                    </h2>
+                    <p className="text-gray-700 font-open-sans leading-relaxed">
+                      Prime Auditors is officially certified and registered with the National Board of Accountants and Auditors (NBAA) Tanzania under registration number{" "}
+                      <span className="font-montserrat font-semibold text-prime-gold">PF510</span>.
+                    </p>
+                    <p className="text-gray-700 font-open-sans leading-relaxed">
+                      This certification ensures our compliance with professional standards and demonstrates our commitment to delivering exceptional audit and accounting services.
+                    </p>
+                    <a 
+                      href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold">
+                        Verify Our Registration
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+                <div className="bg-prime-light-grey p-12 flex items-center justify-center">
+                  <img 
+                    src={nbaaCertificate} 
+                    alt="NBAA Certificate of Registration for Prime Auditors - PF510" 
+                    className="w-full max-w-md rounded-lg shadow-2xl border-4 border-prime-gold/30"
+                  />
                 </div>
               </div>
             </CardContent>

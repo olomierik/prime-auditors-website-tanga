@@ -76,7 +76,7 @@ const Index = () => {
                   rel="noopener noreferrer"
                 >
                   <Badge variant="outline" className="self-start mt-1 text-xs border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
-                    NBAA Reg: PF517
+                    NBAA Reg: PF510
                   </Badge>
                 </a>
               </div>
@@ -623,7 +623,7 @@ const Index = () => {
                 rel="noopener noreferrer"
               >
                 <Badge variant="outline" className="border-prime-gold text-prime-gold font-montserrat hover:bg-prime-gold/10 transition-colors cursor-pointer">
-                  NBAA Reg: PF517
+                  NBAA Reg: PF510
                 </Badge>
               </a>
             </div>
