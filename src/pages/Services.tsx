@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
+import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -25,19 +26,26 @@ const Services = () => {
       <header className="bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
-            <Link to="/" className="flex items-center space-x-2 text-white hover:text-prime-gold transition-colors">
+            <Link to="/" className="flex items-center space-x-3 text-white hover:text-prime-gold transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="font-montserrat font-medium">Back to Home</span>
             </Link>
-            <a 
-              href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Badge variant="outline" className="border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
-                NBAA Reg: PF510
-              </Badge>
-            </a>
+            <div className="flex items-center space-x-4">
+              <img 
+                src={primeAuditorsLogo} 
+                alt="Prime Auditors Logo" 
+                className="h-12 w-auto"
+              />
+              <a 
+                href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Badge variant="outline" className="border-prime-gold text-prime-gold bg-prime-gold/10 hover:bg-prime-gold/20 transition-colors cursor-pointer">
+                  NBAA Reg: PF510
+                </Badge>
+              </a>
+            </div>
           </div>
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-montserrat font-bold mb-6">

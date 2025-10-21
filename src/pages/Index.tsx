@@ -1,4 +1,3 @@
-
 import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import GoogleMap from "@/components/GoogleMap";
+import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -62,14 +62,12 @@ const Index = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo Section */}
             <div className="flex items-center space-x-4 animate-slide-in-left">
-              <div className="bg-prime-gold/20 p-3 rounded-full border-2 border-prime-gold">
-                <Award className="w-8 h-8 text-prime-gold" />
-              </div>
+              <img 
+                src={primeAuditorsLogo} 
+                alt="Prime Auditors Logo" 
+                className="h-16 w-auto"
+              />
               <div className="flex flex-col">
-                <AnimatedText 
-                  text="PRIME AUDITORS" 
-                  className="text-2xl lg:text-3xl font-montserrat font-bold text-white"
-                />
                 <a 
                   href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
                   target="_blank"
