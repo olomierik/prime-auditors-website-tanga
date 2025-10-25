@@ -1,13 +1,13 @@
 {
   "site": "Prime Auditors",
-  "domain": "primeauditors.co.za",
-  "canonical": "https://primeauditors.co.za/",
+  "domain": "primeauditors.xyz",
+  "canonical": "https://primeauditors.xyz/",
   "last_updated": "2025-10-25",
   "language": "en-TZ",
   "pages": [
     {
       "id": "home",
-      "url": "https://primeauditors.co.za/",
+      "url": "https://primeauditors.xyz/",
       "title": "Prime Auditors – Trusted Accounting, Auditing & Tax Experts in Tanzania",
       "slug": "",
       "published_at": "2025-10-25",
@@ -19,7 +19,7 @@
     },
     {
       "id": "about",
-      "url": "https://primeauditors.co.za/about.html",
+      "url": "https://primeauditors.xyz/about.html",
       "title": "About Prime Auditors",
       "slug": "about",
       "published_at": "2025-10-25",
@@ -31,7 +31,7 @@
     },
     {
       "id": "services",
-      "url": "https://primeauditors.co.za/services.html",
+      "url": "https://primeauditors.xyz/services.html",
       "title": "Auditing, Accounting & Tax Services – Prime Auditors Tanzania",
       "slug": "services",
       "published_at": "2025-10-25",
@@ -43,7 +43,7 @@
     },
     {
       "id": "contact",
-      "url": "https://primeauditors.co.za/contact.html",
+      "url": "https://primeauditors.xyz/contact.html",
       "title": "Contact Prime Auditors",
       "slug": "contact",
       "published_at": "2025-10-25",
@@ -55,7 +55,7 @@
     },
     {
       "id": "blog",
-      "url": "https://primeauditors.co.za/blog.html",
+      "url": "https://primeauditors.xyz/blog.html",
       "title": "Audit & Tax Insights – Prime Auditors Blog",
       "slug": "blog",
       "published_at": "2025-10-25",
