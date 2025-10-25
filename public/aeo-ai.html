@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Prime Auditors — AEO (AI Engine Optimization) Manifest</title>
+  <meta name="description" content="AEO manifest for Prime Auditors: structured metadata, FAQs, semantic sections and ingestion guidance for AI search, embeddings, and RAG systems."/>
+  <link rel="canonical" href="https://primeauditors.co.za/aeo-ai.html"/>
+  <meta name="robots" content="index, follow"/>
+  <style>body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:24px auto;color:#222;padding:18px}pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}</style>
+</head>
+<body>
+  <h1>Prime Auditors — AEO (Artificial Intelligence Engine Optimization)</h1>
+  <p>This page exposes the canonical AEO manifest and guidance so AI crawlers, vector ingestion pipelines, and site agents can create accurate embeddings and retrieval behavior for <strong>primeauditors.co.za</strong>.</p>
+
+  <h2 id="purpose">Purpose</h2>
+  <p>Make Prime Auditors' content maximally useful to AI: accurate semantic metadata, canonical text chunks, FAQ knowledge, and retrieval-augmented generation (RAG) prompts so search agents and chatbots yield helpful, up-to-date answers about services, regulations, and local processes in Tanzania.</p>
+
+  <h2 id="structured-data">Structured Data (JSON-LD)</h2>
+  <pre><code>{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Prime Auditors",
+  "url": "https://primeauditors.co.za",
+  "logo": "https://primeauditors.co.za/logo.png",
+  "sameAs": [],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+255752401012",
+    "contactType": "customer service",
+    "areaServed": "TZ"
+  }]
+}</code></pre>
+
+  <h2 id="faq-schema">FAQ schema (for knowledge base)</h2>
+  <pre><code>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Prime Auditors offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Financial statement audits, forensic audits, internal & compliance audits, tax advisory, VAT/PAYE/SDL returns, bookkeeping, payroll, business registration and financial advisory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I contact Prime Auditors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Phone: +255 752 401 012, Email: erick.olomi@primeauditors.co.tz, Address: Market Street, Central Ward, Tanga, Tanzania."
+      }
+    }
+  ]
+}</code></pre>
+
+  <h2 id="ingestion-guidelines">Ingestion & Embedding Guidelines</h2>
+  <ul>
+    <li><strong>Canonical Text Source</strong>: Use `https://primeauditors.co.za/aeo-ai.json` as the canonical manifest for ingestion (if present).</li>
+    <li><strong>Chunking</strong>: Split long pages into <em>semantic</em> chunks of 400–700 tokens (~250–500 words), keeping headings with their paragraphs.</li>
+    <li><strong>Metadata to attach to each chunk</strong>: url, page_title, slug, published_at, section, keywords, language (sw/TZ english), revision_id (ISO date), excerpt (first 20–40 words).</li>
+    <li><strong>Embedding model</strong>: use an embeddings model that returns 1536 or 3072 dims (your pipeline default). Normalize vectors and store with L2 or cosine similarity indexing.</li>
+    <li><strong>Retention policy</strong>: treat legal/tax guidance as time-sensitive — store `published_at` and re-ingest on major regulation updates.</li>
+  </ul>
+
+  <h2 id="prompt-templates">RAG Prompt Templates (for chat + answers)</h2>
+  <pre><code>/* Retrieval prompt - server side */
+System: You are Prime Auditors' knowledge assistant. Use only retrieved documents and site policies. Cite the source URL and date.
+User: {user_question}
+Retriever: [top 6 docs with metadata]
+Assistant: // Combine retrieved documents into concise answer, then provide 2 recommended next actions and cite the most authoritative doc (url + lastmod).</code></pre>
+
+  <h2 id="taxonomies">Suggested Taxonomy & Tags</h2>
+  <p>Use the following tag set for metadata and filtering:</p>
+  <pre><code>["auditing","forensic-audit","internal-audit","tax","TRA","VAT","PAYE","SDL","bookkeeping","payroll","IFRS","business-registration","tanzania","tanga","dar es salaam","sme"]</code></pre>
+
+  <h2 id="change-log">Change log</h2>
+  <p>Last updated: <strong>2025-10-25</strong> — reingest when tax laws or service offerings change.</p>
+
+  <hr/>
+  <p><small>Designed for AI indexers, chatbots, and internal knowledge systems. If you use a hosted vector DB (Pinecone/Weaviate/Redis/Milvus), map the JSON manifest fields to your index schema.</small></p>
+</body>
+</html>

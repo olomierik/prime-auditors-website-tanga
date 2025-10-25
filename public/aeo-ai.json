@@ -1,0 +1,93 @@
+{
+  "site": "Prime Auditors",
+  "domain": "primeauditors.co.za",
+  "canonical": "https://primeauditors.co.za/",
+  "last_updated": "2025-10-25",
+  "language": "en-TZ",
+  "pages": [
+    {
+      "id": "home",
+      "url": "https://primeauditors.co.za/",
+      "title": "Prime Auditors – Trusted Accounting, Auditing & Tax Experts in Tanzania",
+      "slug": "",
+      "published_at": "2025-10-25",
+      "section": "home",
+      "keywords": ["audit firm tanzania","accounting firm tanzania","tax consultants tanzania"],
+      "summary": "Prime Auditors is a licensed Tanzanian audit firm (PF510) offering auditing, accounting, and tax advisory services across Tanzania.",
+      "canonical_text": "Prime Auditors is a licensed Accounting and Auditing Firm in Tanzania (PF510) committed to excellence, transparency, and professional integrity. We serve organizations across Tanzania by providing comprehensive financial audits, tax advisory, and business consultancy services.",
+      "relevance_score": 1.0
+    },
+    {
+      "id": "about",
+      "url": "https://primeauditors.co.za/about.html",
+      "title": "About Prime Auditors",
+      "slug": "about",
+      "published_at": "2025-10-25",
+      "section": "about",
+      "keywords": ["about audit firm tanzania","prime auditors team"],
+      "summary": "About Prime Auditors: mission, vision and core values; registered PF510 audit firm in Tanga serving East Africa.",
+      "canonical_text": "Prime Auditors is a registered and licensed Audit and Accounting Firm in Tanzania (PF510) providing professional financial services to individuals, companies, and government institutions.",
+      "relevance_score": 0.9
+    },
+    {
+      "id": "services",
+      "url": "https://primeauditors.co.za/services.html",
+      "title": "Auditing, Accounting & Tax Services – Prime Auditors Tanzania",
+      "slug": "services",
+      "published_at": "2025-10-25",
+      "section": "services",
+      "keywords": ["auditing services tanzania","tax consultation","bookkeeping"],
+      "summary": "List of services: Financial audits, forensic audits, internal audits, tax filing, payroll, bookkeeping and business advisory.",
+      "canonical_text": "We provide high-quality auditing services to ensure financial transparency, compliance, and credibility. Our team performs audits in line with International Standards on Auditing (ISA) and Tanzanian laws.",
+      "relevance_score": 0.95
+    },
+    {
+      "id": "contact",
+      "url": "https://primeauditors.co.za/contact.html",
+      "title": "Contact Prime Auditors",
+      "slug": "contact",
+      "published_at": "2025-10-25",
+      "section": "contact",
+      "keywords": ["contact audit firm tanzania","prime auditors contact"],
+      "summary": "Contact details for Prime Auditors including phone, email and office address in Tanga.",
+      "canonical_text": "Address: Market Street, Central Ward, Tanga, Tanzania. Phone: +255 752 401 012 Email: erick.olomi@primeauditors.co.tz",
+      "relevance_score": 0.7
+    },
+    {
+      "id": "blog",
+      "url": "https://primeauditors.co.za/blog.html",
+      "title": "Audit & Tax Insights – Prime Auditors Blog",
+      "slug": "blog",
+      "published_at": "2025-10-25",
+      "section": "blog",
+      "keywords": ["tanzania tax updates","audit tips tanzania","tra filing guide"],
+      "summary": "Blog content and article listing with articles about TRA audits, tax mistakes, internal audits and filing deadlines.",
+      "canonical_text": "Expert knowledge and updates on auditing, accounting, and tax compliance in Tanzania.",
+      "relevance_score": 0.6
+    }
+  ],
+  "faq": [
+    {
+      "q": "What services does Prime Auditors offer?",
+      "a": "Financial statement audits, forensic audits, internal & compliance audits, tax advisory, VAT/PAYE/SDL returns, bookkeeping, payroll, business registration and financial advisory."
+    },
+    {
+      "q": "How do I contact Prime Auditors?",
+      "a": "Phone: +255 752 401 012, Email: erick.olomi@primeauditors.co.tz, Address: Market Street, Central Ward, Tanga, Tanzania."
+    }
+  ],
+  "taxonomy": ["auditing","tax","forensic","bookkeeping","payroll","IFRS","TRA","tanzania","tanga","sme"],
+  "ingestion_instructions": {
+    "chunk_size_tokens": [400,700],
+    "include_headings": true,
+    "metadata_per_chunk": ["id","page_id","url","title","section","published_at","excerpt","keywords","language"],
+    "embedding_model_recommendation": "Use an embeddings model that returns >=1536 dims. Normalize vectors; use cosine similarity index.",
+    "rerank_strategy": "Top 50 by BM25 then top 6 by vector similarity",
+    "refresh_policy_days": 30
+  },
+  "rag_prompts": {
+    "system": "You are Prime Auditors' knowledge assistant. Use only retrieved site documents and cite the most relevant URL and published date. If the user asks for legal advice say: 'I am not a lawyer; consult a licensed practitioner.'",
+    "retrieval": "Retrieve top 6 relevant chunks. Return metadata with each chunk.",
+    "final_answer_template": "Answer: <concise answer>\\nSources: <url1> (lastmod)<br/>Next steps: 1) <action> 2) <action>"
+  }
+}
