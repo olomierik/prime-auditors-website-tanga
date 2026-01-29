@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import GoogleMap from "@/components/GoogleMap";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
+import officeReception from "@/assets/office-reception.jpg";
+import officeWorkspace from "@/assets/office-workspace.jpg";
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -234,12 +236,23 @@ const Index = () => {
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-slide-in-left">
-              <img
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop"
-                alt="Professional workspace"
-                className="rounded-lg shadow-xl border-4 border-prime-gold/10"
-              />
+            <div className="animate-slide-in-left space-y-6">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-prime-gold/20 group">
+                <img
+                  src={officeReception}
+                  alt="Prime Auditors Office Reception"
+                  className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/20 to-transparent"></div>
+              </div>
+              <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-prime-gold/20 group">
+                <img
+                  src={officeWorkspace}
+                  alt="Prime Auditors Office Workspace"
+                  className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/20 to-transparent"></div>
+              </div>
             </div>
             <div className="space-y-6 animate-fade-in-up">
               <div>
