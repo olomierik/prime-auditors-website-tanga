@@ -135,7 +135,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               name="phone_number"
               value={formData.phone_number}
               onChange={handleInputChange}
-              placeholder="+255 712 747 539"
+              placeholder="+255 798 509 683"
               required
             />
           </div>
