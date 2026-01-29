@@ -493,8 +493,7 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-montserrat font-semibold text-prime-blue">Phone</div>
-                      <div className="text-gray-700 font-open-sans">+255 712 747 539</div>
-                      <div className="text-gray-700 font-open-sans">+255 752 401 012</div>
+                      <div className="text-gray-700 font-open-sans">+255 798 509 683</div>
                     </div>
                   </div>
                   
@@ -659,11 +658,7 @@ const Index = () => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-prime-gold flex-shrink-0" />
-                  <span>+255 712 747 539</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-prime-gold flex-shrink-0" />
-                  <span>+255 752 401 012</span>
+                  <span>+255 798 509 683</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-prime-gold flex-shrink-0" />
