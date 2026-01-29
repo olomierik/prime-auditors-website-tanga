@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
+import teamConference1 from "@/assets/team-conference-1.jpg";
+import teamConference2 from "@/assets/team-conference-2.jpg";
+import teamProfessional from "@/assets/team-professional.jpg";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -330,6 +333,59 @@ const Services = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Professional Team Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
+              Our Team
+            </Badge>
+            <h2 className="text-3xl font-montserrat font-bold text-prime-blue mb-4">
+              Professional Development & Global Exposure
+            </h2>
+            <p className="text-gray-600 font-open-sans max-w-2xl mx-auto">
+              Our team continuously invests in professional development, attending international conferences and training programs to bring you the latest expertise.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-prime-gold/20 group">
+              <img
+                src={teamConference1}
+                alt="Prime Auditors team member at international conference"
+                className="w-full h-80 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-montserrat font-semibold text-sm">International Conference Participation</p>
+              </div>
+            </div>
+            
+            <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-prime-gold/20 group">
+              <img
+                src={teamConference2}
+                alt="Prime Auditors team member at professional seminar"
+                className="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-montserrat font-semibold text-sm">Global Training Programs</p>
+              </div>
+            </div>
+            
+            <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-prime-gold/20 group">
+              <img
+                src={teamProfessional}
+                alt="Prime Auditors professional team member"
+                className="w-full h-80 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-montserrat font-semibold text-sm">Professional Excellence</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* NBAA Certificate Section */}
