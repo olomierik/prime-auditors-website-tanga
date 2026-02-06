@@ -1,4 +1,4 @@
-import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X } from "lucide-react";
+import { ArrowRight, Users, Phone, Mail, MapPin, CheckCircle, Award, TrendingUp, Shield, Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -86,6 +86,10 @@ const Index = () => {
             <div className="hidden lg:flex items-center space-x-8 animate-fade-in">
               <a href="#about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About</a>
               <Link to="/services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</Link>
+              <Link to="/foreign-investors" className="text-prime-gold hover:text-prime-gold/80 transition-all duration-300 font-semibold text-lg hover:scale-105 flex items-center gap-1">
+                <Globe className="w-4 h-4" />
+                Foreign Investors
+              </Link>
               <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Testimonials</a>
               <a href="#contact" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Contact</a>
             </div>
@@ -116,6 +120,10 @@ const Index = () => {
               <div className="flex flex-col space-y-4">
                 <a href="#about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About</a>
                 <Link to="/services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</Link>
+                <Link to="/foreign-investors" className="text-prime-gold font-semibold text-lg py-2 flex items-center gap-2">
+                  <Globe className="w-4 h-4" />
+                  Foreign Investors
+                </Link>
                 <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Testimonials</a>
                 <a href="#contact" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Contact</a>
               </div>
@@ -365,6 +373,29 @@ const Index = () => {
               </CardContent>
             </Card>
           </div>
+
+          {/* Foreign Investors CTA */}
+          <Link to="/foreign-investors" className="block mt-12">
+            <Card className="group hover:shadow-2xl transition-all duration-500 border-2 border-prime-gold/30 hover:border-prime-gold shadow-lg hover:-translate-y-1 bg-gradient-to-r from-prime-blue to-prime-blue/90 cursor-pointer">
+              <CardContent className="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-prime-gold/20 rounded-lg flex items-center justify-center group-hover:bg-prime-gold transition-colors duration-300">
+                    <Globe className="w-8 h-8 text-prime-gold group-hover:text-prime-blue transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-montserrat font-bold text-white">Foreign Investor? Start Your Business in Tanzania</h3>
+                    <p className="text-white/70 font-open-sans mt-1">
+                      Complete company registration, all licences & permits — from zero to operational.
+                    </p>
+                  </div>
+                </div>
+                <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold px-6 whitespace-nowrap group-hover:scale-105 transition-transform">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
 
