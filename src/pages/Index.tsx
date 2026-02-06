@@ -645,6 +645,7 @@ const Index = () => {
                 <li><Link to="/services" className="hover:text-prime-gold transition-colors">Tax Services</Link></li>
                 <li><Link to="/services" className="hover:text-prime-gold transition-colors">Auditing & Assurance</Link></li>
                 <li><Link to="/services" className="hover:text-prime-gold transition-colors">Management Consulting</Link></li>
+                <li><Link to="/foreign-investors" className="hover:text-prime-gold transition-colors">Foreign Investor Registration</Link></li>
               </ul>
             </div>
             
