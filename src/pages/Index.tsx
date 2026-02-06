@@ -86,7 +86,7 @@ const Index = () => {
             <div className="hidden lg:flex items-center space-x-8 animate-fade-in">
               <a href="#about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About</a>
               <Link to="/services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</Link>
-              <Link to="/foreign-investors" className="text-prime-gold hover:text-prime-gold/80 transition-all duration-300 font-semibold text-lg hover:scale-105 flex items-center gap-1">
+              <Link to="/foreign-investors" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105 flex items-center gap-1">
                 <Globe className="w-4 h-4" />
                 Foreign Investors
               </Link>
@@ -120,7 +120,7 @@ const Index = () => {
               <div className="flex flex-col space-y-4">
                 <a href="#about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About</a>
                 <Link to="/services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</Link>
-                <Link to="/foreign-investors" className="text-prime-gold font-semibold text-lg py-2 flex items-center gap-2">
+                <Link to="/foreign-investors" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2 flex items-center gap-2">
                   <Globe className="w-4 h-4" />
                   Foreign Investors
                 </Link>
