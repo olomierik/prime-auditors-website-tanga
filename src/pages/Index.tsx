@@ -84,13 +84,14 @@ const Index = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 animate-fade-in">
-              <a href="#about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About</a>
+              <Link to="/about" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">About Us</Link>
               <Link to="/services" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Services</Link>
+              <Link to="/news" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">News & Updates</Link>
               <Link to="/foreign-investors" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105 flex items-center gap-1">
                 <Globe className="w-4 h-4" />
                 Foreign Investors
               </Link>
-              <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Testimonials</a>
+              <Link to="/join" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Join Us</Link>
               <a href="#contact" className="text-white/90 hover:text-prime-gold transition-all duration-300 font-medium text-lg hover:scale-105">Contact</a>
             </div>
 
@@ -118,13 +119,14 @@ const Index = () => {
           {isMobileMenuOpen && (
             <div className="lg:hidden py-6 border-t border-prime-gold/20 animate-fade-in">
               <div className="flex flex-col space-y-4">
-                <a href="#about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About</a>
+                <Link to="/about" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">About Us</Link>
                 <Link to="/services" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Services</Link>
+                <Link to="/news" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">News & Updates</Link>
                 <Link to="/foreign-investors" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2 flex items-center gap-2">
                   <Globe className="w-4 h-4" />
                   Foreign Investors
                 </Link>
-                <a href="#testimonials" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Testimonials</a>
+                <Link to="/join" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Join Us</Link>
                 <a href="#contact" className="text-white/90 hover:text-prime-gold transition-colors font-medium text-lg py-2">Contact</a>
               </div>
             </div>
@@ -485,7 +487,46 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews Section */}
+      {/* Our Clients Section */}
+      <section className="py-20 bg-prime-light-grey">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 mb-4 font-montserrat">Our Clients</Badge>
+            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+              Trusted by Businesses Across Tanzania
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-open-sans">
+              We are proud to serve a diverse range of clients from various industries
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            {[
+              { name: "TechStart Ltd", initials: "TS" },
+              { name: "Global Trade Co", initials: "GT" },
+              { name: "Coastal Enterprises", initials: "CE" },
+              { name: "Tanga Industries", initials: "TI" },
+              { name: "Safari Holdings", initials: "SH" },
+              { name: "Kilimanjaro Corp", initials: "KC" },
+            ].map((client, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center space-y-2 group hover:-translate-y-1">
+                <div className="w-16 h-16 bg-prime-blue/10 rounded-full flex items-center justify-center group-hover:bg-prime-gold/20 transition-colors">
+                  <span className="text-xl font-montserrat font-bold text-prime-blue">{client.initials}</span>
+                </div>
+                <span className="text-sm font-open-sans text-gray-600 text-center">{client.name}</span>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/#contact">
+              <Button variant="outline" className="border-2 border-prime-gold text-prime-gold hover:bg-prime-gold hover:text-prime-blue font-montserrat font-semibold px-8">
+                Join our Client List
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
@@ -683,9 +724,10 @@ const Index = () => {
             <div className="animate-fade-in-up">
               <h4 className="font-montserrat font-semibold mb-6 text-lg">Company</h4>
               <ul className="space-y-3 text-white/80 font-open-sans">
-                <li><a href="#about" className="hover:text-prime-gold transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Our Team</a></li>
-                <li><a href="#" className="hover:text-prime-gold transition-colors">Certifications</a></li>
+                <li><Link to="/about" className="hover:text-prime-gold transition-colors">About Us</Link></li>
+                <li><Link to="/about" className="hover:text-prime-gold transition-colors">Our Team</Link></li>
+                <li><Link to="/news" className="hover:text-prime-gold transition-colors">News & Updates</Link></li>
+                <li><Link to="/join" className="hover:text-prime-gold transition-colors">Join as Consultant</Link></li>
                 <li><a href="#contact" className="hover:text-prime-gold transition-colors">Contact</a></li>
               </ul>
             </div>
