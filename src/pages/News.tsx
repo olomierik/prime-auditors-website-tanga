@@ -169,7 +169,7 @@ const News = () => {
             ))}
           </div>
 
-          {filteredArticles.length === 0 && (
+          {!loading && filteredArticles.length === 0 && (
             <div className="text-center py-16">
               <p className="text-gray-500 font-open-sans text-lg">No articles found in this category.</p>
             </div>
