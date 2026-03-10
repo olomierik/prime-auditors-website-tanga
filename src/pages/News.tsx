@@ -127,7 +127,11 @@ const News = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredArticles.map((article) => (
+          {loading ? (
+            <div className="col-span-3 text-center py-16">
+              <p className="text-gray-500 font-open-sans text-lg">Loading articles...</p>
+            </div>
+          ) : filteredArticles.map((article) => (
               <Card key={article.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden">
                 <div className="relative overflow-hidden">
                   <img
