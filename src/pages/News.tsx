@@ -135,7 +135,7 @@ const News = () => {
               <Card key={article.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden">
                 <div className="relative overflow-hidden">
                   <img
-                    src={article.image}
+                    src={article.image_url || 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=340&fit=crop'}
                     alt={article.title}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
