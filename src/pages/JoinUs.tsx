@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
 
 const JoinUs = () => {
@@ -33,15 +34,36 @@ const JoinUs = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase
+        .from("consultant_applications")
+        .insert([{
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          specialization: formData.specialization,
+          experience: formData.experience,
+          qualifications: formData.qualifications || null,
+          cover_letter: formData.coverLetter,
+        }]);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest. We'll review your application and get back to you soon.",
-    });
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      toast({
+        title: "Application Submitted!",
+        description: "Thank you for your interest. We'll review your application and get back to you soon.",
+      });
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

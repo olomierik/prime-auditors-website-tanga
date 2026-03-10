@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      consultant_applications: {
+        Row: {
+          cover_letter: string
+          created_at: string
+          email: string
+          experience: string
+          full_name: string
+          id: string
+          phone: string
+          qualifications: string | null
+          specialization: string
+        }
+        Insert: {
+          cover_letter: string
+          created_at?: string
+          email: string
+          experience: string
+          full_name: string
+          id?: string
+          phone: string
+          qualifications?: string | null
+          specialization: string
+        }
+        Update: {
+          cover_letter?: string
+          created_at?: string
+          email?: string
+          experience?: string
+          full_name?: string
+          id?: string
+          phone?: string
+          qualifications?: string | null
+          specialization?: string
+        }
+        Relationships: []
+      }
+      consultation_requests: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone_number: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone_number: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone_number?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
