@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
 
 const JoinUs = () => {
