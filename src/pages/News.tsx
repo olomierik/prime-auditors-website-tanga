@@ -2,84 +2,43 @@ import { ArrowRight, Phone, Mail, MapPin, Menu, X, Globe, Calendar, Clock, User,
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
 
-const articles = [
-  {
-    id: 1,
-    title: "Understanding Tanzania's New Tax Reforms for 2024/2025",
-    excerpt: "A comprehensive guide to the latest tax changes introduced in the 2024/2025 Finance Act and how they affect businesses operating in Tanzania.",
-    content: "The Tanzania Revenue Authority has introduced several key changes...",
-    author: "CPA Salim Mwinyi",
-    date: "2024-12-15",
-    readTime: "8 min read",
-    category: "Tax Advisory",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=340&fit=crop",
-  },
-  {
-    id: 2,
-    title: "BRELA Online Registration: A Step-by-Step Guide for Businesses",
-    excerpt: "Everything you need to know about registering your business through BRELA's online portal, from name reservation to certificate issuance.",
-    content: "The Business Registrations and Licensing Agency...",
-    author: "Grace Mushi",
-    date: "2024-11-28",
-    readTime: "6 min read",
-    category: "Business Registration",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=340&fit=crop",
-  },
-  {
-    id: 3,
-    title: "The Importance of Annual Audits for SMEs in Tanzania",
-    excerpt: "Why small and medium enterprises should prioritize annual financial audits and how they contribute to business growth and investor confidence.",
-    content: "Many small business owners view audits as an unnecessary expense...",
-    author: "CPA Fatma Hassan",
-    date: "2024-11-10",
-    readTime: "5 min read",
-    category: "Auditing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Foreign Investment in Tanzania: Opportunities and Challenges",
-    excerpt: "An overview of the investment landscape in Tanzania, key sectors for foreign investors, and regulatory requirements to consider.",
-    content: "Tanzania continues to attract foreign direct investment...",
-    author: "CPA John Mwakasege",
-    date: "2024-10-22",
-    readTime: "10 min read",
-    category: "Foreign Investment",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=340&fit=crop",
-  },
-  {
-    id: 5,
-    title: "IFRS Updates: What Tanzanian Companies Need to Know",
-    excerpt: "Key IFRS standard changes and their implications for financial reporting by Tanzanian companies in the current fiscal year.",
-    content: "The International Financial Reporting Standards continue to evolve...",
-    author: "CPA Fatma Hassan",
-    date: "2024-10-05",
-    readTime: "7 min read",
-    category: "Accounting Standards",
-    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=340&fit=crop",
-  },
-  {
-    id: 6,
-    title: "TRA's Electronic Fiscal Devices: Compliance Guide",
-    excerpt: "A practical guide to EFD compliance requirements, common mistakes, and best practices for businesses in Tanzania.",
-    content: "Electronic Fiscal Devices are mandatory for all...",
-    author: "CPA Salim Mwinyi",
-    date: "2024-09-18",
-    readTime: "6 min read",
-    category: "Tax Compliance",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=340&fit=crop",
-  },
-];
+interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  category: string;
+  image_url: string | null;
+  read_time: string | null;
+  published_at: string;
+}
 
 const categories = ["All", "Tax Advisory", "Auditing", "Business Registration", "Foreign Investment", "Accounting Standards", "Tax Compliance"];
 
 const News = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const { data, error } = await supabase
+        .from("blog_articles")
+        .select("*")
+        .order("published_at", { ascending: false });
+
+      if (!error && data) setArticles(data);
+      setLoading(false);
+    };
+    fetchArticles();
+  }, []);
 
   const filteredArticles = selectedCategory === "All"
     ? articles
