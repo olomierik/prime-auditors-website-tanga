@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
+import HoldingCompanySection from "@/components/HoldingCompanySection";
 
 const ForeignInvestors = () => {
   const navigate = useNavigate();
@@ -298,6 +299,9 @@ const ForeignInvestors = () => {
           </div>
         </div>
       </section>
+
+      {/* Holding Company Formation Section */}
+      <HoldingCompanySection onGetConsultation={handleGetConsultation} />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white relative overflow-hidden">
