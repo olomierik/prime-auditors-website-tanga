@@ -300,6 +300,9 @@ const ForeignInvestors = () => {
         </div>
       </section>
 
+      {/* Holding Company Formation Section */}
+      <HoldingCompanySection onGetConsultation={handleGetConsultation} />
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
