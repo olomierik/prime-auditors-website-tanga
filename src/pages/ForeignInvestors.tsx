@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import primeAuditorsLogo from "@/assets/prime-auditors-logo.jpg";
+import HoldingCompanySection from "@/components/HoldingCompanySection";
 
 const ForeignInvestors = () => {
   const navigate = useNavigate();
