@@ -126,7 +126,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-montserrat font-bold text-prime-blue">Professional Development & Activities</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {[teamConference1, teamConference2, teamProfessional].map((img, i) => (
+            {[teamConference1, teamConference2, teamProfessional, nbaaCertificate, officeReception, officeWorkspace].map((img, i) => (
               <div key={i} className="relative overflow-hidden rounded-xl shadow-lg group">
                 <img src={img} alt={`Team activity ${i + 1}`} className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-prime-blue/20 group-hover:bg-prime-blue/40 transition-colors" />
