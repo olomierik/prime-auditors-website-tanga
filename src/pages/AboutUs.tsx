@@ -12,9 +12,9 @@ import officeReception from "@/assets/office-reception.jpg";
 import officeWorkspace from "@/assets/office-workspace.jpg";
 
 const teamMembers = [
-  { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference1 },
+  { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference2 },
   { name: "Suzana Godfrey Sawe", role: "Assistant Lecturer & Consultant", bio: "MSc in Accounting and Finance. Assistant Lecturer at Sebastian Kolowa Memorial University with over 15 years of experience in accounting and tax advisory.", image: teamProfessional },
-  { name: "Erick Elibariki Olomi", role: "Senior Consultant", bio: "With over 15 years of experience in accounting and tax advisory, Erick brings deep technical knowledge in financial management, business advisory, and compliance services.", image: teamConference2 },
+  { name: "Erick Elibariki Olomi", role: "Senior Consultant", bio: "With over 15 years of experience in accounting and tax advisory, Erick brings deep technical knowledge in financial management, business advisory, and compliance services.", image: teamConference1 },
 ];
 
 const AboutUs = () => {
