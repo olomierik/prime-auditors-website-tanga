@@ -94,7 +94,7 @@ const AboutUs = () => {
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Our Team</p>
             <h2 className="text-3xl font-montserrat font-bold text-prime-blue mb-4">Meet the Professionals</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {teamMembers.map((member, i) => (
               <Card key={i} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                 <div className="relative overflow-hidden">
