@@ -8,12 +8,13 @@ import teamConference1 from "@/assets/team-conference-1.jpg";
 import teamConference2 from "@/assets/team-conference-2.jpg";
 import teamProfessional from "@/assets/team-professional.jpg";
 import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
+import officeReception from "@/assets/office-reception.jpg";
+import officeWorkspace from "@/assets/office-workspace.jpg";
 
 const teamMembers = [
-  { name: "CPA Salim Mwinyi", role: "Managing Partner", bio: "A seasoned CPA with over 10 years of experience in auditing, tax advisory, and management consulting. Registered with NBAA.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" },
-  { name: "CPA Fatma Hassan", role: "Senior Auditor", bio: "Specializes in financial auditing and assurance services. Expert in IFRS and ISA standards.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face" },
-  { name: "CPA John Mwakasege", role: "Tax Consultant", bio: "Expert in Tanzanian tax law and international taxation. Provides strategic tax planning and compliance services.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" },
-  { name: "Grace Mushi", role: "Accounting Manager", bio: "Leads our accounting services team with expertise in bookkeeping, financial statement preparation, and management accounting.", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face" },
+  { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference1 },
+  { name: "Suzana Godfrey Sawe", role: "Assistant Lecturer & Consultant", bio: "MSc in Accounting and Finance. Assistant Lecturer at Sebastian Kolowa Memorial University with over 15 years of experience in accounting and tax advisory.", image: teamProfessional },
+  { name: "Erick Elibariki Olomi", role: "Senior Consultant", bio: "With over 15 years of experience in accounting and tax advisory, Erick brings deep technical knowledge in financial management, business advisory, and compliance services.", image: teamConference2 },
 ];
 
 const AboutUs = () => {
