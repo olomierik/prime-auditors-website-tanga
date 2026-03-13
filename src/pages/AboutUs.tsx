@@ -12,9 +12,9 @@ import officeReception from "@/assets/office-reception.jpg";
 import officeWorkspace from "@/assets/office-workspace.jpg";
 
 const teamMembers = [
-  { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference2 },
-  { name: "Suzana Godfrey Sawe", role: "Assistant Lecturer & Consultant", bio: "MSc in Accounting and Finance. Assistant Lecturer at Sebastian Kolowa Memorial University with over 15 years of experience in accounting and tax advisory.", image: teamProfessional },
-  { name: "Erick Elibariki Olomi", role: "Senior Consultant", bio: "With over 15 years of experience in accounting and tax advisory, Erick brings deep technical knowledge in financial management, business advisory, and compliance services.", image: teamConference1 },
+  { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference2, imagePosition: "object-top" },
+  { name: "Suzana Godfrey Sawe", role: "Assistant Lecturer & Consultant", bio: "MSc in Accounting and Finance. Assistant Lecturer at Sebastian Kolowa Memorial University with over 15 years of experience in accounting and tax advisory.", image: teamProfessional, imagePosition: "object-center" },
+  { name: "Erick Elibariki Olomi", role: "Senior Consultant", bio: "With over 15 years of experience in accounting and tax advisory, Erick brings deep technical knowledge in financial management, business advisory, and compliance services.", image: teamConference1, imagePosition: "object-[center_30%]" },
 ];
 
 const AboutUs = () => {
@@ -98,7 +98,7 @@ const AboutUs = () => {
             {teamMembers.map((member, i) => (
               <Card key={i} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                 <div className="relative overflow-hidden">
-                  <img src={member.image} alt={member.name} className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <img src={member.image} alt={member.name} className={`w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105 ${member.imagePosition}`} />
                 </div>
                 <CardContent className="p-5 text-center space-y-2">
                   <h3 className="font-montserrat font-bold text-prime-blue text-sm">{member.name}</h3>
