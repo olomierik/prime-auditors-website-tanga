@@ -98,7 +98,7 @@ const AboutUs = () => {
             {teamMembers.map((member, i) => (
               <Card key={i} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                 <div className="relative overflow-hidden">
-                  <img src={member.image} alt={member.name} className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={member.image} alt={member.name} className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <CardContent className="p-5 text-center space-y-2">
                   <h3 className="font-montserrat font-bold text-prime-blue text-sm">{member.name}</h3>
