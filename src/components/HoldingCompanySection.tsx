@@ -198,13 +198,13 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Tanzania as Strategic Hub */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Why Tanzania
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
               Tanzania as a Strategic Investment Hub
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-2xl mx-auto">
