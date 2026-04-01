@@ -88,13 +88,13 @@ const AboutUs = () => {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Our Team</p>
-            <h2 className="text-3xl font-montserrat font-bold text-prime-blue mb-4">Meet the Professionals</h2>
+            <h2 className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-blue mb-4">Meet the Professionals</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {teamMembers.map((member, i) => (
               <Card key={i} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                 <div className="relative overflow-hidden">
