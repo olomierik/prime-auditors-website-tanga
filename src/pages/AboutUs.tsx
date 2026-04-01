@@ -35,14 +35,14 @@ const AboutUs = () => {
       </section>
 
       {/* About */}
-      <section className="py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <img src={teamConference1} alt="Team conference" className="rounded-xl shadow-lg w-full h-44 object-cover" />
-                <img src={teamConference2} alt="Team meeting" className="rounded-xl shadow-lg w-full h-44 object-cover" />
-                <img src={nbaaCertificate} alt="NBAA Certificate" className="rounded-xl shadow-lg w-full h-44 object-cover col-span-2" />
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <img src={teamConference1} alt="Team conference" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover" />
+                <img src={teamConference2} alt="Team meeting" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover" />
+                <img src={nbaaCertificate} alt="NBAA Certificate" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover col-span-2" />
               </div>
             </div>
             <div className="space-y-5">
