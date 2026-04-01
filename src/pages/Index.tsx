@@ -218,15 +218,15 @@ const Index = () => {
       </section>
 
       {/* Client Trust Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-14 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Client Trust</p>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-4">
               What Our Clients Say
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {[
               { quote: "Prime Auditors transformed our financial processes. Their expertise in tax planning saved us significant costs while ensuring full compliance.", name: "Sarah Johnson", role: "CEO, TechStart Ltd" },
               { quote: "Professional, reliable, and incredibly knowledgeable. The audit process was smooth and their recommendations improved our financial controls.", name: "Michael Chen", role: "Finance Director, Global Trade Co" },
