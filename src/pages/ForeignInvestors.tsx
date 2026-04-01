@@ -33,7 +33,7 @@ const ForeignInvestors = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-prime-blue py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-prime-blue py-14 sm:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-40 h-40 border-2 border-prime-gold rounded-full" />
           <div className="absolute bottom-10 right-20 w-60 h-60 border border-prime-gold/50 rounded-full" />
