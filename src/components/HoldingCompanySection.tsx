@@ -108,14 +108,14 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
   return (
     <>
       {/* Holding Company Hero */}
-      <section className="py-20 bg-gradient-to-b from-prime-light-grey to-white">
+      <section className="py-14 sm:py-20 bg-gradient-to-b from-prime-light-grey to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Holding Company Formation
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
-              Tanzania Holding Company Formation <br />
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+              Tanzania Holding Company Formation <br className="hidden sm:block" />
               <span className="text-prime-gold">for Global Investors</span>
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-3xl mx-auto leading-relaxed">
