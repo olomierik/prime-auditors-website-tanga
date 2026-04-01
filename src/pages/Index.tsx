@@ -172,9 +172,9 @@ const Index = () => {
       </section>
 
       {/* International Investors Section */}
-      <section className="py-20 lg:py-28 bg-prime-blue text-white">
+      <section className="py-14 sm:py-20 lg:py-28 bg-prime-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-6">
               <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase">International Investors</p>
               <h2 className="text-3xl lg:text-4xl font-montserrat font-bold leading-tight">
