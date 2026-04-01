@@ -125,7 +125,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 lg:p-10 max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-8 lg:p-10 max-w-4xl mx-auto">
             <p className="text-gray-600 font-open-sans leading-relaxed mb-4">
               At <strong className="text-prime-blue">Prime Auditors</strong>, we specialize in assisting foreign investors, multinational groups, and global entrepreneurs 
               in establishing Tanzania-based holding companies designed to control, manage, and expand international investments.
