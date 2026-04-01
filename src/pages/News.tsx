@@ -45,10 +45,10 @@ const News = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-prime-blue py-20 lg:py-24">
+      <section className="bg-prime-blue py-14 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">Insights</p>
-          <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-4">Latest Articles & Insights</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-4">Latest Articles & Insights</h1>
           <p className="text-lg text-white/75 max-w-2xl mx-auto font-open-sans">
             Stay informed with expert analysis on tax, auditing, and business in Tanzania.
           </p>
@@ -88,7 +88,7 @@ const News = () => {
               <p className="text-gray-500 font-open-sans">No articles found in this category.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredArticles.map((article) => (
                 <Card key={article.id} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                   <div className="relative overflow-hidden">

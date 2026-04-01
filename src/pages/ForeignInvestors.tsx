@@ -33,7 +33,7 @@ const ForeignInvestors = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-prime-blue py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-prime-blue py-14 sm:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-40 h-40 border-2 border-prime-gold rounded-full" />
           <div className="absolute bottom-10 right-20 w-60 h-60 border border-prime-gold/50 rounded-full" />
@@ -41,7 +41,7 @@ const ForeignInvestors = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">Foreign Investor Services</p>
-            <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6 leading-tight">
               Company Registration <br />
               <span className="text-prime-gold">for Foreign Investors</span> in Tanzania
             </h1>
@@ -96,10 +96,10 @@ const ForeignInvestors = () => {
               From Zero to Operational — Step by Step
             </h2>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {registrationSteps.map((item, index) => (
-              <div key={index} className="flex gap-5 items-start bg-white rounded-xl p-6 border border-gray-100 hover:border-prime-gold/30 hover:shadow-md transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-xl bg-prime-blue flex items-center justify-center text-prime-gold font-montserrat font-bold text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+              <div key={index} className="flex gap-3 sm:gap-5 items-start bg-white rounded-xl p-4 sm:p-6 border border-gray-100 hover:border-prime-gold/30 hover:shadow-md transition-all duration-300 group">
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-prime-blue flex items-center justify-center text-prime-gold font-montserrat font-bold text-sm sm:text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
                   {item.step}
                 </div>
                 <div>

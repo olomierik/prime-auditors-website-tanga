@@ -45,10 +45,10 @@ const JoinUs = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-prime-blue py-20 lg:py-24">
+      <section className="bg-prime-blue py-14 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">Careers</p>
-          <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-4">Join as a Consultant</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-4">Join as a Consultant</h1>
           <p className="text-lg text-white/75 max-w-2xl mx-auto font-open-sans">
             Become part of a dynamic, growing CPA firm. We're always looking for talented professionals.
           </p>

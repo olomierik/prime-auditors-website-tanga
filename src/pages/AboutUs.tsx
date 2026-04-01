@@ -21,11 +21,11 @@ const AboutUs = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative bg-prime-blue py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-prime-blue py-14 sm:py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920')] bg-cover bg-center opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">About Us</p>
-          <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
             Young | Energetic | <span className="text-prime-gold">Resourceful</span>
           </h1>
           <p className="text-lg text-white/75 max-w-2xl mx-auto font-open-sans">
@@ -35,14 +35,14 @@ const AboutUs = () => {
       </section>
 
       {/* About */}
-      <section className="py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <img src={teamConference1} alt="Team conference" className="rounded-xl shadow-lg w-full h-44 object-cover" />
-                <img src={teamConference2} alt="Team meeting" className="rounded-xl shadow-lg w-full h-44 object-cover" />
-                <img src={nbaaCertificate} alt="NBAA Certificate" className="rounded-xl shadow-lg w-full h-44 object-cover col-span-2" />
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <img src={teamConference1} alt="Team conference" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover" />
+                <img src={teamConference2} alt="Team meeting" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover" />
+                <img src={nbaaCertificate} alt="NBAA Certificate" className="rounded-xl shadow-lg w-full h-32 sm:h-44 object-cover col-span-2" />
               </div>
             </div>
             <div className="space-y-5">
@@ -88,13 +88,13 @@ const AboutUs = () => {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Our Team</p>
-            <h2 className="text-3xl font-montserrat font-bold text-prime-blue mb-4">Meet the Professionals</h2>
+            <h2 className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-blue mb-4">Meet the Professionals</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {teamMembers.map((member, i) => (
               <Card key={i} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                 <div className="relative overflow-hidden">
@@ -119,16 +119,16 @@ const AboutUs = () => {
       </section>
 
       {/* Gallery */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Gallery</p>
-            <h2 className="text-3xl font-montserrat font-bold text-prime-blue">Professional Development & Activities</h2>
+            <h2 className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-blue">Professional Development & Activities</h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[teamConference1, teamConference2, teamProfessional, nbaaCertificate, officeReception, officeWorkspace].map((img, i) => (
               <div key={i} className="relative overflow-hidden rounded-xl shadow-lg group">
-                <img src={img} alt={`Team activity ${i + 1}`} className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={img} alt={`Team activity ${i + 1}`} className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-prime-blue/20 group-hover:bg-prime-blue/40 transition-colors" />
               </div>
             ))}

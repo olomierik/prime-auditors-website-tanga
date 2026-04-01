@@ -47,22 +47,22 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center">
         <div className="absolute inset-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-prime-blue/95 via-prime-blue/85 to-prime-blue/60" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-2xl space-y-8">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs text-white/90 font-open-sans">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
+          <div className="max-w-2xl space-y-5 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs text-white/90 font-open-sans">
               <Award className="w-3.5 h-3.5 text-prime-gold" />
               NBAA Certified • Tanga, Tanzania
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold text-white leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white leading-[1.1]">
               Strategic Accounting, Tax and Advisory Services for{" "}
               <span className="text-prime-gold">Global Investors</span>
             </h1>
-            <p className="text-lg lg:text-xl text-white/80 font-open-sans leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 font-open-sans leading-relaxed max-w-xl">
               Supporting businesses and investors across Tanzania and Africa with world-class financial expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -87,9 +87,9 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
             {stats.map((stat, i) => (
-              <div key={i} className="py-10 px-6 text-center">
-                <div className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">{stat.value}</div>
-                <div className="text-sm text-gray-500 font-open-sans mt-1">{stat.label}</div>
+              <div key={i} className="py-6 sm:py-10 px-3 sm:px-6 text-center">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-gray-500 font-open-sans mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -154,16 +154,16 @@ const Index = () => {
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <div className="relative mt-8 lg:mt-0">
               <img
                 src={officeReception}
                 alt="Prime Auditors Office"
-                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+                className="rounded-2xl shadow-2xl w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
               />
-              <div className="absolute -bottom-6 -left-6 bg-prime-blue text-white p-6 rounded-xl shadow-xl max-w-[200px]">
+              <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-prime-blue text-white p-4 sm:p-6 rounded-xl shadow-xl max-w-[180px] sm:max-w-[200px]">
                 <a href="https://www.nbaa.go.tz/nbaa-firm-details/MTE0OA==/show" target="_blank" rel="noopener noreferrer" className="hover:opacity-90">
-                  <div className="text-2xl font-montserrat font-bold text-prime-gold">NBAA</div>
-                  <div className="text-xs text-white/80 font-open-sans mt-1">Certified Public Accountants — PF510</div>
+                  <div className="text-xl sm:text-2xl font-montserrat font-bold text-prime-gold">NBAA</div>
+                  <div className="text-[10px] sm:text-xs text-white/80 font-open-sans mt-1">Certified Public Accountants — PF510</div>
                 </a>
               </div>
             </div>
@@ -172,9 +172,9 @@ const Index = () => {
       </section>
 
       {/* International Investors Section */}
-      <section className="py-20 lg:py-28 bg-prime-blue text-white">
+      <section className="py-14 sm:py-20 lg:py-28 bg-prime-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-6">
               <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase">International Investors</p>
               <h2 className="text-3xl lg:text-4xl font-montserrat font-bold leading-tight">
@@ -218,15 +218,15 @@ const Index = () => {
       </section>
 
       {/* Client Trust Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-14 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Client Trust</p>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-4">
               What Our Clients Say
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {[
               { quote: "Prime Auditors transformed our financial processes. Their expertise in tax planning saved us significant costs while ensuring full compliance.", name: "Sarah Johnson", role: "CEO, TechStart Ltd" },
               { quote: "Professional, reliable, and incredibly knowledgeable. The audit process was smooth and their recommendations improved our financial controls.", name: "Michael Chen", role: "Finance Director, Global Trade Co" },
@@ -294,8 +294,8 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="space-y-6 sm:space-y-8">
               <div className="space-y-6">
                 {[
                   { icon: MapPin, label: "Office Address", lines: ["Plot 24, Block KB 3, NHC Building Apt 02", "Market Street, Independence Avenue Road", "Central Ward, Tanga City, Tanzania"] },

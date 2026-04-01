@@ -108,14 +108,14 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
   return (
     <>
       {/* Holding Company Hero */}
-      <section className="py-20 bg-gradient-to-b from-prime-light-grey to-white">
+      <section className="py-14 sm:py-20 bg-gradient-to-b from-prime-light-grey to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Holding Company Formation
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
-              Tanzania Holding Company Formation <br />
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+              Tanzania Holding Company Formation <br className="hidden sm:block" />
               <span className="text-prime-gold">for Global Investors</span>
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-3xl mx-auto leading-relaxed">
@@ -125,7 +125,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 lg:p-10 max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-8 lg:p-10 max-w-4xl mx-auto">
             <p className="text-gray-600 font-open-sans leading-relaxed mb-4">
               At <strong className="text-prime-blue">Prime Auditors</strong>, we specialize in assisting foreign investors, multinational groups, and global entrepreneurs 
               in establishing Tanzania-based holding companies designed to control, manage, and expand international investments.
@@ -142,13 +142,13 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Strategic Advantages */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Strategic Advantages
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
               Why Global Investors Choose a Holding Company Structure
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-2xl mx-auto">
@@ -175,7 +175,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
           </div>
 
           {/* Investment Diversification */}
-          <div className="bg-prime-light-grey rounded-2xl p-8 lg:p-10">
+          <div className="bg-prime-light-grey rounded-2xl p-5 sm:p-8 lg:p-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-prime-gold/10 flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-prime-gold" />
@@ -198,13 +198,13 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Tanzania as Strategic Hub */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Why Tanzania
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
               Tanzania as a Strategic Investment Hub
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-2xl mx-auto">
@@ -234,13 +234,13 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Formation Services */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
               Our Services
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
               Our Holding Company Formation Services
             </h2>
             <p className="text-lg text-gray-600 font-open-sans max-w-3xl mx-auto">
@@ -248,7 +248,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {formationServices.map((item, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                 <CardContent className="pt-8 pb-8 text-center">
@@ -265,9 +265,9 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Ideal For + Trusted Partner */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Ideal For */}
             <div>
               <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
@@ -289,7 +289,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
             </div>
 
             {/* Trusted Partner */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8 border border-gray-100">
               <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
                 Your Partner
               </Badge>
