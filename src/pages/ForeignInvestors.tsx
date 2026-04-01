@@ -41,7 +41,7 @@ const ForeignInvestors = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">Foreign Investor Services</p>
-            <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6 leading-tight">
               Company Registration <br />
               <span className="text-prime-gold">for Foreign Investors</span> in Tanzania
             </h1>
