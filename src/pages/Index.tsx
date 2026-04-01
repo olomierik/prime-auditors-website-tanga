@@ -161,7 +161,7 @@ const Index = () => {
                 className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
               />
               <div className="absolute -bottom-6 -left-6 bg-prime-blue text-white p-6 rounded-xl shadow-xl max-w-[200px]">
-                <a href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show" target="_blank" rel="noopener noreferrer" className="hover:opacity-90">
+                <a href="https://www.nbaa.go.tz/nbaa-firm-details/MTE0OA==/show" target="_blank" rel="noopener noreferrer" className="hover:opacity-90">
                   <div className="text-2xl font-montserrat font-bold text-prime-gold">NBAA</div>
                   <div className="text-xs text-white/80 font-open-sans mt-1">Certified Public Accountants — PF510</div>
                 </a>
