@@ -54,7 +54,7 @@ const AboutUs = () => {
               <p className="text-gray-600 font-open-sans leading-relaxed">
                 Our mission is to be the most trusted, innovative, and results-driven consulting firm in Tanzania. We combine deep local market knowledge with international best practices.
               </p>
-              <a href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show" target="_blank" rel="noopener noreferrer">
+              <a <a href="https://www.nbaa.go.tz/nbaa-firm-details/MTE0OA==/show" target="_blank" rel="noopener noreferrer"> target="_blank" rel="noopener noreferrer">
                 <Badge variant="outline" className="border-prime-gold text-prime-gold hover:bg-prime-gold/10 transition-colors cursor-pointer text-sm px-4 py-2 mt-2">
                   <Award className="w-4 h-4 mr-2" /> NBAA Reg: PF510 — Verify
                 </Badge>
