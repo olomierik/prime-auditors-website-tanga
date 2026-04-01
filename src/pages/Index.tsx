@@ -87,9 +87,9 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
             {stats.map((stat, i) => (
-              <div key={i} className="py-10 px-6 text-center">
-                <div className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">{stat.value}</div>
-                <div className="text-sm text-gray-500 font-open-sans mt-1">{stat.label}</div>
+              <div key={i} className="py-6 sm:py-10 px-3 sm:px-6 text-center">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-gray-500 font-open-sans mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
