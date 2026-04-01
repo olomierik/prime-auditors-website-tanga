@@ -191,7 +191,7 @@ const Services = () => {
               <p className="text-gray-600 font-open-sans leading-relaxed">
                 Prime Auditors is officially certified and registered with the National Board of Accountants and Auditors (NBAA) Tanzania under registration number <span className="font-semibold text-prime-gold">PF510</span>.
               </p>
-              <a href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.nbaa.go.tz/nbaa-firm-details/MTE0OA==/show" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold">
                   Verify Our Registration
                 </Button>

@@ -86,7 +86,7 @@ const Footer = () => {
             <a href="#" className="hover:text-prime-gold transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-prime-gold transition-colors">Terms of Service</a>
             <a
-              href="https://www.nbaa.go.tz/nbaa-firm-details/1148/show"
+              href="https://www.nbaa.go.tz/nbaa-firm-details/MTE0OA==/show"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-prime-gold transition-colors"
