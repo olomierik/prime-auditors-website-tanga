@@ -265,9 +265,9 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
       </section>
 
       {/* Ideal For + Trusted Partner */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Ideal For */}
             <div>
               <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
