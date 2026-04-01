@@ -294,8 +294,8 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="space-y-6 sm:space-y-8">
               <div className="space-y-6">
                 {[
                   { icon: MapPin, label: "Office Address", lines: ["Plot 24, Block KB 3, NHC Building Apt 02", "Market Street, Independence Avenue Road", "Central Ward, Tanga City, Tanzania"] },

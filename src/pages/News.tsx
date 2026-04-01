@@ -88,7 +88,7 @@ const News = () => {
               <p className="text-gray-500 font-open-sans">No articles found in this category.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredArticles.map((article) => (
                 <Card key={article.id} className="border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
                   <div className="relative overflow-hidden">

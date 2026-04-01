@@ -119,16 +119,16 @@ const AboutUs = () => {
       </section>
 
       {/* Gallery */}
-      <section className="py-20 bg-prime-light-grey">
+      <section className="py-14 sm:py-20 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Gallery</p>
-            <h2 className="text-3xl font-montserrat font-bold text-prime-blue">Professional Development & Activities</h2>
+            <h2 className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-blue">Professional Development & Activities</h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[teamConference1, teamConference2, teamProfessional, nbaaCertificate, officeReception, officeWorkspace].map((img, i) => (
               <div key={i} className="relative overflow-hidden rounded-xl shadow-lg group">
-                <img src={img} alt={`Team activity ${i + 1}`} className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={img} alt={`Team activity ${i + 1}`} className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-prime-blue/20 group-hover:bg-prime-blue/40 transition-colors" />
               </div>
             ))}

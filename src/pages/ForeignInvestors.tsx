@@ -96,10 +96,10 @@ const ForeignInvestors = () => {
               From Zero to Operational — Step by Step
             </h2>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {registrationSteps.map((item, index) => (
-              <div key={index} className="flex gap-5 items-start bg-white rounded-xl p-6 border border-gray-100 hover:border-prime-gold/30 hover:shadow-md transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-xl bg-prime-blue flex items-center justify-center text-prime-gold font-montserrat font-bold text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+              <div key={index} className="flex gap-3 sm:gap-5 items-start bg-white rounded-xl p-4 sm:p-6 border border-gray-100 hover:border-prime-gold/30 hover:shadow-md transition-all duration-300 group">
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-prime-blue flex items-center justify-center text-prime-gold font-montserrat font-bold text-sm sm:text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
                   {item.step}
                 </div>
                 <div>

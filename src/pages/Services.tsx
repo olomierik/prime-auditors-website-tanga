@@ -96,13 +96,13 @@ const Services = () => {
           {serviceCategories.map((svc, index) => (
             <Card key={index} className="border border-gray-100 shadow-sm overflow-hidden">
               <CardContent className="p-0">
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-                  <div className="bg-prime-light-grey p-10 lg:p-12 flex items-center justify-center">
-                    <div className="w-28 h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center">
-                      <svc.icon className="w-14 h-14 text-prime-gold" />
+              <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+                  <div className="bg-prime-light-grey p-6 sm:p-10 lg:p-12 flex items-center justify-center">
+                    <div className="w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center">
+                      <svc.icon className="w-10 h-10 sm:w-14 sm:h-14 text-prime-gold" />
                     </div>
                   </div>
-                  <div className="p-8 lg:p-12 space-y-6">
+                  <div className="p-6 sm:p-8 lg:p-12 space-y-4 sm:space-y-6">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
                         <span className="text-3xl">{svc.emoji}</span>

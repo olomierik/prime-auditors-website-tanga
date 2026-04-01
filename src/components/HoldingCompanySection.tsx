@@ -289,7 +289,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
             </div>
 
             {/* Trusted Partner */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8 border border-gray-100">
               <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/20 font-montserrat mb-4">
                 Your Partner
               </Badge>
