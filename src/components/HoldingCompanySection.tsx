@@ -175,7 +175,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
           </div>
 
           {/* Investment Diversification */}
-          <div className="bg-prime-light-grey rounded-2xl p-8 lg:p-10">
+          <div className="bg-prime-light-grey rounded-2xl p-5 sm:p-8 lg:p-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-prime-gold/10 flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-prime-gold" />
