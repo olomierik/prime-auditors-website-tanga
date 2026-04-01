@@ -78,10 +78,10 @@ const Services = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-prime-blue py-20 lg:py-28">
+      <section className="bg-prime-blue py-14 sm:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">Our Services</p>
-          <h1 className="text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
             Professional Financial Services
           </h1>
           <p className="text-lg text-white/75 max-w-2xl mx-auto font-open-sans">
