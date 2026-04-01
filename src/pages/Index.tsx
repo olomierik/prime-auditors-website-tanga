@@ -47,22 +47,22 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center">
         <div className="absolute inset-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-prime-blue/95 via-prime-blue/85 to-prime-blue/60" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-2xl space-y-8">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs text-white/90 font-open-sans">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
+          <div className="max-w-2xl space-y-5 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs text-white/90 font-open-sans">
               <Award className="w-3.5 h-3.5 text-prime-gold" />
               NBAA Certified • Tanga, Tanzania
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold text-white leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white leading-[1.1]">
               Strategic Accounting, Tax and Advisory Services for{" "}
               <span className="text-prime-gold">Global Investors</span>
             </h1>
-            <p className="text-lg lg:text-xl text-white/80 font-open-sans leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 font-open-sans leading-relaxed max-w-xl">
               Supporting businesses and investors across Tanzania and Africa with world-class financial expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
