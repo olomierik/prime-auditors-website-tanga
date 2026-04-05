@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
 const corsHeaders = {
@@ -32,14 +31,38 @@ This request was submitted through the Prime Auditors website.
 Please follow up with the client within 24 hours.
     `.trim()
 
-    // For now, we'll just log the email content
-    // In production, you would integrate with an email service like SendGrid, Resend, etc.
-    console.log('Email to be sent to:', to_email)
-    console.log('Email content:', emailContent)
+    // Real email sending using SendGrid (configured via environment variables)
+    const SENDGRID_API_KEY = Deno.env.get('SENDGRID_API_KEY')
+    const SENDGRID_FROM = Deno.env.get('SENDGRID_FROM_EMAIL') || 'no-reply@primeauditors.co.tz'
 
-    // Simulate email sending
-    // You can replace this with actual email service integration
-    const emailSent = true
+    let emailSent = false
+
+    if (SENDGRID_API_KEY && to_email) {
+      const emailData = {
+        personalizations: [
+          {
+            to: [{ email: to_email }],
+            subject: 'Prime Auditors Consultation Request'
+          }
+        ],
+        from: { email: SENDGRID_FROM, name: 'Prime Auditors' },
+        content: [{ type: 'text/plain', value: emailContent }]
+      }
+
+      const res = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailData)
+      })
+
+      emailSent = (res.status === 202)
+    } else {
+      // Fallback: if no API key configured, log and fail gracefully
+      console.error('SendGrid API key or to_email not configured in environment. Email will not be sent.')
+    }
 
     if (emailSent) {
       return new Response(
