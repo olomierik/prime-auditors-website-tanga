@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Layout from '@/components/Layout';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import teamConference1 from '@/assets/team-conference-1.jpg';
-import teamConference2 from '@/assets/team-conference-2.jpg';
-import teamProfessional from '@/assets/team-professional.jpg';
-import nbaaCertificate from '@/assets/nbaa-certificate.jpg';
-+import SEO from '@/components/SEO';
+import { ArrowRight, Award, Users, Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import Layout from "@/components/Layout";
+import teamConference1 from "@/assets/team-conference-1.jpg";
+import teamConference2 from "@/assets/team-conference-2.jpg";
+import teamProfessional from "@/assets/team-professional.jpg";
+import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
+import officeReception from "@/assets/office-reception.jpg";
+import officeWorkspace from "@/assets/office-workspace.jpg";
 
 const teamMembers = [
   { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference2, imagePosition: "object-top" },
@@ -18,10 +20,9 @@ const teamMembers = [
 const AboutUs = () => {
   return (
     <Layout>
-+      <SEO title={"Prime Auditors - About Us"} description={"Prime Auditors is a Tanzanian CPA firm focused on integrity, excellence, and client success, with NBAA PF510 registration."} />
       {/* Hero */}
       <section className="relative bg-prime-blue py-14 sm:py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526406146926-c627a92ad1ab')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920')] bg-cover bg-center opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-4">About Us</p>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold text-white mb-6">
@@ -137,7 +138,7 @@ const AboutUs = () => {
 
       {/* CTA */}
       <section className="py-16 bg-prime-blue text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-5">
           <h2 className="text-3xl font-montserrat font-bold">Need More Details?</h2>
           <p className="text-white/75 font-open-sans text-lg">Contact us to discuss how Prime Auditors can support your needs.</p>
           <Link to="/#contact">
