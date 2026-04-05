@@ -9,9 +9,19 @@ export type ContactPayload = {
 };
 
 export async function submitContact(payload: ContactPayload): Promise<{ ok: boolean; error?: string }> {
-  const endpoint = import.meta.env?.VITE_CONTACT_ENDPOINT || '';
+  // Resolve endpoint: first try env var, then try runtime config (config.json)
+  let endpoint = (import.meta.env?.VITE_CONTACT_ENDPOINT as string) ?? '';
   if (!endpoint) {
-    return { ok: false, error: 'Contact endpoint not configured. Please set VITE_CONTACT_ENDPOINT in environment.' };
+    try {
+      const cfgRes = await fetch('/config.json');
+      if (cfgRes.ok) {
+        const cfg = await cfgRes.json();
+        endpoint = cfg?.VITE_CONTACT_ENDPOINT ?? '';
+      }
+    } catch {}
+  }
+  if (!endpoint) {
+    return { ok: false, error: 'Contact endpoint not configured. Please set VITE_CONTACT_ENDPOINT in environment or provide config.json on host.' };
   }
   try {
     const res = await fetch(endpoint, {
