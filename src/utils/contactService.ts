@@ -1,8 +1,11 @@
 export type ContactPayload = {
   name: string;
   email: string;
+  phone_number?: string;
+  company_name?: string;
   company?: string;
   message: string;
+  to_email?: string;
 };
 
 export async function submitContact(payload: ContactPayload): Promise<{ ok: boolean; error?: string }> {
