@@ -9,6 +9,7 @@ import Layout from "@/components/Layout";
 import GoogleMap from "@/components/GoogleMap";
 import heroBg from "@/assets/hero-bg.jpg";
 import officeReception from "@/assets/office-reception.jpg";
+import SEO from '@/components/SEO';
 
 const Index = () => {
   const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
