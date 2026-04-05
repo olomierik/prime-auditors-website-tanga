@@ -1,0 +1,29 @@
+export type ContactPayload = {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+};
+
+export async function submitContact(payload: ContactPayload): Promise<{ ok: boolean; error?: string }> {
+  const endpoint = import.meta.env?.VITE_CONTACT_ENDPOINT || '';
+  if (!endpoint) {
+    return { ok: false, error: 'Contact endpoint not configured. Please set VITE_CONTACT_ENDPOINT in environment.' };
+  }
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      return { ok: false, error: text || 'Network error' };
+    }
+    return { ok: true };
+  } catch (err: any) {
+    return { ok: false, error: err?.message ?? 'Unknown error' };
+  }
+}
+
+export default submitContact;

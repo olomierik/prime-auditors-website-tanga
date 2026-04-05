@@ -9,9 +9,11 @@ import Layout from "@/components/Layout";
 import GoogleMap from "@/components/GoogleMap";
 import heroBg from "@/assets/hero-bg.jpg";
 import officeReception from "@/assets/office-reception.jpg";
-+import SEO from '@/components/SEO';
+import SEO from '@/components/SEO';
++import submitContact, { ContactPayload } from '@/utils/contactService';
  
-const Index = () => {
+ const Index = () => {
+-  const [seo, setSeo] = useState({ title: 'Prime Auditors - Strategic Accounting, Tax & Advisory', description: 'Professional financial services for Tanzania and Africa.' });
 +  const [seo, setSeo] = useState({ title: 'Prime Auditors - Strategic Accounting, Tax & Advisory', description: 'Professional financial services for Tanzania and Africa.' });
    const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
  
@@ -30,4 +32,4 @@ const Index = () => {
 +      <SEO title={seo.title} description={seo.description} />
        {/* Hero Section */}
        <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center">
-*** End of patch
+*** End Patch
