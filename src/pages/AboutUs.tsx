@@ -10,6 +10,7 @@ import teamProfessional from "@/assets/team-professional.jpg";
 import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
 import officeReception from "@/assets/office-reception.jpg";
 import officeWorkspace from "@/assets/office-workspace.jpg";
+import SEO from '@/components/SEO';
 
 const teamMembers = [
   { name: "CPA Mohammed Ally", role: "Managing Partner", bio: "With over 15 years of experience in accounting and tax advisory, CPA Mohammed Ally leads Prime Auditors with deep expertise in auditing, corporate structuring, and regulatory compliance.", image: teamConference2, imagePosition: "object-top" },
