@@ -8,6 +8,7 @@ import nbaaCertificate from "@/assets/nbaa-certificate.jpg";
 import teamConference1 from "@/assets/team-conference-1.jpg";
 import teamConference2 from "@/assets/team-conference-2.jpg";
 import teamProfessional from "@/assets/team-professional.jpg";
+import SEO from '@/components/SEO';
 
 const Services = () => {
   const navigate = useNavigate();
