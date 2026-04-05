@@ -78,6 +78,7 @@ const Services = () => {
 
   return (
     <Layout>
+      <SEO title="Prime Auditors - Services in Tanzania" description="Accounting, Tax, Auditing & Advisory services for local businesses, corporates, and foreign investors." />
       {/* Hero */}
       <section className="bg-prime-blue py-14 sm:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

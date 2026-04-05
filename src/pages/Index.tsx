@@ -47,6 +47,7 @@ const Index = () => {
 
   return (
     <Layout>
+      <SEO title="Prime Auditors - Strategic Accounting, Tax & Advisory" description="Professional financial services for Tanzania and Africa." />
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center">
         <div className="absolute inset-0">

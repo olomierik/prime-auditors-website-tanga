@@ -21,6 +21,7 @@ const teamMembers = [
 const AboutUs = () => {
   return (
     <Layout>
+      <SEO title="Prime Auditors - About Us" description="Prime Auditors is a Tanzanian CPA firm focused on integrity, excellence, and client success, with NBAA PF510 registration." />
       {/* Hero */}
       <section className="relative bg-prime-blue py-14 sm:py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920')] bg-cover bg-center opacity-10" />
