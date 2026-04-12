@@ -47,7 +47,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
         {
           body: {
             ...formData,
-            to_email: "primeauditors11@gmail.com",
+            to_email: "info@primeauditors.co.tz",
           },
         }
       );
