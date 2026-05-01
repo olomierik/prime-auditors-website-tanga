@@ -1,7 +1,9 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import FloatingContact from "./FloatingContact";
+import { ConsultationModal } from "./ConsultationModal";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,6 +11,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { pathname, hash } = useLocation();
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   useEffect(() => {
     if (hash) {
@@ -26,6 +29,11 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <FloatingContact onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <ConsultationModal 
+        isOpen={isConsultationOpen} 
+        onClose={() => setIsConsultationOpen(false)} 
+      />
     </div>
   );
 };
