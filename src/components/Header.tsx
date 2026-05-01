@@ -1,13 +1,15 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
-import logo from '@/assets/prime-auditors-logo.jpg';
+import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
-  const { t } = useLanguage();
+  const t = useTranslations();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -25,12 +27,15 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 lg:h-20 items-center">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <img 
-                src={logo} 
-                alt="Prime Auditors" 
-                className="h-8 lg:h-9 w-auto transition-transform group-hover:scale-105" 
-              />
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative h-8 lg:h-9 w-32 transition-transform group-hover:scale-105">
+                <Image 
+                  src="/prime-auditors-logo.jpg" 
+                  alt="Prime Auditors" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="font-montserrat font-bold text-white text-lg lg:text-xl leading-tight">Prime Auditors</span>
                 <span className="text-[10px] text-prime-gold font-open-sans tracking-wider hidden sm:block">Certified Public Accountants</span>
@@ -42,7 +47,7 @@ const Header: React.FC = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  href={item.href}
                   className="px-3 py-2 text-sm font-montserrat font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                 >
                   {item.label}
@@ -60,7 +65,7 @@ const Header: React.FC = () => {
                 <span className="font-medium">+255 798 509 683</span>
               </a>
               <LanguageSwitcher />
-              <Link to="/#contact">
+              <Link href="/#contact">
                 <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold px-5 py-2 rounded-lg shadow-lg shadow-prime-gold/20 hover:shadow-gold/30 transition-all">
                   {t('nav.schedule')}
                 </Button>
@@ -82,12 +87,12 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden pb-4 animate-fade-in">
+            <div className="lg:hidden pb-4">
               <nav className="flex flex-col space-y-1 pt-4 border-t border-white/10">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    to={item.href}
+                    href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className="px-4 py-3 text-sm font-montserrat font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
                   >
@@ -102,7 +107,7 @@ const Header: React.FC = () => {
                     <Phone className="w-4 h-4" />
                     <span className="font-medium">+255 798 509 683</span>
                   </a>
-                  <Link to="/#contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
                     <Button className="w-full mt-2 bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold">
                       {t('nav.schedule')}
                     </Button>
