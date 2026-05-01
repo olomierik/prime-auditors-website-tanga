@@ -1,11 +1,13 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
-import logo from '@/assets/prime-auditors-logo.jpg';
+import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const t = useTranslations();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -19,12 +21,15 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand & Description */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6 group">
-              <img 
-                src={logo} 
-                alt="Prime Auditors" 
-                className="h-10 w-auto transition-transform group-hover:scale-105" 
-              />
+            <Link href="/" className="flex items-center gap-2 mb-6 group">
+              <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+                <Image 
+                  src="/prime-auditors-logo.jpg" 
+                  alt="Prime Auditors" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="font-montserrat font-bold text-white text-xl leading-tight">Prime Auditors</span>
                 <span className="text-[10px] text-prime-gold font-open-sans tracking-wider">Certified Public Accountants</span>
@@ -48,37 +53,37 @@ const Footer: React.FC = () => {
             <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.home')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.services')}
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/about" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.about')}
                 </Link>
               </li>
               <li>
-                <Link to="/foreign-investors" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/foreign-investors" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.investors')}
                 </Link>
               </li>
               <li>
-                <Link to="/news" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/news" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.news')}
                 </Link>
               </li>
               <li>
-                <Link to="/join" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/join" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.join')}
                 </Link>
@@ -91,33 +96,33 @@ const Footer: React.FC = () => {
             <h4 className="font-montserrat font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Audit & Assurance
+                  {t('service.audit')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Tax Advisory
+                  {t('service.tax')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Business Registration
+                  {t('service.registration')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Holding Companies
+                  {t('service.holding')}
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Corporate Structuring
+                  {t('service.corporate')}
                 </Link>
               </li>
             </ul>
@@ -164,6 +169,9 @@ const Footer: React.FC = () => {
       
       <div className="border-t border-white/10 py-6 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-4 flex justify-center">
+             <Image src="/nbaa-certificate.jpg" alt="NBAA Certified" width={100} height={40} style={{ objectFit: 'contain' }} />
+          </div>
           <p className="text-sm text-gray-400 font-open-sans">
             © {currentYear} Prime Auditors. {t('footer.copyright')}
           </p>
