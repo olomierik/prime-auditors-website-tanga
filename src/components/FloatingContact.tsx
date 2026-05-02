@@ -1,7 +1,5 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
-import { Phone, MessageSquare, ArrowUp, X, MessageCircle } from 'lucide-react';
+import { Phone, MessageSquare, ArrowUp, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -15,11 +13,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 
 const FloatingContact: React.FC = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showWeChatModal, setShowWeChatModal] = useState(false);
 
@@ -58,7 +55,7 @@ const FloatingContact: React.FC = () => {
         {/* Call Us */}
         <Tooltip>
           <TooltipTrigger asChild>
-            <a href="tel:+255798509683">
+            <a href="tel:+255752401012">
               <Button
                 size="icon"
                 className="w-12 h-12 rounded-full bg-prime-blue text-white shadow-2xl hover:scale-110 transition-transform"
@@ -74,7 +71,7 @@ const FloatingContact: React.FC = () => {
         <Tooltip>
           <TooltipTrigger asChild>
             <a 
-              href="https://wa.me/255798509683" 
+              href="https://wa.me/255752401012" 
               target="_blank" 
               rel="noopener noreferrer"
             >
@@ -114,14 +111,11 @@ const FloatingContact: React.FC = () => {
           </DialogHeader>
           <div className="flex flex-col items-center gap-6">
             <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl overflow-hidden p-2 bg-white shadow-xl">
-              {/* Using a placeholder for WeChat QR code - in production, replace with actual QR image */}
               <div className="w-full h-full bg-gray-50 flex items-center justify-center relative">
-                 <Image 
+                 <img 
                    src="/prime-auditors-logo.jpg" 
                    alt="WeChat QR Code" 
-                   width={200}
-                   height={200}
-                   style={{ objectFit: 'contain' }}
+                   className="w-[200px] h-[200px] object-contain"
                  />
               </div>
             </div>

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -7,9 +5,10 @@ import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useTranslations } from 'next-intl';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { ArrowRight, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -23,7 +22,7 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const BookingForm = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -38,20 +37,26 @@ const BookingForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const { error } = await supabase
+        .from('consultation_requests')
+        .insert([
+          {
+            name: data.name,
+            email: data.email,
+            phone_number: data.phone,
+            company_name: data.company || null,
+            message: data.message,
+            // service is not in the table schema from what I saw, let's double check
+          }
+        ]);
 
-      if (response.ok) {
-        toast.success('Your request has been sent successfully!');
-        reset();
-      } else {
-        toast.error('Something went wrong. Please try again.');
-      }
+      if (error) throw error;
+
+      toast.success('Your request has been sent successfully!');
+      reset();
     } catch (error) {
-      toast.error('An error occurred. Please try again.');
+      console.error('Error submitting form:', error);
+      toast.error('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -120,6 +125,7 @@ const BookingForm = () => {
         {errors.message && <p className="text-red-500 text-[10px] mt-1">{errors.message.message}</p>}
       </div>
       <Button 
+        type="submit"
         disabled={isSubmitting}
         className="w-full bg-gradient-to-r from-prime-blue to-prime-blue/90 hover:from-prime-blue/90 hover:to-prime-blue text-white shadow-lg shadow-prime-blue/30 font-montserrat font-semibold"
       >
