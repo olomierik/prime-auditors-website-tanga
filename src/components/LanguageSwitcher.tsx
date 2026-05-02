@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/navigation';
+import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,12 +11,15 @@ import { Button } from '@/components/ui/button';
 import { Globe, Check } from 'lucide-react';
 
 const LanguageSwitcher: React.FC = () => {
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
+  const { i18n } = useTranslation();
+  const { locale } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLanguageChange = (newLocale: 'en' | 'zh') => {
-    router.replace(pathname, { locale: newLocale });
+    i18n.changeLanguage(newLocale);
+    const newPath = location.pathname.replace(`/${locale}`, `/${newLocale}`);
+    navigate(newPath);
   };
 
   return (

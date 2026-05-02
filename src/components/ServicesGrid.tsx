@@ -1,13 +1,12 @@
-'use client';
-
 import { motion } from "framer-motion";
 import { Shield, FileText, Building2, Globe, Briefcase, Calculator, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "@/navigation";
-import { useTranslations } from 'next-intl';
+import { Link, useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const ServicesGrid = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
+  const { locale } = useParams();
 
   const services = [
     { icon: Shield, titleKey: 'service.audit', descKey: 'service.auditDesc' },
@@ -67,7 +66,7 @@ const ServicesGrid = () => {
                   </div>
                   <h3 className="text-lg font-montserrat font-bold text-prime-blue">{t(svc.titleKey)}</h3>
                   <p className="text-sm text-gray-600 font-open-sans leading-relaxed">{t(svc.descKey)}</p>
-                  <Link href="/services" className="inline-flex items-center text-sm font-medium text-prime-gold hover:text-prime-blue transition-colors font-montserrat group-hover:underline">
+                  <Link to={`/${locale}/services`} className="inline-flex items-center text-sm font-medium text-prime-gold hover:text-prime-blue transition-colors font-montserrat group-hover:underline">
                     {t('services.learnMore')} <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </CardContent>

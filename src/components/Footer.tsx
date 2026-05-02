@@ -1,13 +1,11 @@
-'use client';
-
 import React from 'react';
-import { Link } from '@/navigation';
-import { useTranslations } from 'next-intl';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
-import Image from 'next/image';
 
 const Footer: React.FC = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
+  const { locale } = useParams();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -21,13 +19,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand & Description */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6 group">
+            <Link to={`/${locale}/`} className="flex items-center gap-2 mb-6 group">
               <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
-                <Image 
+                <img 
                   src="/prime-auditors-logo.jpg" 
                   alt="Prime Auditors" 
-                  fill
-                  style={{ objectFit: 'contain' }}
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="flex flex-col">
@@ -53,37 +50,37 @@ const Footer: React.FC = () => {
             <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.home')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.services')}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/about`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.about')}
                 </Link>
               </li>
               <li>
-                <Link href="/foreign-investors" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/foreign-investors`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.investors')}
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/news`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.news')}
                 </Link>
               </li>
               <li>
-                <Link href="/join" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/join`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('nav.join')}
                 </Link>
@@ -96,31 +93,31 @@ const Footer: React.FC = () => {
             <h4 className="font-montserrat font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('service.audit')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('service.tax')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('service.registration')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('service.holding')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
+                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {t('service.corporate')}
                 </Link>
@@ -132,11 +129,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.contactUs')}</h4>
             <div className="space-y-4">
-              <a href="tel:+255798509683" className="flex items-start gap-3 text-sm text-gray-300 hover:text-prime-gold transition-colors group">
+              <a href="tel:+255752401012" className="flex items-start gap-3 text-sm text-gray-300 hover:text-prime-gold transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/30 transition-colors">
                   <Phone className="w-4 h-4 text-prime-gold" />
                 </div>
-                <span className="font-open-sans">+255 798 509 683</span>
+                <span className="font-open-sans">+255 752 401 012</span>
               </a>
               <a href="mailto:info@primeauditors.co.tz" className="flex items-start gap-3 text-sm text-gray-300 hover:text-prime-gold transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/30 transition-colors">
@@ -170,7 +167,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-white/10 py-6 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-4 flex justify-center">
-             <Image src="/nbaa-certificate.jpg" alt="NBAA Certified" width={100} height={40} style={{ objectFit: 'contain' }} />
+             <img src="/nbaa-certificate.jpg" alt="NBAA Certified" width={100} height={40} className="object-contain" />
           </div>
           <p className="text-sm text-gray-400 font-open-sans">
             © {currentYear} Prime Auditors. {t('footer.copyright')}

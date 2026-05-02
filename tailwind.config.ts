@@ -1,11 +1,10 @@
-
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
     darkMode: ["class"],
     content: [
-        "./src/app/**/*.{ts,tsx}",
-        "./src/components/**/*.{ts,tsx}",
+        "./src/**/*.{ts,tsx}",
     ],
     prefix: "",
     theme: {
@@ -18,8 +17,9 @@ export default {
         },
         extend: {
             fontFamily: {
-                'montserrat': ['ui-sans-serif', 'system-ui', 'sans-serif'],
-                'open-sans': ['ui-sans-serif', 'system-ui', 'sans-serif'],
+                'montserrat': ['Montserrat', 'sans-serif'],
+                'open-sans': ['Open Sans', 'sans-serif'],
+                'inter': ['Inter', 'sans-serif'],
             },
             colors: {
                 // Custom Prime Auditors Brand Colors
@@ -134,5 +134,5 @@ export default {
             }
         }
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [tailwindcssAnimate],
 } satisfies Config;

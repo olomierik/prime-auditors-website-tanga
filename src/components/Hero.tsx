@@ -1,14 +1,12 @@
-'use client';
-
 import { motion } from "framer-motion";
 import { Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/navigation";
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import { Link, useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
+  const { locale } = useParams();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,12 +24,10 @@ const Hero = () => {
   return (
     <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[85vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <Image 
+        <img 
           src="/hero-bg.jpg" 
           alt="Prime Auditors Hero" 
-          fill
-          priority
-          style={{ objectFit: 'cover' }}
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-prime-blue/95 via-prime-blue/85 to-prime-blue/60" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA2MCAwIEwgMCAwIDAgNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUvNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30" />
@@ -71,13 +67,13 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Link href="/#contact">
+            <Link to={`/${locale}/#contact`}>
               <Button size="lg" className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold px-8 text-base w-full sm:w-auto shadow-xl shadow-prime-gold/30 hover:shadow-2xl hover:shadow-prime-gold/40 transition-all group">
                 {t('hero.cta1')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link href="/services">
+            <Link to={`/${locale}/services`}>
               <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-montserrat font-semibold px-8 text-base w-full sm:w-auto backdrop-blur-sm transition-all">
                 {t('hero.cta2')}
               </Button>
