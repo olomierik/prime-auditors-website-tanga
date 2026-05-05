@@ -46,13 +46,24 @@ const BookingForm = () => {
             phone_number: data.phone,
             company_name: data.company || null,
             message: data.message,
-            // service is not in the table schema from what I saw, let's double check
           }
         ]);
 
       if (error) throw error;
 
-      toast.success('Your request has been sent successfully!');
+      // Trigger an email to the firm via the user's mail client as a guaranteed delivery
+      const subject = `New Consultation Request from ${data.name}`;
+      const body =
+        `Name: ${data.name}\n` +
+        `Email: ${data.email}\n` +
+        `Phone: ${data.phone}\n` +
+        `Company: ${data.company || '-'}\n\n` +
+        `Message:\n${data.message}`;
+      window.location.href = `mailto:info@primeauditors.co.tz?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+
+      toast.success('Your request has been saved. Your email client will open to send it to info@primeauditors.co.tz');
       reset();
     } catch (error) {
       console.error('Error submitting form:', error);
