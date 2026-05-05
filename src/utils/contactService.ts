@@ -10,7 +10,7 @@ export type ContactPayload = {
 
 export async function submitContact(payload: ContactPayload): Promise<{ ok: boolean; error?: string }> {
   // Resolve endpoint: first try env var, then try runtime config (config.json)
-  let endpoint = (process.env.NEXT_PUBLIC_CONTACT_ENDPOINT as string) ?? '';
+  let endpoint = (import.meta.env.VITE_CONTACT_ENDPOINT as string) ?? '';
   if (!endpoint) {
     try {
       const cfgRes = await fetch('/config.json');
