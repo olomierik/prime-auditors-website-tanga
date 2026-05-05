@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Shield, TrendingUp, Building2, ArrowRight } from "lucide-react";
+import InvestorChat from "@/components/InvestorChat";
 
 const ForeignInvestors = () => {
   const { t } = useTranslation();
@@ -77,6 +78,7 @@ const ForeignInvestors = () => {
           </div>
         </div>
       </section>
+      <InvestorChat />
     </>
   );
 };
