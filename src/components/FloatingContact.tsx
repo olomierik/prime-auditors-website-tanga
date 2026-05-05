@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import { Phone, MessageSquare, ArrowUp, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -110,14 +111,13 @@ const FloatingContact: React.FC = () => {
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center gap-6">
-            <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl overflow-hidden p-2 bg-white shadow-xl">
-              <div className="w-full h-full bg-gray-50 flex items-center justify-center relative">
-                 <img 
-                   src="/prime-auditors-logo.jpg" 
-                   alt="WeChat QR Code" 
-                   className="w-[200px] h-[200px] object-contain"
-                 />
-              </div>
+            <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl flex items-center justify-center p-3 bg-white shadow-xl">
+              <QRCodeSVG
+                value="weixin://contacts/profile/PrimeAuditors"
+                size={220}
+                level="H"
+                includeMargin={false}
+              />
             </div>
             <div className="text-center">
               <p className="text-gray-600 font-open-sans">Scan the QR code to connect with our consultants</p>
