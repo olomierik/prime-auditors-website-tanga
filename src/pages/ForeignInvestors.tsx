@@ -65,9 +65,9 @@ const ForeignInvestors = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={`/${locale}/#contact`}>
+            <Link to={`/${locale}/portal`}>
               <Button size="lg" className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-semibold w-full sm:w-auto">
-                {t("investors.cta2")} <ArrowRight className="ml-2 w-4 h-4" />
+                Investor Portal <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
             <Link to={`/${locale}/services`}>

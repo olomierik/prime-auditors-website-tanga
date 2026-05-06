@@ -14,6 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
+      application_files: {
+        Row: {
+          application_id: string | null
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size: number | null
+          id: string
+          mime_type: string | null
+          user_id: string
+        }
+        Insert: {
+          application_id?: string | null
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          user_id: string
+        }
+        Update: {
+          application_id?: string | null
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "application_files_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "investor_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_articles: {
         Row: {
           author: string
@@ -119,15 +160,138 @@ export type Database = {
         }
         Relationships: []
       }
+      investor_applications: {
+        Row: {
+          business_description: string | null
+          country: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          investment_size: string | null
+          phone: string | null
+          sector: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          business_description?: string | null
+          country?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          investment_size?: string | null
+          phone?: string | null
+          sector?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          business_description?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          investment_size?: string | null
+          phone?: string | null
+          sector?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          content: string
+          conversation_user_id: string
+          created_at: string
+          id: string
+          read_at: string | null
+          sender_id: string
+        }
+        Insert: {
+          content: string
+          conversation_user_id: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          sender_id: string
+        }
+        Update: {
+          content?: string
+          conversation_user_id?: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          sender_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          country: string | null
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          phone: string | null
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id: string
+          phone?: string | null
+        }
+        Update: {
+          country?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "investor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -254,6 +418,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "investor"],
+    },
   },
 } as const
