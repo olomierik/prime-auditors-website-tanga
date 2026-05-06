@@ -17,6 +17,7 @@ const Header: React.FC = () => {
     { href: `/${locale}/foreign-investors`, label: t('nav.investors') },
     { href: `/${locale}/news`, label: t('nav.news') },
     { href: `/${locale}/join`, label: t('nav.join') },
+    { href: `/${locale}/portal`, label: 'Investor Portal' },
   ];
 
   return (
