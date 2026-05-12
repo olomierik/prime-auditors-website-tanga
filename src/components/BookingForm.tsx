@@ -59,11 +59,11 @@ const BookingForm = () => {
         `Phone: ${data.phone}\n` +
         `Company: ${data.company || '-'}\n\n` +
         `Message:\n${data.message}`;
-      window.location.href = `mailto:info@primeauditors.co.tz?subject=${encodeURIComponent(
+      window.location.href = `mailto:olomierik@gmail.com?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
 
-      toast.success('Your request has been saved. Your email client will open to send it to info@primeauditors.co.tz');
+      toast.success('Your request has been saved. Your email client will open to send it to olomierik@gmail.com');
       reset();
     } catch (error) {
       console.error('Error submitting form:', error);
