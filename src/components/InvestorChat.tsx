@@ -61,7 +61,7 @@ const InvestorChat = () => {
           .join("\n");
         // Open mail client with prefilled summary
         window.open(
-          `mailto:info@primeauditors.co.tz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+          `mailto:olomierik@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
           "_blank"
         );
       }
