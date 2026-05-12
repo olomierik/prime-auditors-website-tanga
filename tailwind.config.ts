@@ -23,9 +23,11 @@ export default {
             },
             colors: {
                 // Custom Prime Auditors Brand Colors
-                'prime-blue': '#003366',
+                'prime-blue': '#002a54',
                 'prime-gold': '#D4AF37',
-                'prime-light-grey': '#F5F5F5',
+                'prime-light-grey': '#f6f3f2',
+                'prime-off-white': '#fcf9f8',
+                'prime-border': '#dcd9d9',
                 
                 // Shadcn colors
                 border: 'hsl(var(--border))',
