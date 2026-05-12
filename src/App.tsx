@@ -11,6 +11,9 @@ import News from "./pages/News";
 import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import Portal from "./pages/portal/Portal";
+import PortalAuth from "./pages/portal/Auth";
+import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
 
@@ -40,6 +43,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <AuthProvider>
       <Routes>
         <Route path="/:locale" element={<Layout />}>
           <Route index element={<Index />} />
@@ -48,11 +52,14 @@ const App = () => {
           <Route path="foreign-investors" element={<ForeignInvestors />} />
           <Route path="news" element={<News />} />
           <Route path="join" element={<JoinUs />} />
+          <Route path="portal" element={<Portal />} />
+          <Route path="auth" element={<PortalAuth />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="*" element={<Navigate to="/en" replace />} />
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 };
