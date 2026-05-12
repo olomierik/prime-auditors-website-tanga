@@ -83,14 +83,24 @@ const AboutUs = () => {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((m) => (
-              <Card key={m.name} className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all">
-                <div className="relative h-72 overflow-hidden bg-gray-100">
-                  <img src={m.image} alt={m.name} className={`w-full h-full object-cover ${m.position}`} />
+              <Card
+                key={m.name}
+                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-prime-blue/10 to-prime-gold/10">
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    loading="lazy"
+                    className={`w-full h-full object-cover ${m.position} transition-transform duration-700 group-hover:scale-105`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/80 via-prime-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute left-0 bottom-0 h-1 w-12 bg-prime-gold group-hover:w-full transition-all duration-500" />
                 </div>
                 <CardContent className="p-6">
                   <h3 className="font-montserrat font-bold text-prime-blue text-lg">{m.name}</h3>
-                  <p className="text-prime-gold text-sm font-medium mb-3">{m.role}</p>
-                  <p className="text-sm text-gray-600 font-open-sans">{m.bio}</p>
+                  <p className="text-prime-gold text-sm font-semibold tracking-wide uppercase mb-3">{m.role}</p>
+                  <p className="text-sm text-gray-600 font-open-sans leading-relaxed">{m.bio}</p>
                 </CardContent>
               </Card>
             ))}
