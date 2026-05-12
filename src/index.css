@@ -36,6 +36,13 @@
 
     --radius: 0.5rem;
 
+    /* Prime Auditors brand */
+    --prime-blue: 213 100% 17%;
+    --prime-gold: 46 65% 53%;
+    --prime-off-white: 24 36% 98%;
+    --prime-light-grey: 20 13% 96%;
+    --prime-border: 0 4% 86%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -98,6 +105,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-open-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold tracking-tight;
   }
 }
