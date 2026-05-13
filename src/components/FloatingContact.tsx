@@ -49,7 +49,7 @@ const FloatingContact: React.FC = () => {
                 <ArrowUp className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="left">Back to Top</TooltipContent>
+            <TooltipContent side="left">{t('floating.backToTop')}</TooltipContent>
           </Tooltip>
         )}
 
@@ -107,7 +107,7 @@ const FloatingContact: React.FC = () => {
         <DialogContent className="sm:max-w-md bg-white p-8">
           <DialogHeader>
             <DialogTitle className="text-center font-montserrat text-prime-blue text-xl mb-4">
-              Connect on WeChat
+              {t('floating.wechatTitle')}
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center gap-6">
@@ -120,14 +120,14 @@ const FloatingContact: React.FC = () => {
               />
             </div>
             <div className="text-center">
-              <p className="text-gray-600 font-open-sans">Scan the QR code to connect with our consultants</p>
-              <p className="text-prime-blue font-bold mt-2">WeChat ID: PrimeAuditors</p>
+              <p className="text-gray-600 font-open-sans">{t('floating.wechatScan')}</p>
+              <p className="text-prime-blue font-bold mt-2">{t('floating.wechatId')}</p>
             </div>
             <Button 
               onClick={() => setShowWeChatModal(false)}
               className="bg-prime-blue text-white w-full"
             >
-              Close
+              {t('floating.close')}
             </Button>
           </div>
         </DialogContent>

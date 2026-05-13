@@ -10,20 +10,22 @@ import { toast } from 'sonner';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
-const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
-  company: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
-
-type FormData = z.infer<typeof formSchema>;
+type FormData = {
+  name: string; email: string; phone: string; company?: string; service?: string; message: string;
+};
 
 const BookingForm = () => {
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const formSchema = z.object({
+    name: z.string().min(2, { message: t('contact.errors.name') }),
+    email: z.string().email({ message: t('contact.errors.email') }),
+    phone: z.string().min(10, { message: t('contact.errors.phone') }),
+    company: z.string().optional(),
+    service: z.string().optional(),
+    message: z.string().min(10, { message: t('contact.errors.message') }),
+  });
 
   const {
     register,
@@ -63,11 +65,11 @@ const BookingForm = () => {
         subject
       )}&body=${encodeURIComponent(body)}`;
 
-      toast.success('Your request has been saved. Your email client will open to send it to olomierik@gmail.com');
+      toast.success(t('contact.successToast'));
       reset();
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error('Something went wrong. Please try again.');
+      toast.error(t('contact.errorToast'));
     } finally {
       setIsSubmitting(false);
     }
@@ -82,7 +84,7 @@ const BookingForm = () => {
           </label>
           <Input 
             {...register('name')}
-            placeholder="John Doe" 
+            placeholder={t('contact.namePlaceholder')}
             className={`border-gray-200 focus:border-prime-gold focus:ring-prime-gold/20 ${errors.name ? 'border-red-500' : ''}`} 
           />
           {errors.name && <p className="text-red-500 text-[10px] mt-1">{errors.name.message}</p>}
@@ -94,7 +96,7 @@ const BookingForm = () => {
           <Input 
             {...register('email')}
             type="email" 
-            placeholder="john@example.com" 
+            placeholder={t('contact.emailPlaceholder')}
             className={`border-gray-200 focus:border-prime-gold focus:ring-prime-gold/20 ${errors.email ? 'border-red-500' : ''}`} 
           />
           {errors.email && <p className="text-red-500 text-[10px] mt-1">{errors.email.message}</p>}
@@ -107,7 +109,7 @@ const BookingForm = () => {
           </label>
           <Input 
             {...register('phone')}
-            placeholder="+255..." 
+            placeholder={t('contact.phonePlaceholder')}
             className={`border-gray-200 focus:border-prime-gold focus:ring-prime-gold/20 ${errors.phone ? 'border-red-500' : ''}`} 
           />
           {errors.phone && <p className="text-red-500 text-[10px] mt-1">{errors.phone.message}</p>}
@@ -118,7 +120,7 @@ const BookingForm = () => {
           </label>
           <Input 
             {...register('company')}
-            placeholder="Your Company Name" 
+            placeholder={t('contact.companyPlaceholder')}
             className="border-gray-200 focus:border-prime-gold focus:ring-prime-gold/20" 
           />
         </div>
@@ -129,7 +131,7 @@ const BookingForm = () => {
         </label>
         <Textarea 
           {...register('message')}
-          placeholder="Tell us about your needs..." 
+          placeholder={t('contact.messagePlaceholder')}
           rows={4} 
           className={`border-gray-200 focus:border-prime-gold focus:ring-prime-gold/20 resize-none ${errors.message ? 'border-red-500' : ''}`} 
         />

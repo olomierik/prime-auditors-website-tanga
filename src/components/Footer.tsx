@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-montserrat font-bold text-lg mb-6 text-white">Services</h4>
+            <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.services')}</h4>
             <ul className="space-y-3">
               <li>
                 <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
