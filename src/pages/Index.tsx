@@ -2,6 +2,8 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import ServicesGrid from "@/components/ServicesGrid";
 import BookingForm from "@/components/BookingForm";
+import Testimonials from "@/components/Testimonials";
+import FinalCTA from "@/components/FinalCTA";
 import { useTranslation } from "react-i18next";
 import { MapPin, Phone, Mail } from "lucide-react";
 
@@ -62,6 +64,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
+      <FinalCTA />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 lg:py-28 bg-white">

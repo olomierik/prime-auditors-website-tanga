@@ -25,7 +25,7 @@ const Stats = () => {
   };
 
   return (
-    <section className="bg-white border-b border-gray-100">
+    <section className="bg-prime-blue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="grid grid-cols-2 lg:grid-cols-4"
@@ -38,13 +38,13 @@ const Stats = () => {
             <motion.div 
               key={i} 
               variants={itemVariants}
-              className="py-6 sm:py-10 px-3 sm:px-6 text-center relative"
+              className="py-8 sm:py-10 px-3 sm:px-6 text-center relative"
             >
-              {i < stats.length - 1 && i < 2 && (
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-gray-100 hidden sm:block" />
+              {i < stats.length - 1 && (
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-white/10 hidden sm:block" />
               )}
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue bg-gradient-to-r from-prime-blue to-prime-blue/80 bg-clip-text">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-gray-500 font-open-sans mt-1">{t(stat.labelKey)}</div>
+              <div className="text-3xl sm:text-3xl lg:text-4xl font-serif font-semibold text-white">{stat.value}</div>
+              <div className="text-[10px] sm:text-xs text-white/60 font-open-sans mt-1.5 tracking-[0.18em] uppercase">{t(stat.labelKey)}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -20,11 +20,13 @@ export default {
                 'montserrat': ['Montserrat', 'sans-serif'],
                 'open-sans': ['Open Sans', 'sans-serif'],
                 'inter': ['Inter', 'sans-serif'],
+                'serif': ['"Source Serif 4"', 'Georgia', 'serif'],
+                'source-serif': ['"Source Serif 4"', 'Georgia', 'serif'],
             },
             colors: {
                 // Custom Prime Auditors Brand Colors
-                'prime-blue': '#002a54',
-                'prime-gold': '#D4AF37',
+                'prime-blue': '#0f2a4a',
+                'prime-gold': '#c5a021',
                 'prime-light-grey': '#f6f3f2',
                 'prime-off-white': '#fcf9f8',
                 'prime-border': '#dcd9d9',
