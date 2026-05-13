@@ -68,7 +68,7 @@ const Hero = () => {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-montserrat font-bold text-white leading-[1.05] tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold text-white leading-[1.05] tracking-tight"
             >
               {t("hero.title1")}{" "}
               <span className="text-prime-gold">{t("hero.titleHighlight")}</span>
@@ -90,7 +90,7 @@ const Hero = () => {
               <Link to={`/${locale}/#contact`}>
                 <Button
                   size="lg"
-                  className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold px-8 text-base w-full sm:w-auto shadow-lg shadow-prime-gold/20 hover:shadow-xl hover:shadow-prime-gold/30 transition-all group"
+                  className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-semibold px-8 text-base w-full sm:w-auto rounded-sm shadow-lg shadow-prime-gold/20 hover:shadow-xl hover:shadow-prime-gold/30 transition-all group"
                 >
                   {t("hero.cta1")}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -100,7 +100,7 @@ const Hero = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border border-white/20 text-white hover:bg-white/5 hover:border-white/30 font-montserrat font-semibold px-8 text-base w-full sm:w-auto transition-all"
+                  className="border border-white/30 bg-transparent text-white hover:bg-white hover:text-prime-blue font-montserrat font-semibold px-8 text-base w-full sm:w-auto rounded-sm transition-all"
                 >
                   {t("hero.cta2")}
                 </Button>
