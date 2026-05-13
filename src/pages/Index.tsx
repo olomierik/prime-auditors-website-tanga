@@ -56,9 +56,9 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/40 to-transparent" />
               </div>
-              <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-gradient-to-br from-prime-blue to-prime-blue/90 text-white p-4 sm:p-6 rounded-xl shadow-2xl max-w-[200px] sm:max-w-[220px]">
+              <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-gradient-to-br from-prime-blue to-prime-blue/90 text-white p-4 sm:p-6 rounded-xl shadow-2xl max-w-[220px] sm:max-w-[240px]">
                 <div className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-gold">NBAA</div>
-                <div className="text-[10px] sm:text-xs text-white/80 font-open-sans mt-1">Certified Public Accountants — PF510</div>
+                <div className="text-[10px] sm:text-xs text-white/80 font-open-sans mt-1">{t('why.nbaaCert')}</div>
               </div>
             </div>
           </div>
