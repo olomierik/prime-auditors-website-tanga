@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://primeauditors.co.za/sitemap.xml
+Sitemap: https://prime-auditors-website-tanga.lovable.app/sitemap.xml

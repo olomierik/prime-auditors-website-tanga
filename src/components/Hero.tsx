@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-[88vh] flex items-center overflow-hidden bg-prime-blue">
       <div className="absolute inset-0">
-        <img src="/hero-bg.jpg" alt="Prime Auditors" className="w-full h-full object-cover opacity-40" />
+        <img src="/hero-bg.jpg" alt="Prime Auditors office in Tanga, Tanzania" className="w-full h-full object-cover opacity-40" width={1920} height={1080} fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-r from-prime-blue via-prime-blue/95 to-prime-blue/80" />
       </div>
       <div className="absolute inset-0 opacity-[0.12]" style={{ backgroundImage: `radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.35) 1px, transparent 0)`, backgroundSize: "40px 40px" }} />
