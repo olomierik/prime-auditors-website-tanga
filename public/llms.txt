@@ -1,0 +1,16 @@
+# Prime Auditors
+
+> Licensed Tanzanian CPA firm (NBAA PF510) based in Tanga, offering auditing, tax advisory, bookkeeping, business registration, and foreign investor consulting.
+
+## Pages
+
+- [Home](/en): Overview of Prime Auditors services and certifications.
+- [Services](/en/services): Audit, tax, bookkeeping, payroll, and advisory services.
+- [About Us](/en/about): Firm history, leadership, and core values.
+- [Foreign Investors](/en/foreign-investors): Specialized services for foreign investors entering Tanzania.
+- [News](/en/news): Insights on Tanzanian audit, tax, and regulatory updates.
+- [Join Us](/en/join): Careers and recruitment.
+
+## Optional
+
+- [中文 / Chinese](/zh): Chinese-language version of the site.
