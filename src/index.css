@@ -34,7 +34,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
     /* Prime Auditors brand — Prime Prestige */
     --prime-blue: 214 67% 17%;
@@ -111,28 +111,5 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-semibold tracking-tight;
-  }
-}
-
-/* Enhanced animations and effects */
-@layer utilities {
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
-  }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-prime-blue to-prime-gold bg-clip-text text-transparent;
-  }
-
-  .glass-effect {
-    @apply bg-white/[0.02] backdrop-blur-xl border border-white/10;
-  }
-
-  .section-spacing {
-    @apply py-20 lg:py-28;
-  }
-
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
   }
 }
