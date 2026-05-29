@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import AboutUs from "./pages/AboutUs";
 import ForeignInvestors from "./pages/ForeignInvestors";
+import GetQuote from "./pages/GetQuote";
 import News from "./pages/News";
 import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="services" element={<Services />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="foreign-investors" element={<ForeignInvestors />} />
+          <Route path="get-quote" element={<GetQuote />} />
           <Route path="news" element={<News />} />
           <Route path="join" element={<JoinUs />} />
           <Route path="portal" element={<Portal />} />

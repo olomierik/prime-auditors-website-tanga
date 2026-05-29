@@ -5,7 +5,40 @@ import BookingForm from "@/components/BookingForm";
 import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
+const ForeignInvestorBanner = () => {
+  const { t } = useTranslation();
+  const { locale } = useParams();
+  return (
+    <section className="py-12 bg-gradient-to-r from-prime-blue to-prime-blue/90">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-xl bg-prime-gold/20 flex items-center justify-center flex-shrink-0">
+              <Globe className="w-6 h-6 text-prime-gold" />
+            </div>
+            <div>
+              <h3 className="font-montserrat font-bold text-white text-xl mb-1">
+                {t("fi.banner.title")}
+              </h3>
+              <p className="text-white/70 font-open-sans text-sm max-w-2xl">
+                {t("fi.banner.desc")}
+              </p>
+            </div>
+          </div>
+          <Link to={`/${locale}/foreign-investors`} className="flex-shrink-0">
+            <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold whitespace-nowrap">
+              {t("fi.banner.cta")} <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Index = () => {
   const { t } = useTranslation();
@@ -14,6 +47,7 @@ const Index = () => {
     <>
       <Hero />
       <Stats />
+      <ForeignInvestorBanner />
       <ServicesGrid />
 
       {/* Why Us Section */}
