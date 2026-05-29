@@ -1,177 +1,199 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
   const { locale } = useParams();
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+
+  const quickLinks = [
+    { to: `/${locale}/`,                 label: t('nav.home') },
+    { to: `/${locale}/services`,         label: t('nav.services') },
+    { to: `/${locale}/about`,            label: t('nav.about') },
+    { to: `/${locale}/foreign-investors`,label: t('nav.investors') },
+    { to: `/${locale}/news`,             label: t('nav.news') },
+    { to: `/${locale}/join`,             label: t('nav.join') },
+    { to: `/${locale}/portal`,           label: t('nav.portal') },
+  ];
+
+  const serviceLinks = [
+    t('service.audit'),
+    t('service.tax'),
+    t('service.registration'),
+    t('service.holding'),
+    t('service.corporate'),
+    t('service.accounting'),
+  ];
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-prime-gold rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-prime-blue rounded-full blur-3xl" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-          {/* Brand & Description */}
-          <div className="lg:col-span-1">
-            <Link to={`/${locale}/`} className="flex items-center gap-2 mb-6 group">
-              <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
-                <img 
-                  src="/prime-auditors-logo.jpg" 
-                  alt="Prime Auditors" 
-                  className="w-full h-full object-contain"
-                />
+    <footer className="bg-[#07161f] text-white relative overflow-hidden">
+      {/* Top accent */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-prime-gold to-transparent opacity-60" />
+
+      {/* Background blobs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-prime-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-prime-blue/30 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Main grid */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+
+          {/* Brand col */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link to={`/${locale}/`} className="inline-flex items-center gap-3 group">
+              <div className="h-10 w-28 transition-transform group-hover:scale-105">
+                <img src="/prime-auditors-logo.jpg" alt="Prime Auditors" className="w-full h-full object-contain" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-montserrat font-bold text-white text-xl leading-tight">Prime Auditors</span>
-                <span className="text-[10px] text-prime-gold font-open-sans tracking-wider">Certified Public Accountants</span>
+              <div>
+                <div className="font-montserrat font-bold text-white text-lg leading-none">Prime Auditors</div>
+                <div className="text-[9px] text-prime-gold/70 font-open-sans tracking-[0.18em] uppercase mt-1">
+                  Certified Public Accountants
+                </div>
               </div>
             </Link>
-            <p className="text-sm text-gray-300 font-open-sans leading-relaxed mb-6">
+
+            <p className="text-sm text-white/45 font-open-sans leading-relaxed max-w-xs">
               {t('footer.description')}
             </p>
-            <div className="flex gap-3">
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/10 hover:bg-prime-gold flex items-center justify-center transition-all hover:scale-110">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/10 hover:bg-prime-gold flex items-center justify-center transition-all hover:scale-110">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
+
+            {/* Tagline */}
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-px bg-prime-gold/50" />
+              <span className="text-[11px] text-prime-gold/60 font-montserrat italic">
+                "Building Trust Through Integrity & Excellence"
+              </span>
+            </div>
+
+            {/* Social */}
+            <div className="flex gap-2">
+              {[
+                {
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com",
+                  svg: <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>,
+                },
+                {
+                  label: "Facebook",
+                  href: "https://facebook.com",
+                  svg: <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>,
+                },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-lg bg-white/6 hover:bg-prime-gold flex items-center justify-center transition-all duration-200 hover:scale-110"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">{s.svg}</svg>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.quickLinks')}</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to={`/${locale}/`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.home')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.services')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/about`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.about')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/foreign-investors`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.investors')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/news`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.news')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/join`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('nav.join')}
-                </Link>
-              </li>
+          {/* Quick links */}
+          <div className="lg:col-span-2 space-y-5">
+            <h4 className="font-montserrat font-bold text-white text-[13px] uppercase tracking-[0.15em] flex items-center gap-2">
+              <span className="w-4 h-0.5 bg-prime-gold rounded-full" />
+              {t('footer.quickLinks')}
+            </h4>
+            <ul className="space-y-2.5">
+              {quickLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-white/45 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-3 h-px bg-prime-gold transition-all duration-200 rounded-full" />
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.services')}</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('service.audit')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('service.tax')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('service.registration')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('service.holding')}
-                </Link>
-              </li>
-              <li>
-                <Link to={`/${locale}/services`} className="text-sm text-gray-300 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {t('service.corporate')}
-                </Link>
-              </li>
+          <div className="lg:col-span-3 space-y-5">
+            <h4 className="font-montserrat font-bold text-white text-[13px] uppercase tracking-[0.15em] flex items-center gap-2">
+              <span className="w-4 h-0.5 bg-prime-gold rounded-full" />
+              {t('footer.services')}
+            </h4>
+            <ul className="space-y-2.5">
+              {serviceLinks.map((label) => (
+                <li key={label}>
+                  <Link
+                    to={`/${locale}/services`}
+                    className="text-sm text-white/45 hover:text-prime-gold transition-colors font-open-sans flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-3 h-px bg-prime-gold transition-all duration-200 rounded-full" />
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Us */}
-          <div>
-            <h4 className="font-montserrat font-bold text-lg mb-6 text-white">{t('footer.contactUs')}</h4>
+          {/* Contact */}
+          <div className="lg:col-span-3 space-y-5">
+            <h4 className="font-montserrat font-bold text-white text-[13px] uppercase tracking-[0.15em] flex items-center gap-2">
+              <span className="w-4 h-0.5 bg-prime-gold rounded-full" />
+              {t('footer.contactUs')}
+            </h4>
             <div className="space-y-4">
-              <a href="tel:+255752401012" className="flex items-start gap-3 text-sm text-gray-300 hover:text-prime-gold transition-colors group">
-                <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/30 transition-colors">
-                  <Phone className="w-4 h-4 text-prime-gold" />
+              {[
+                { href: "tel:+255752401012", Icon: Phone, text: "+255 752 401 012" },
+                { href: "mailto:erick.olomi@primeauditors.co.tz", Icon: Mail, text: "erick.olomi@primeauditors.co.tz" },
+              ].map(({ href, Icon, text }) => (
+                <a key={text} href={href} className="flex items-center gap-3 group">
+                  <div className="w-8 h-8 rounded-lg bg-prime-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/20 transition-colors">
+                    <Icon className="w-3.5 h-3.5 text-prime-gold" />
+                  </div>
+                  <span className="text-sm text-white/45 group-hover:text-prime-gold transition-colors font-open-sans break-all">{text}</span>
+                </a>
+              ))}
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-prime-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-prime-gold" />
                 </div>
-                <span className="font-open-sans">+255 752 401 012</span>
-              </a>
-              <a href="mailto:info@primeauditors.co.tz" className="flex items-start gap-3 text-sm text-gray-300 hover:text-prime-gold transition-colors group">
-                <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/30 transition-colors">
-                  <Mail className="w-4 h-4 text-prime-gold" />
-                </div>
-                <span className="font-open-sans">info@primeauditors.co.tz</span>
-              </a>
-              <div className="flex items-start gap-3 text-sm text-gray-300">
-                <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-prime-gold" />
-                </div>
-                <span className="font-open-sans leading-relaxed">
-                  Plot 24, Block KB 3, NHC Building Apt 02<br />
-                  Tanga City, Tanzania
-                </span>
+                <p className="text-sm text-white/40 font-open-sans leading-relaxed">
+                  P.O. Box 5667, Market Street<br />
+                  Central Ward, Tanga, Tanzania
+                </p>
               </div>
-              <div className="flex items-start gap-3 text-sm text-gray-300">
-                <div className="w-8 h-8 rounded-lg bg-prime-gold/20 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-prime-gold" />
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-prime-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Clock className="w-3.5 h-3.5 text-prime-gold" />
                 </div>
-                <div className="font-open-sans">
-                  <div>{t('contact.weekdays')}: 8:00 AM – 5:00 PM</div>
-                  <div>{t('contact.saturday')}: 8:30 AM – 1:30 PM</div>
+                <div className="text-sm text-white/40 font-open-sans space-y-0.5">
+                  <div>Mon–Fri: 8:00 AM – 5:00 PM</div>
+                  <div>Sat: 8:30 AM – 1:30 PM</div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
-      
-      <div className="border-t border-white/10 py-6 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-4 flex justify-center">
-             <img src="/nbaa-certificate.jpg" alt="NBAA Certified" width={100} height={40} className="object-contain" />
+
+      {/* Bottom bar */}
+      <div className="relative border-t border-white/6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-white/25 font-open-sans">
+              © {year} Prime Auditors. {t('footer.copyright')}
+            </p>
+            <div className="flex items-center gap-5">
+              {[t('footer.privacy'), t('footer.terms')].map((label) => (
+                <a key={label} href="#" className="text-xs text-white/25 hover:text-prime-gold transition-colors font-open-sans">
+                  {label}
+                </a>
+              ))}
+              <img src="/nbaa-certificate.jpg" alt="NBAA" className="h-7 object-contain opacity-40 hover:opacity-70 transition-opacity" />
+            </div>
           </div>
-          <p className="text-sm text-gray-400 font-open-sans">
-            © {currentYear} Prime Auditors. {t('footer.copyright')}
-          </p>
         </div>
       </div>
     </footer>
