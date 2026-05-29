@@ -12,7 +12,7 @@ const PageHero = ({ eyebrow, title, description, image = "/hero-bg.jpg" }: PageH
   const { locale } = useParams();
 
   return (
-    <section className="relative min-h-[42vh] sm:min-h-[48vh] flex items-center">
+    <section className="relative min-h-[42vh] sm:min-h-[48vh] flex items-center bg-prime-blue">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <img src={image} alt="" className="w-full h-full object-cover scale-105" />

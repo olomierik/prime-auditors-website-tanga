@@ -117,7 +117,7 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
 const HeroSection = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-gradient-to-br from-prime-blue via-prime-blue/95 to-prime-blue/90 text-white py-20 lg:py-28">
+    <section className="bg-prime-blue text-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <Badge className="bg-prime-gold/20 text-prime-gold border-prime-gold/30 mb-6 font-montserrat text-xs tracking-wider uppercase">
