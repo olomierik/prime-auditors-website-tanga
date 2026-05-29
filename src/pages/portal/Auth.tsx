@@ -23,7 +23,7 @@ const Auth = () => {
     setLoading(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -32,16 +32,31 @@ const Auth = () => {
           },
         });
         if (error) throw error;
-        toast.success("Account created. Check your email to verify, then sign in.");
-        setMode("signin");
+        // If session returned, account is auto-confirmed — go straight in
+        if (data.session) {
+          toast.success("Account created! Welcome.");
+          nav(`/${locale}/portal`);
+        } else {
+          toast.success("Account created! Check your inbox (and spam folder) for a verification link, then sign in.");
+          setMode("signin");
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        if (error) {
+          if (error.message.toLowerCase().includes("email not confirmed")) {
+            toast.error("Please verify your email first. Check your inbox and spam folder for the confirmation link.");
+          } else if (error.message.toLowerCase().includes("invalid login")) {
+            toast.error("Incorrect email or password. Please try again.");
+          } else {
+            throw error;
+          }
+          return;
+        }
         toast.success("Welcome back!");
         nav(`/${locale}/portal`);
       }
     } catch (err: any) {
-      toast.error(err.message || "Authentication failed");
+      toast.error(err.message || "Authentication failed. Please try again.");
     } finally {
       setLoading(false);
     }

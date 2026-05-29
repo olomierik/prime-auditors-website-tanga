@@ -91,7 +91,7 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
     <div class="sub">Building Trust Through Integrity &amp; Excellence | Reg. No. PF510 | Tanga, Tanzania</div>
   </div>
   <h2>${title}</h2>
-  <ul>${items.map((i) => `<li>☐ ${i}</li>`).join("")}</ul>
+  <ul>${items.map((i) => `<li>&#9744; ${i}</li>`).join("")}</ul>
   <div class="note">
     <strong>Note for Chinese documents:</strong> Documents from China may require: (1) Notarisation in China, (2) Apostille from Chinese Ministry of Foreign Affairs, OR (3) Consular legalisation via the Tanzanian Embassy in Beijing. We will confirm which route applies to your specific documents.
   </div>
@@ -101,15 +101,16 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
 </body>
 </html>`;
 
+  // Use <a download> — works without popup blocker issues
   const blob = new Blob([html], { type: "text/html" });
   const url = URL.createObjectURL(blob);
-  const win = window.open(url, "_blank");
-  if (win) {
-    win.onload = () => {
-      win.print();
-      URL.revokeObjectURL(url);
-    };
-  }
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `prime-auditors-${type}-checklist.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
@@ -139,17 +140,8 @@ const HeroSection = () => {
             </a>
             <Button
               size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 w-full sm:w-auto"
-              onClick={() => {
-                const win = window.open("", "_blank");
-                if (win) {
-                  win.document.write(
-                    '<p>Select type: <a href="#">Branch</a> | <a href="#">Subsidiary</a></p>'
-                  );
-                }
-                downloadChecklistPDF("branch");
-              }}
+              className="bg-white/15 border border-white/40 text-white hover:bg-white/25 w-full sm:w-auto backdrop-blur-sm"
+              onClick={() => downloadChecklistPDF("branch")}
             >
               <Download className="mr-2 w-4 h-4" /> {t("fi.hero.cta2")}
             </Button>
@@ -215,7 +207,7 @@ const WhyChooseUs = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {cards.map((c) => (
-            <Card key={c.title} className="border-0 shadow-lg hover:shadow-xl transition-all">
+            <Card key={c.title} className="border border-gray-100 shadow-lg hover:shadow-xl transition-all bg-white">
               <CardContent className="p-8">
                 <div className={`w-12 h-12 rounded-xl ${c.bg} flex items-center justify-center mb-4`}>
                   <c.icon className={`w-6 h-6 ${c.color}`} />
@@ -223,7 +215,7 @@ const WhyChooseUs = () => {
                 <h3 className="font-montserrat font-bold text-prime-blue text-lg mb-3">
                   {c.title}
                 </h3>
-                <p className="text-gray-600 font-open-sans leading-relaxed text-sm">
+                <p className="text-gray-700 font-open-sans leading-relaxed text-sm">
                   {c.desc}
                 </p>
               </CardContent>

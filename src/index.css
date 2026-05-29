@@ -87,14 +87,11 @@
   }
 
   body {
-    @apply bg-background text-foreground font-open-sans;
+    @apply bg-white text-foreground font-open-sans;
     font-feature-settings: "ss01", "cv11";
-    /* Prevent white flash on initial load — matches Hero/Header dark blue */
-    background-color: #0f2a4a;
   }
 
   #root {
-    background-color: #ffffff;
     min-height: 100vh;
   }
 
