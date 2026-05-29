@@ -16,7 +16,7 @@ const Services = () => {
         title={t("services.subtitle")}
         description={t("services.description")}
       />
-      <ServicesGrid />
+      <ServicesGrid hideHeader />
       <HoldingCompanySection onGetConsultation={() => navigate(`/${locale}/#contact`)} />
     </>
   );

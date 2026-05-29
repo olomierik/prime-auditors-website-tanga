@@ -12,7 +12,11 @@ const services = [
   { id: "accounting",  icon: "✅", titleKey: "service.accounting",  descKey: "service.accountingDesc",  iconBg: "bg-teal-50",    accent: "from-teal-500/8 to-teal-600/4",     number: "06" },
 ];
 
-const ServicesGrid = () => {
+interface ServicesGridProps {
+  hideHeader?: boolean;
+}
+
+const ServicesGrid = ({ hideHeader = false }: ServicesGridProps) => {
   const { t } = useTranslation();
   const { locale } = useParams();
 
@@ -22,9 +26,9 @@ const ServicesGrid = () => {
 
       <div className="relative max-w-7xl mx-auto container-padding">
 
-        {/* Header */}
+        {/* Header — hidden when PageHero already shows this content */}
         <motion.div
-          className="max-w-2xl mb-16"
+          className={`max-w-2xl mb-16 ${hideHeader ? 'hidden' : ''}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
