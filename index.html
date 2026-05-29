@@ -62,33 +62,64 @@
     <div id="root" style="background-color:#ffffff"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      /* Remove "Edit with Lovable" button injected by Lovable platform */
       (function () {
+        /* 1. Immediate CSS — hides Lovable badge before JS even runs */
+        var s = document.createElement('style');
+        s.textContent =
+          '[class*="lovable" i],[id*="lovable" i],[data-lovable],' +
+          'a[href*="lovable.app"],a[href*="lovable.dev"],' +
+          'iframe[src*="lovable"],' +
+          'script[src*="lovable"] ~ div {' +
+          '  display:none!important;opacity:0!important;pointer-events:none!important;' +
+          '}';
+        (document.head || document.documentElement).appendChild(s);
+
+        /* 2. DOM removal — text + href sweeps */
         function purge() {
-          document.querySelectorAll('a, button, div, span').forEach(function (el) {
-            try {
-              if ((el.textContent || '').trim() === 'Edit with Lovable' ||
-                  (el.textContent || '').includes('Edit with Lovable')) {
-                var target = el;
-                while (target && target !== document.body) {
-                  var pos = window.getComputedStyle(target).position;
-                  if (pos === 'fixed' || pos === 'absolute') { target.remove(); return; }
-                  target = target.parentElement;
+          try {
+            /* by text content */
+            document.querySelectorAll('a,button,span,div,p').forEach(function (el) {
+              if ((el.innerText || el.textContent || '').toLowerCase().indexOf('edit with lovable') !== -1) {
+                var t = el;
+                for (var i = 0; i < 10; i++) {
+                  if (!t || t === document.body) break;
+                  var p = window.getComputedStyle(t).position;
+                  if (p === 'fixed' || p === 'absolute') { t.remove(); return; }
+                  t = t.parentElement;
                 }
-                el.remove();
+                el.style.cssText = 'display:none!important';
               }
-            } catch (e) {}
-          });
+            });
+            /* by href pointing to lovable */
+            document.querySelectorAll('a[href*="lovable"]').forEach(function (el) {
+              var t = el;
+              for (var i = 0; i < 10; i++) {
+                if (!t || t === document.body) break;
+                var p = window.getComputedStyle(t).position;
+                if (p === 'fixed' || p === 'absolute') { t.remove(); return; }
+                t = t.parentElement;
+              }
+              el.style.cssText = 'display:none!important';
+            });
+            /* by class/id containing "lovable" */
+            document.querySelectorAll('[class*="lovable" i],[id*="lovable" i],[data-lovable]').forEach(function (el) {
+              el.style.cssText = 'display:none!important';
+            });
+          } catch (e) {}
         }
-        /* Run immediately, after load, and watch for late injections */
-        document.addEventListener('DOMContentLoaded', purge);
+
+        /* 3. Run at every lifecycle stage */
+        purge();
+        [0, 100, 300, 600, 1000, 2000, 4000].forEach(function (ms) { setTimeout(purge, ms); });
         window.addEventListener('load', purge);
-        setTimeout(purge, 500);
-        setTimeout(purge, 2000);
-        var obs = new MutationObserver(purge);
-        document.addEventListener('DOMContentLoaded', function () {
-          obs.observe(document.body, { childList: true, subtree: true });
-        });
+        document.addEventListener('DOMContentLoaded', purge);
+
+        /* 4. Persistent mutation observer */
+        var obs = new MutationObserver(function () { purge(); });
+        function watch() {
+          obs.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'id', 'href'] });
+        }
+        if (document.body) { watch(); } else { document.addEventListener('DOMContentLoaded', watch); }
       })();
     </script>
   </body>
