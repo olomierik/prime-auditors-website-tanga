@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams, useLocation, useOutlet } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { BrowserRouter, Routes, Route, Navigate, useParams, useOutlet } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
@@ -19,21 +18,10 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
 
-const AnimatedOutlet = () => {
-  const location = useLocation();
+// Plain outlet — no animation wrapper so pages never stack or go invisible
+const PageOutlet = () => {
   const element = useOutlet();
-  return (
-    <AnimatePresence initial={false} mode="sync">
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }}
-        exit={{ opacity: 0, transition: { duration: 0.1, ease: "easeIn" } }}
-      >
-        {element}
-      </motion.div>
-    </AnimatePresence>
-  );
+  return <>{element}</>;
 };
 
 const Layout = () => {
@@ -49,7 +37,7 @@ const Layout = () => {
     <div className="flex min-h-screen flex-col font-inter">
       <Header />
       <main className="flex-grow">
-        <AnimatedOutlet />
+        <PageOutlet />
       </main>
       <Footer />
       <FloatingContact />
