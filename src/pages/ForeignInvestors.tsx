@@ -116,6 +116,7 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const HeroSection = () => {
   const { t } = useTranslation();
+  const { locale } = useParams();
   return (
     <section className="bg-prime-blue text-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,11 +134,19 @@ const HeroSection = () => {
             <a href="#inquiry-form">
               <Button
                 size="lg"
-                className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold shadow-xl w-full sm:w-auto"
+                className="bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold shadow-xl w-full sm:w-auto"
               >
                 {t("fi.hero.cta1")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
+            <Link to={`/${locale}/get-quote`}>
+              <Button
+                size="lg"
+                className="bg-white text-prime-blue hover:bg-white/90 font-montserrat font-bold w-full sm:w-auto shadow-lg"
+              >
+                <FileText className="mr-2 w-4 h-4" /> Get an Instant Quote
+              </Button>
+            </Link>
             <Button
               size="lg"
               className="bg-white/15 border border-white/40 text-white hover:bg-white/25 w-full sm:w-auto backdrop-blur-sm"
