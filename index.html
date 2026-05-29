@@ -61,5 +61,35 @@
   <body style="background-color:#0f2a4a;margin:0">
     <div id="root" style="background-color:#ffffff"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      /* Remove "Edit with Lovable" button injected by Lovable platform */
+      (function () {
+        function purge() {
+          document.querySelectorAll('a, button, div, span').forEach(function (el) {
+            try {
+              if ((el.textContent || '').trim() === 'Edit with Lovable' ||
+                  (el.textContent || '').includes('Edit with Lovable')) {
+                var target = el;
+                while (target && target !== document.body) {
+                  var pos = window.getComputedStyle(target).position;
+                  if (pos === 'fixed' || pos === 'absolute') { target.remove(); return; }
+                  target = target.parentElement;
+                }
+                el.remove();
+              }
+            } catch (e) {}
+          });
+        }
+        /* Run immediately, after load, and watch for late injections */
+        document.addEventListener('DOMContentLoaded', purge);
+        window.addEventListener('load', purge);
+        setTimeout(purge, 500);
+        setTimeout(purge, 2000);
+        var obs = new MutationObserver(purge);
+        document.addEventListener('DOMContentLoaded', function () {
+          obs.observe(document.body, { childList: true, subtree: true });
+        });
+      })();
+    </script>
   </body>
 </html>
