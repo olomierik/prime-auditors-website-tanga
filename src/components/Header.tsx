@@ -25,11 +25,13 @@ const Header: React.FC = () => {
     location.pathname === `/${locale}${path}` || location.pathname === `/${locale}${path}/`;
 
   const serviceLinks = [
-    { href: `/${locale}/services`, label: t('service.audit') },
-    { href: `/${locale}/services`, label: t('service.tax') },
-    { href: `/${locale}/services`, label: t('service.registration') },
-    { href: `/${locale}/services`, label: t('service.accounting') },
-    { href: `/${locale}/foreign-investors`, label: t('fi.banner.title') },
+    { href: `/${locale}/services#audit`,        label: t('service.audit') },
+    { href: `/${locale}/services#tax`,          label: t('service.tax') },
+    { href: `/${locale}/services#registration`, label: t('service.registration') },
+    { href: `/${locale}/services#accounting`,   label: t('service.accounting') },
+    { href: `/${locale}/services#holding`,      label: t('service.holding') },
+    { href: `/${locale}/services#corporate`,    label: t('service.corporate') },
+    { href: `/${locale}/foreign-investors`,     label: "Foreign Investor Services" },
   ];
 
   const navItems = [
@@ -194,7 +196,7 @@ const Header: React.FC = () => {
             <Link
               key={item.href}
               to={item.href}
-              className="flex items-center justify-between px-4 py-3.5 rounded-xl text-[14px] font-montserrat font-medium text-white/80 hover:text-white hover:bg-white/8 transition-all"
+              className="flex items-center justify-between px-4 py-3.5 rounded-xl text-[14px] font-montserrat font-medium text-white/80 hover:text-white hover:bg-white/[0.08] transition-all"
             >
               {item.label}
               <span className="w-1.5 h-1.5 rounded-full bg-prime-gold/40" />

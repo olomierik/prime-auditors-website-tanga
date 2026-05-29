@@ -56,7 +56,7 @@ const FinalCTA = () => {
               </button>
             </Link>
             <Link to={`/${locale}/services`}>
-              <button className="inline-flex items-center gap-3 border border-white/20 hover:border-white/50 text-white hover:bg-white/8 font-montserrat font-semibold px-10 py-4 text-sm uppercase tracking-wide rounded-sm transition-all duration-200 w-full sm:w-auto justify-center backdrop-blur-sm">
+              <button className="inline-flex items-center gap-3 border border-white/20 hover:border-white/50 text-white hover:bg-white/[0.08] font-montserrat font-semibold px-10 py-4 text-sm uppercase tracking-wide rounded-sm transition-all duration-200 w-full sm:w-auto justify-center backdrop-blur-sm">
                 {t('cta.cta2')}
               </button>
             </Link>

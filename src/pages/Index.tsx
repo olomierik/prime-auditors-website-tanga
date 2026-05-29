@@ -5,34 +5,35 @@ import BookingForm from "@/components/BookingForm";
 import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Globe, ArrowRight, Globe2, ShieldCheck, BarChart3, Users } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
+// ── Foreign Investor Banner ──────────────────────────────────────────────────
 const ForeignInvestorBanner = () => {
   const { t } = useTranslation();
   const { locale } = useParams();
   return (
-    <section className="py-12 bg-gradient-to-r from-prime-blue to-prime-blue/90">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-xl bg-prime-gold/20 flex items-center justify-center flex-shrink-0">
-              <Globe className="w-6 h-6 text-prime-gold" />
+    <section className="bg-prime-blue border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-11 h-11 rounded-xl bg-prime-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <Globe className="w-5 h-5 text-prime-gold" />
             </div>
             <div>
-              <h3 className="font-montserrat font-bold text-white text-xl mb-1">
+              <h3 className="font-montserrat font-bold text-white text-lg leading-snug">
                 {t("fi.banner.title")}
               </h3>
-              <p className="text-white/70 font-open-sans text-sm max-w-2xl">
+              <p className="text-white/55 font-open-sans text-sm mt-1 max-w-xl leading-relaxed">
                 {t("fi.banner.desc")}
               </p>
             </div>
           </div>
           <Link to={`/${locale}/foreign-investors`} className="flex-shrink-0">
-            <Button className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold whitespace-nowrap">
-              {t("fi.banner.cta")} <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <button className="inline-flex items-center gap-2 bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold text-sm uppercase tracking-wide px-6 py-3 rounded-sm transition-all duration-200 shadow-[0_2px_12px_rgba(197,160,33,0.3)] hover:shadow-[0_4px_20px_rgba(197,160,33,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
+              {t("fi.banner.cta")} <ArrowRight className="w-4 h-4" />
+            </button>
           </Link>
         </div>
       </div>
@@ -40,122 +41,207 @@ const ForeignInvestorBanner = () => {
   );
 };
 
-const Index = () => {
+// ── Why Choose Us ────────────────────────────────────────────────────────────
+const WhyChooseUs = () => {
   const { t } = useTranslation();
 
+  const pillars = [
+    { Icon: Globe2,      titleKey: "why.international", descKey: "why.internationalDesc" },
+    { Icon: ShieldCheck, titleKey: "why.trusted",       descKey: "why.trustedDesc" },
+    { Icon: BarChart3,   titleKey: "why.regulatory",    descKey: "why.regulatoryDesc" },
+    { Icon: Users,       titleKey: "why.professional",  descKey: "why.professionalDesc" },
+  ];
+
   return (
-    <>
-      <Hero />
-      <Stats />
-      <ForeignInvestorBanner />
-      <ServicesGrid />
+    <section className="section-spacing bg-prime-light-grey">
+      <div className="max-w-7xl mx-auto container-padding">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-      {/* Why Us Section */}
-      <section className="py-20 lg:py-28 bg-prime-light-grey">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">{t('why.title')}</p>
-              <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-6">
-                {t('why.subtitle')}
+          {/* Text side */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-prime-gold" />
+                <span className="section-eyebrow">{t("why.title")}</span>
+              </div>
+              <h2 className="text-3xl lg:text-[2.5rem] font-serif font-bold text-prime-blue leading-tight mb-4">
+                {t("why.subtitle")}
               </h2>
-              <p className="text-gray-600 font-open-sans leading-relaxed mb-8">
-                {t('why.description')}
+              <p className="text-gray-500 font-open-sans leading-relaxed">
+                {t("why.description")}
               </p>
-              <div className="space-y-5">
-                {[
-                  { icon: "/prime-auditors-logo.jpg", titleKey: 'why.international', descKey: 'why.internationalDesc' },
-                  { icon: "/prime-auditors-logo.jpg", titleKey: 'why.trusted', descKey: 'why.trustedDesc' },
-                  { icon: "/prime-auditors-logo.jpg", titleKey: 'why.regulatory', descKey: 'why.regulatoryDesc' },
-                  { icon: "/prime-auditors-logo.jpg", titleKey: 'why.professional', descKey: 'why.professionalDesc' },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-prime-gold to-prime-gold/80 flex items-center justify-center flex-shrink-0 shadow-lg shadow-prime-gold/20">
-                      <div className="w-5 h-5 bg-white rounded-full" />
-                    </div>
-                    <div>
-                      <h4 className="font-montserrat font-semibold text-prime-blue text-sm">{t(item.titleKey)}</h4>
-                      <p className="text-sm text-gray-600 font-open-sans mt-0.5">{t(item.descKey)}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
-            <div className="relative mt-8 lg:mt-0">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] lg:h-[500px]">
-                <img
-                  src="/office-reception.jpg"
-                  alt="Prime Auditors Office"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/40 to-transparent" />
-              </div>
-              <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-gradient-to-br from-prime-blue to-prime-blue/90 text-white p-4 sm:p-6 rounded-xl shadow-2xl max-w-[220px] sm:max-w-[240px]">
-                <div className="text-2xl sm:text-3xl font-montserrat font-bold text-prime-gold">NBAA</div>
-                <div className="text-[10px] sm:text-xs text-white/80 font-open-sans mt-1">{t('why.nbaaCert')}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <Testimonials />
-      <FinalCTA />
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">{t('contact.title')}</p>
-            <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-4">
-              {t('contact.subtitle')}
-            </h2>
-            <p className="text-gray-600 font-open-sans">
-              {t('contact.description')}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="space-y-6">
-                {[
-                  { icon: MapPin, labelKey: 'contact.address', lines: ["Plot 24, Block KB 3, NHC Building Apt 02", "Market Street, Independence Avenue Road", "Central Ward, Tanga City, Tanzania"] },
-                  { icon: Phone, labelKey: 'contact.phone', lines: ["+255752401012"] },
-                  { icon: Mail, labelKey: 'contact.email', lines: ["info@primeauditors.co.tz"] },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-prime-gold to-prime-gold/80 flex items-center justify-center flex-shrink-0 shadow-lg shadow-prime-gold/20">
-                      <item.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-montserrat font-semibold text-sm text-prime-blue">{t(item.labelKey)}</div>
-                      {item.lines.map((line, j) => (
-                        <div key={j} className="text-sm text-gray-600 font-open-sans">{line}</div>
-                      ))}
-                    </div>
+            <div className="space-y-5">
+              {pillars.map(({ Icon, titleKey, descKey }) => (
+                <div key={titleKey} className="flex gap-4 group">
+                  <div className="w-11 h-11 rounded-xl bg-prime-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-prime-gold/20 transition-colors">
+                    <Icon className="w-5 h-5 text-prime-gold" />
                   </div>
-                ))}
-              </div>
-
-              <div className="bg-gradient-to-br from-prime-light-grey to-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h4 className="font-montserrat font-semibold text-sm text-prime-blue mb-3">{t('contact.hours')}</h4>
-                <div className="space-y-2 text-sm text-gray-600 font-open-sans">
-                  <div className="flex justify-between"><span>{t('contact.weekdays')}</span><span className="font-medium text-prime-blue">8:00 AM – 5:00 PM</span></div>
-                  <div className="flex justify-between"><span>{t('contact.saturday')}</span><span className="font-medium text-prime-blue">8:30 AM – 1:30 PM</span></div>
-                  <div className="flex justify-between"><span>{t('contact.sunday')}</span><span className="font-medium text-gray-400">{t('contact.closed')}</span></div>
+                  <div>
+                    <h4 className="font-montserrat font-semibold text-prime-blue text-sm mb-0.5">
+                      {t(titleKey)}
+                    </h4>
+                    <p className="text-sm text-gray-500 font-open-sans leading-relaxed">
+                      {t(descKey)}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-8">
-              <h3 className="text-xl font-montserrat font-bold text-prime-blue mb-6">{t('contact.sendMessage')}</h3>
-              <BookingForm />
+            {/* NBAA badge */}
+            <div className="inline-flex items-center gap-3 bg-prime-blue/5 border border-prime-blue/10 rounded-xl px-4 py-3">
+              <ShieldCheck className="w-5 h-5 text-prime-gold flex-shrink-0" />
+              <span className="text-sm font-montserrat font-semibold text-prime-blue">
+                {t("why.nbaaCert")}
+              </span>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Image side */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
+              <img
+                src="/office-reception.jpg"
+                alt="Prime Auditors office"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/50 to-transparent" />
+            </div>
+            {/* Floating badge */}
+            <div className="absolute -bottom-5 -left-5 bg-prime-blue text-white px-6 py-4 rounded-xl shadow-2xl">
+              <div className="text-2xl font-montserrat font-bold text-prime-gold">NBAA</div>
+              <div className="text-[10px] text-white/70 font-open-sans mt-0.5 tracking-wide">
+                Reg. No. PF510
+              </div>
+            </div>
+            {/* Gold border accent */}
+            <div className="absolute -top-3 -right-3 w-24 h-24 border-t-2 border-r-2 border-prime-gold/40 rounded-tr-2xl pointer-events-none" />
+            <div className="absolute -bottom-3 -left-3 w-24 h-24 border-b-2 border-l-2 border-prime-gold/40 rounded-bl-2xl pointer-events-none" />
+          </motion.div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
+
+// ── Contact Section ──────────────────────────────────────────────────────────
+const ContactSection = () => {
+  const { t } = useTranslation();
+  return (
+    <section id="contact" className="section-spacing bg-white scroll-mt-20">
+      <div className="max-w-7xl mx-auto container-padding">
+        <motion.div
+          className="text-center max-w-xl mx-auto mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-0.5 bg-prime-gold" />
+            <span className="section-eyebrow">{t("contact.title")}</span>
+            <div className="w-8 h-0.5 bg-prime-gold" />
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-prime-blue mb-3">
+            {t("contact.subtitle")}
+          </h2>
+          <p className="text-gray-500 font-open-sans">
+            {t("contact.description")}
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
+          {/* Contact info */}
+          <div className="space-y-8">
+            <div className="space-y-5">
+              {[
+                {
+                  Icon: MapPin,
+                  label: t("contact.address"),
+                  lines: [
+                    "P.O. Box 5667, Market Street",
+                    "Central Ward, Tanga, Tanzania",
+                  ],
+                },
+                { Icon: Phone, label: t("contact.phone"),   lines: ["+255 752 401 012"] },
+                { Icon: Mail,  label: t("contact.email"),   lines: ["erick.olomi@primeauditors.co.tz"] },
+              ].map(({ Icon, label, lines }) => (
+                <div key={label} className="flex gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-prime-gold/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5 text-prime-gold" />
+                  </div>
+                  <div>
+                    <div className="font-montserrat font-semibold text-sm text-prime-blue mb-0.5">
+                      {label}
+                    </div>
+                    {lines.map((l) => (
+                      <div key={l} className="text-sm text-gray-500 font-open-sans">{l}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Hours */}
+            <div className="bg-prime-light-grey rounded-2xl p-6 border border-gray-100">
+              <h4 className="font-montserrat font-semibold text-sm text-prime-blue mb-4 flex items-center gap-2">
+                <span className="w-4 h-0.5 bg-prime-gold rounded-full" />
+                {t("contact.hours")}
+              </h4>
+              <div className="space-y-2.5 text-sm font-open-sans">
+                {[
+                  { day: t("contact.weekdays"), hours: "8:00 AM – 5:00 PM", active: true },
+                  { day: t("contact.saturday"), hours: "8:30 AM – 1:30 PM", active: true },
+                  { day: t("contact.sunday"),   hours: t("contact.closed"),  active: false },
+                ].map(({ day, hours, active }) => (
+                  <div key={day} className="flex justify-between items-center">
+                    <span className="text-gray-500">{day}</span>
+                    <span className={`font-medium ${active ? "text-prime-blue" : "text-gray-400"}`}>{hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_32px_rgba(15,42,74,0.08)] p-8">
+            <h3 className="text-xl font-serif font-bold text-prime-blue mb-6">
+              {t("contact.sendMessage")}
+            </h3>
+            <BookingForm />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ── Page ─────────────────────────────────────────────────────────────────────
+const Index = () => (
+  <>
+    <Hero />
+    <Stats />
+    <ForeignInvestorBanner />
+    <ServicesGrid />
+    <WhyChooseUs />
+    <Testimonials />
+    <FinalCTA />
+    <ContactSection />
+  </>
+);
 
 export default Index;

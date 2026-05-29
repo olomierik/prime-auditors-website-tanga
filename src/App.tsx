@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams, useLocation, useOutlet } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
@@ -18,11 +19,36 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
 
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
+  exit:    { opacity: 0, y: -6,  transition: { duration: 0.15, ease: "easeIn" as const } },
+};
+
+const AnimatedOutlet = () => {
+  const location = useLocation();
+  const element = useOutlet();
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        style={{ willChange: "opacity, transform" }}
+      >
+        {element}
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 const Layout = () => {
   const { locale } = useParams();
 
   useEffect(() => {
-    if (locale && (locale === 'en' || locale === 'zh')) {
+    if (locale && (locale === "en" || locale === "zh")) {
       i18n.changeLanguage(locale);
     }
   }, [locale]);
@@ -31,7 +57,7 @@ const Layout = () => {
     <div className="flex min-h-screen flex-col font-inter">
       <Header />
       <main className="flex-grow">
-        <Outlet />
+        <AnimatedOutlet />
       </main>
       <Footer />
       <FloatingContact />
@@ -40,11 +66,10 @@ const Layout = () => {
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AuthProvider>
+const App = () => (
+  <BrowserRouter>
+    <ScrollToTop />
+    <AuthProvider>
       <Routes>
         <Route path="/:locale" element={<Layout />}>
           <Route index element={<Index />} />
@@ -61,9 +86,8 @@ const App = () => {
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="*" element={<Navigate to="/en" replace />} />
       </Routes>
-      </AuthProvider>
-    </BrowserRouter>
-  );
-};
+    </AuthProvider>
+  </BrowserRouter>
+);
 
 export default App;

@@ -98,7 +98,7 @@ const Hero = () => {
               {/* Subtitle */}
               <motion.p
                 custom={3} initial="hidden" animate="visible" variants={itemVariants}
-                className="text-lg sm:text-xl text-white/72 font-open-sans leading-relaxed max-w-xl"
+                className="text-lg sm:text-xl text-white/70 font-open-sans leading-relaxed max-w-xl"
               >
                 {t("hero.subtitle")}
               </motion.p>
@@ -115,7 +115,7 @@ const Hero = () => {
                   </button>
                 </Link>
                 <Link to={`/${locale}/services`}>
-                  <button className="group inline-flex items-center gap-2 border border-white/25 hover:border-white/60 text-white hover:bg-white/8 font-montserrat font-semibold px-8 py-4 text-sm tracking-wide uppercase rounded-sm transition-all duration-200 w-full sm:w-auto justify-center backdrop-blur-sm">
+                  <button className="group inline-flex items-center gap-2 border border-white/25 hover:border-white/60 text-white hover:bg-white/[0.08] font-montserrat font-semibold px-8 py-4 text-sm tracking-wide uppercase rounded-sm transition-all duration-200 w-full sm:w-auto justify-center backdrop-blur-sm">
                     {t("hero.cta2")}
                     <ArrowRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </button>
