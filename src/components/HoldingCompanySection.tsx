@@ -12,9 +12,9 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
   const { t } = useTranslation();
 
   const benefits = [
-    { icon: Building2, titleKey: 'holding.benefit1', descKey: 'holding.benefit1Desc' },
-    { icon: TrendingUp, titleKey: 'holding.benefit2', descKey: 'holding.benefit2Desc' },
-    { icon: Shield, titleKey: 'holding.benefit3', descKey: 'holding.benefit3Desc' },
+    { icon: Building2, titleKey: 'holding.adv1Title', descKey: 'holding.adv1Desc' },
+    { icon: TrendingUp, titleKey: 'holding.adv2Title', descKey: 'holding.adv2Desc' },
+    { icon: Shield, titleKey: 'holding.adv3Title', descKey: 'holding.adv3Desc' },
   ];
 
   const containerVariants = {
@@ -43,13 +43,13 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
           >
             <div className="space-y-4">
               <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase">
-                {t('holding.eyebrow')}
+                {t('holding.badge')}
               </p>
               <h2 className="text-4xl lg:text-5xl font-serif font-bold text-prime-blue">
-                {t('holding.title')}
+                {t('holding.heading1')}
               </h2>
               <p className="text-lg text-gray-600 font-open-sans leading-relaxed">
-                {t('holding.description')}
+                {t('holding.intro')}
               </p>
             </div>
 
@@ -84,7 +84,7 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
               onClick={onGetConsultation}
               className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat font-semibold px-8 py-6 text-base group w-fit mt-4"
             >
-              {t('holding.cta')}
+              {t('holding.partnerCta')}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
@@ -112,10 +112,10 @@ const HoldingCompanySection = ({ onGetConsultation }: HoldingCompanySectionProps
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <p className="text-sm font-montserrat font-semibold text-prime-gold mb-2">
-                  {t('holding.feature')}
+                  {t('holding.servicesBadge')}
                 </p>
                 <p className="text-prime-blue font-serif font-bold text-lg">
-                  {t('holding.featureDescription')}
+                  {t('holding.servicesHeading')}
                 </p>
               </motion.div>
             </div>

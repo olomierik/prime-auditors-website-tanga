@@ -19,24 +19,16 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
 
-const pageVariants = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
-  exit:    { opacity: 0, y: -6,  transition: { duration: 0.15, ease: "easeIn" as const } },
-};
-
 const AnimatedOutlet = () => {
   const location = useLocation();
   const element = useOutlet();
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false}>
       <motion.div
         key={location.pathname}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        style={{ willChange: "opacity, transform" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }}
+        exit={{ opacity: 0, transition: { duration: 0.1, ease: "easeIn" } }}
       >
         {element}
       </motion.div>
