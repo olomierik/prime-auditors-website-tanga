@@ -23,7 +23,7 @@ const AnimatedOutlet = () => {
   const location = useLocation();
   const element = useOutlet();
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={false} mode="sync">
       <motion.div
         key={location.pathname}
         initial={{ opacity: 0 }}
