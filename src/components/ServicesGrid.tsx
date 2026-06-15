@@ -99,21 +99,23 @@ const ServicesGrid = ({ hideHeader = false }: ServicesGridProps) => {
           ))}
         </div>
 
-        {/* View all */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <Link to={`/${locale}/services`}>
-            <button className="group inline-flex items-center gap-2 bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat font-semibold text-sm uppercase tracking-wider px-8 py-3.5 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
-              View All Services
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </Link>
-        </motion.div>
+        {/* View all — only shown on pages other than Services */}
+        {!hideHeader && (
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Link to={`/${locale}/services`}>
+              <button className="group inline-flex items-center gap-2 bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat font-semibold text-sm uppercase tracking-wider px-8 py-3.5 rounded-sm transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                View All Services
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );

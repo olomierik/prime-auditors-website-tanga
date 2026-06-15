@@ -46,8 +46,8 @@ const Header: React.FC = () => {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-prime-blue/98 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.25)] border-b border-white/5'
-          : 'bg-prime-blue/95 backdrop-blur-sm border-b border-white/5'
+          ? 'bg-prime-blue shadow-[0_4px_24px_rgba(0,0,0,0.35)] border-b border-white/10'
+          : 'bg-prime-blue border-b border-white/5'
       }`}
     >
       {/* ── Top accent line ─────────────────────────────────────────── */}

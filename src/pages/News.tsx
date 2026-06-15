@@ -18,7 +18,7 @@ const News = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((a) => (
-              <Card key={a.title} className="overflow-hidden border-0 shadow-md hover:shadow-2xl transition-all hover:-translate-y-1">
+              <Card key={a.title} className="overflow-hidden border-0 shadow-md">
                 <div className="relative h-48 overflow-hidden">
                   <img src={a.image} alt={a.title} className="w-full h-full object-cover" />
                   <div className="absolute top-4 left-4 bg-prime-gold text-prime-blue text-xs font-montserrat font-semibold px-3 py-1 rounded-full">{a.category}</div>

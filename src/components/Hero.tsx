@@ -35,9 +35,11 @@ const Hero = () => {
           fetchPriority="high"
           decoding="async"
         />
-        {/* Layered gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1e35]/97 via-[#0f2a4a]/88 to-[#0f2a4a]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1e35] via-transparent to-transparent opacity-70" />
+        {/* Base dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#0a1e35]/75" />
+        {/* Directional gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1e35]/95 via-[#0f2a4a]/85 to-[#0f2a4a]/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1e35] via-transparent to-transparent" />
       </div>
 
       {/* Subtle dot pattern overlay */}
