@@ -115,7 +115,7 @@ const WhyChooseUs = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
               <img
                 src="/office-reception.jpg"
-                alt="Prime Auditors office"
+                alt="Prime Auditors reception — Tanga, Tanzania office"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/50 to-transparent" />
@@ -217,11 +217,24 @@ const ContactSection = () => {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_32px_rgba(15,42,74,0.08)] p-8">
-            <h3 className="text-xl font-serif font-bold text-prime-blue mb-6">
-              {t("contact.sendMessage")}
-            </h3>
-            <BookingForm />
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_32px_rgba(15,42,74,0.08)] p-8">
+              <h3 className="text-xl font-serif font-bold text-prime-blue mb-6">
+                {t("contact.sendMessage")}
+              </h3>
+              <BookingForm />
+            </div>
+
+            {/* Google Maps */}
+            <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-md h-52">
+              <iframe
+                title="Prime Auditors location — Tanga, Tanzania"
+                src="https://maps.google.com/maps?q=Market+Street+Central+Ward+Tanga+Tanzania&output=embed&z=15"
+                className="w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </div>

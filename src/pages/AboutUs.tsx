@@ -41,7 +41,7 @@ const AboutUs = () => {
             </Button>
           </div>
           <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px] sm:h-[420px]">
-            <img src="/nbaa-certificate.jpg" alt="NBAA" className="w-full h-full object-cover" />
+            <img src="/nbaa-certificate.jpg" alt="NBAA Certificate of Registration — Prime Auditors Reg. No. PF510" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
