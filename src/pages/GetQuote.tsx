@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -52,6 +53,7 @@ const GetQuote = () => {
   const [selectedStructure, setSelectedStructure] = useState<Structure | null>(null);
   const [selectedSector, setSelectedSector] = useState("");
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+  const [quoteSaved, setQuoteSaved] = useState(false);
 
   const toggleAddon = (key: string) => {
     setSelectedAddons((prev) =>
@@ -70,6 +72,21 @@ const GetQuote = () => {
   ).reduce((sum, a) => sum + a.price, 0);
 
   const formatNum = (n: number) => n.toLocaleString();
+
+  // Save quote to Supabase when the user reaches the summary step
+  useEffect(() => {
+    if (step === 4 && !quoteSaved && selectedStructure) {
+      setQuoteSaved(true);
+      supabase.from("quotes").insert([{
+        structure: selectedStructure.value,
+        structure_price_label: selectedStructure.priceLabel,
+        sector: selectedSector,
+        addons: selectedAddons,
+        usd_total: usdSubtotal,
+        tzs_total: tzsSubtotal,
+      }]).then(() => {/* silent save */});
+    }
+  }, [step]);
 
   const printQuote = () => {
     const addonLines = ADDONS.filter((a) => selectedAddons.includes(a.key))

@@ -1,36 +1,49 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Star, Quote } from "lucide-react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
-const testimonialData = [
-  {
-    quoteKey: "testimonials.quote1",
-    nameKey:  "testimonials.name1",
-    roleKey:  "testimonials.role1",
-    initials: "SJ",
-    country:  "🇹🇿",
-    rating: 5,
-  },
-  {
-    quoteKey: "testimonials.quote2",
-    nameKey:  "testimonials.name2",
-    roleKey:  "testimonials.role2",
-    initials: "MC",
-    country:  "🇨🇳",
-    rating: 5,
-  },
-  {
-    quoteKey: "testimonials.quote3",
-    nameKey:  "testimonials.name3",
-    roleKey:  "testimonials.role3",
-    initials: "AH",
-    country:  "🇹🇿",
-    rating: 5,
-  },
+type Testimonial = {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+  initials: string;
+  country_flag: string;
+  rating: number;
+};
+
+const staticFallback: Testimonial[] = [
+  { id: "1", quote: "", name: "", role: "", initials: "SJ", country_flag: "🇹🇿", rating: 5 },
+  { id: "2", quote: "", name: "", role: "", initials: "MC", country_flag: "🇨🇳", rating: 5 },
+  { id: "3", quote: "", name: "", role: "", initials: "AH", country_flag: "🇹🇿", rating: 5 },
 ];
 
 const Testimonials = () => {
   const { t } = useTranslation();
+  const [items, setItems] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase
+      .from("testimonials")
+      .select("id, quote, name, role, initials, country_flag, rating")
+      .order("sort_order", { ascending: true })
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setItems(data as Testimonial[]);
+        } else {
+          // Use i18n static content as fallback
+          setItems([
+            { id: "1", quote: t("testimonials.quote1"), name: t("testimonials.name1"), role: t("testimonials.role1"), initials: "SJ", country_flag: "🇹🇿", rating: 5 },
+            { id: "2", quote: t("testimonials.quote2"), name: t("testimonials.name2"), role: t("testimonials.role2"), initials: "MC", country_flag: "🇨🇳", rating: 5 },
+            { id: "3", quote: t("testimonials.quote3"), name: t("testimonials.name3"), role: t("testimonials.role3"), initials: "AH", country_flag: "🇹🇿", rating: 5 },
+          ]);
+        }
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section className="section-spacing bg-[#0a1e35] relative overflow-hidden">
@@ -72,48 +85,45 @@ const Testimonials = () => {
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-7">
-          {testimonialData.map((item, i) => (
+          {loading
+            ? [0,1,2].map((i) => (
+                <div key={i} className="rounded-2xl border border-white/8 bg-white/[0.04] p-8 animate-pulse space-y-4">
+                  <div className="flex gap-1">{[...Array(5)].map((_,j) => <div key={j} className="w-4 h-4 bg-white/10 rounded" />)}</div>
+                  <div className="space-y-2"><div className="h-4 bg-white/10 rounded" /><div className="h-4 bg-white/10 rounded w-4/5" /><div className="h-4 bg-white/10 rounded w-3/5" /></div>
+                  <div className="flex gap-3 items-center pt-2"><div className="w-11 h-11 rounded-full bg-white/10 flex-shrink-0" /><div className="space-y-1 flex-1"><div className="h-3 bg-white/10 rounded w-1/2" /><div className="h-3 bg-white/10 rounded w-2/3" /></div></div>
+                </div>
+              ))
+            : items.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
             >
               <div className="group relative h-full rounded-2xl border border-white/8 bg-white/[0.04] backdrop-blur-sm p-8 flex flex-col gap-5 hover:border-prime-gold/25 hover:bg-white/[0.07] transition-all duration-300">
-
-                {/* Large quote mark */}
                 <div className="absolute top-6 right-7 text-prime-gold/10 pointer-events-none">
                   <Quote className="w-16 h-16 fill-current" />
                 </div>
-
-                {/* Stars */}
                 <div className="flex gap-1">
                   {[...Array(item.rating)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-prime-gold text-prime-gold" />
                   ))}
                 </div>
-
-                {/* Quote */}
                 <p className="text-white/80 font-open-sans text-[15px] leading-relaxed flex-1 relative">
-                  "{t(item.quoteKey)}"
+                  "{item.quote}"
                 </p>
-
-                {/* Divider */}
                 <div className="w-full h-px bg-white/8" />
-
-                {/* Author */}
                 <div className="flex items-center gap-4">
-                  {/* Avatar */}
                   <div className="w-11 h-11 rounded-full bg-prime-gold/15 border border-prime-gold/20 flex items-center justify-center flex-shrink-0">
                     <span className="text-prime-gold font-montserrat font-bold text-sm">{item.initials}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="font-montserrat font-bold text-white text-sm truncate">{t(item.nameKey)}</p>
-                      <span className="text-base">{item.country}</span>
+                      <p className="font-montserrat font-bold text-white text-sm truncate">{item.name}</p>
+                      <span className="text-base">{item.country_flag}</span>
                     </div>
-                    <p className="text-prime-gold text-xs font-open-sans mt-0.5 truncate">{t(item.roleKey)}</p>
+                    <p className="text-prime-gold text-xs font-open-sans mt-0.5 truncate">{item.role}</p>
                   </div>
                 </div>
               </div>
