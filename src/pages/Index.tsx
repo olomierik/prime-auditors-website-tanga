@@ -3,7 +3,6 @@ import Stats from "@/components/Stats";
 import ServicesGrid from "@/components/ServicesGrid";
 import BookingForm from "@/components/BookingForm";
 import Testimonials from "@/components/Testimonials";
-import FinalCTA from "@/components/FinalCTA";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Globe, ArrowRight, Globe2, ShieldCheck, BarChart3, Users } from "lucide-react";
@@ -239,7 +238,6 @@ const Index = () => (
     <ServicesGrid />
     <WhyChooseUs />
     <Testimonials />
-    <FinalCTA />
     <ContactSection />
   </>
 );
