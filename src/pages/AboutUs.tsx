@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Award, Users, Briefcase, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const NBAA_URL = "https://nbaa.go.tz/registered-firms/";
+const NBAA_URL = "https://www.nbaa.go.tz/nbaa-firm-list";
 
 const AboutUs = () => {
   const { t } = useTranslation();
