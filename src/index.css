@@ -318,4 +318,87 @@
   .card-accent-left:hover {
     @apply border-l-prime-gold;
   }
+
+  /* ── Gold shimmer sweep (on headings, badges, logos) ─────────────────── */
+  @keyframes goldShimmer {
+    0%   { background-position: -300% center; }
+    100% { background-position:  300% center; }
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(
+      105deg,
+      #c5a021 0%,
+      #c5a021 35%,
+      #f5d96e 48%,
+      #fff0a0 52%,
+      #c5a021 65%,
+      #c5a021 100%
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShimmer 3.5s linear infinite;
+  }
+
+  /* ── Clip-path word reveal (used on hero headline) ────────────────────── */
+  @keyframes wordReveal {
+    from { clip-path: inset(0 100% 0 0); opacity: 0; transform: translateY(12px); }
+    to   { clip-path: inset(0 0% 0 0);   opacity: 1; transform: translateY(0); }
+  }
+
+  .word-reveal {
+    display: inline-block;
+    animation: wordReveal 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* ── Magnetic button pulse ring ───────────────────────────────────────── */
+  @keyframes ringPulse {
+    0%   { transform: scale(1);   opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .btn-magnetic {
+    position: relative;
+    overflow: visible;
+  }
+
+  .btn-magnetic::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid #c5a021;
+    animation: ringPulse 1.8s ease-out infinite;
+    pointer-events: none;
+  }
+
+  /* ── Floating glow blob (used behind hero card) ───────────────────────── */
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1);     }
+    33%       { transform: translate(8px, -12px) scale(1.04); }
+    66%       { transform: translate(-6px, 6px) scale(0.97); }
+  }
+
+  .blob-float {
+    animation: blobFloat 8s ease-in-out infinite;
+  }
+
+  /* ── Section fade-in with slight upward drift ─────────────────────────── */
+  @keyframes sectionReveal {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-reveal {
+    animation: sectionReveal 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* ── Glowing gold border on focus/active inputs ───────────────────────── */
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(197, 160, 33, 0.15);
+    border-color: #c5a021 !important;
+  }
 }
