@@ -81,7 +81,7 @@ const Hero = () => {
                 <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-serif font-bold text-white leading-[1.06] tracking-tight">
                   {t("hero.title1")}{" "}
                   <span className="relative inline-block">
-                    <span className="gradient-text">{t("hero.titleHighlight")}</span>
+                    <span className="gold-shimmer">{t("hero.titleHighlight")}</span>
                     <svg
                       className="absolute -bottom-2 left-0 w-full"
                       height="6" viewBox="0 0 200 6" preserveAspectRatio="none"
@@ -111,7 +111,7 @@ const Hero = () => {
                 className="flex flex-col sm:flex-row gap-4 pt-2"
               >
                 <Link to={`/${locale}/#contact`}>
-                  <button className="group inline-flex items-center gap-2 bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold px-8 py-4 text-sm tracking-wide uppercase rounded-sm transition-all duration-200 shadow-[0_4px_24px_rgba(197,160,33,0.35)] hover:shadow-[0_8px_32px_rgba(197,160,33,0.5)] hover:-translate-y-0.5 w-full sm:w-auto justify-center">
+                  <button className="btn-magnetic group inline-flex items-center gap-2 bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold px-8 py-4 text-sm tracking-wide uppercase rounded-sm transition-all duration-200 shadow-[0_4px_24px_rgba(197,160,33,0.35)] hover:shadow-[0_8px_32px_rgba(197,160,33,0.5)] hover:-translate-y-0.5 w-full sm:w-auto justify-center">
                     {t("hero.cta1")}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -151,11 +151,16 @@ const Hero = () => {
               className="hidden lg:block lg:col-span-5"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] }}
             >
-              <div className="relative">
+
+              <motion.div
+                className="relative"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 {/* Glow */}
-                <div className="absolute -inset-8 bg-prime-gold/10 rounded-3xl blur-3xl" />
+                <div className="absolute -inset-8 bg-prime-gold/10 rounded-3xl blur-3xl blob-float" />
 
                 {/* Card */}
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 backdrop-blur-xl bg-white/[0.04]">
@@ -230,7 +235,7 @@ const Hero = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
           </div>

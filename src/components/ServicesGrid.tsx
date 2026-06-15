@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { useRef, MouseEvent } from "react";
 
 const services = [
   { id: "audit",       icon: "📊", titleKey: "service.audit",       descKey: "service.auditDesc",       iconBg: "bg-blue-50",    accent: "from-blue-500/8 to-blue-600/4",    number: "01" },
@@ -48,7 +49,20 @@ const ServicesGrid = ({ hideHeader = false }: ServicesGridProps) => {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((svc, i) => (
+          {services.map((svc, i) => {
+            const cardRef = useRef<HTMLDivElement>(null);
+            const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+              const el = cardRef.current;
+              if (!el) return;
+              const { left, top, width, height } = el.getBoundingClientRect();
+              const x = ((e.clientX - left) / width - 0.5) * 16;
+              const y = ((e.clientY - top) / height - 0.5) * -16;
+              el.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-4px)`;
+            };
+            const handleMouseLeave = () => {
+              if (cardRef.current) cardRef.current.style.transform = "";
+            };
+            return (
             <motion.div
               key={svc.id}
               id={svc.id}
@@ -58,7 +72,13 @@ const ServicesGrid = ({ hideHeader = false }: ServicesGridProps) => {
               transition={{ duration: 0.5, delay: i * 0.07 }}
             >
               <Link to={`/${locale}/services#${svc.id}`}>
-                <div className="group relative bg-white rounded-2xl border border-gray-100 p-7 h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-[0_12px_40px_rgba(15,42,74,0.10)] hover:-translate-y-1 hover:border-prime-gold/25 cursor-pointer">
+                <div
+                  ref={cardRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  className="group relative bg-white rounded-2xl border border-gray-100 p-7 h-full flex flex-col overflow-hidden transition-[box-shadow,border-color] duration-300 hover:shadow-[0_20px_60px_rgba(15,42,74,0.14)] hover:border-prime-gold/25 cursor-pointer"
+                  style={{ willChange: "transform", transition: "transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease" }}
+                >
 
                   {/* Hover gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${svc.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
@@ -96,7 +116,8 @@ const ServicesGrid = ({ hideHeader = false }: ServicesGridProps) => {
                 </div>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View all — only shown on pages other than Services */}

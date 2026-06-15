@@ -3,7 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import CookieConsent from "@/components/CookieConsent";
+import ScrollProgress from "@/components/ScrollProgress";
 import { Toaster } from "@/components/ui/sonner";
+import { AnimatePresence, motion } from "framer-motion";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import AboutUs from "./pages/AboutUs";
@@ -20,9 +22,27 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
 
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  enter:   { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] } },
+  exit:    { opacity: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" } },
+};
+
 const PageOutlet = () => {
   const element = useOutlet();
-  return <>{element}</>;
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={element?.key ?? "page"}
+        variants={pageVariants}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+      >
+        {element}
+      </motion.div>
+    </AnimatePresence>
+  );
 };
 
 const Layout = () => {
@@ -36,6 +56,7 @@ const Layout = () => {
 
   return (
     <div className="flex min-h-screen flex-col font-inter">
+      <ScrollProgress />
       {/* Accessibility: skip navigation */}
       <a
         href="#main-content"
