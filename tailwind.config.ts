@@ -26,7 +26,11 @@ export default {
             colors: {
                 // Custom Prime Auditors Brand Colors
                 'prime-blue': '#0f2a4a',
+                'prime-blue-deep': '#0a1e35',
+                'prime-blue-deepest': '#07161f',
+                'prime-footer': '#050f16',
                 'prime-gold': '#c5a021',
+                'prime-gold-bright': '#d4af26',
                 'prime-light-grey': '#f6f3f2',
                 'prime-off-white': '#fcf9f8',
                 'prime-border': '#dcd9d9',
@@ -127,6 +131,10 @@ export default {
                         opacity: '1',
                         transform: 'translateX(0)'
                     }
+                },
+                'ledger-scroll': {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-50%)' }
                 }
             },
             animation: {
@@ -134,7 +142,8 @@ export default {
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'fade-in': 'fade-in 0.8s ease-out',
                 'fade-in-up': 'fade-in-up 0.8s ease-out',
-                'slide-in-left': 'slide-in-left 0.8s ease-out'
+                'slide-in-left': 'slide-in-left 0.8s ease-out',
+                'ledger-scroll': 'ledger-scroll 32s linear infinite'
             }
         }
     },

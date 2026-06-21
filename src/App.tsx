@@ -25,7 +25,7 @@ import i18n from "./i18n";
 const pageVariants = {
   initial: { opacity: 0, y: 10 },
   enter:   { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" } },
+  exit:    { opacity: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" as const } },
 };
 
 const PageOutlet = () => {
@@ -81,18 +81,22 @@ const App = () => (
     <ScrollToTop />
     <AuthProvider>
       <Routes>
-        <Route path="/:locale" element={<Layout />}>
+        <Route path="/:locale">
+          {/* Homepage — self-contained "Ledger" editorial design (its own nav + footer) */}
           <Route index element={<Index />} />
-          <Route path="services" element={<Services />} />
-          <Route path="about" element={<AboutUs />} />
-          <Route path="foreign-investors" element={<ForeignInvestors />} />
-          <Route path="get-quote" element={<GetQuote />} />
-          <Route path="news" element={<News />} />
-          <Route path="news/:id" element={<NewsArticle />} />
-          <Route path="join" element={<JoinUs />} />
-          <Route path="portal" element={<Portal />} />
-          <Route path="auth" element={<PortalAuth />} />
-          <Route path="*" element={<NotFound />} />
+          {/* All other pages keep the shared Header/Footer chrome */}
+          <Route element={<Layout />}>
+            <Route path="services" element={<Services />} />
+            <Route path="about" element={<AboutUs />} />
+            <Route path="foreign-investors" element={<ForeignInvestors />} />
+            <Route path="get-quote" element={<GetQuote />} />
+            <Route path="news" element={<News />} />
+            <Route path="news/:id" element={<NewsArticle />} />
+            <Route path="join" element={<JoinUs />} />
+            <Route path="portal" element={<Portal />} />
+            <Route path="auth" element={<PortalAuth />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Route>
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="*" element={<Navigate to="/en" replace />} />
