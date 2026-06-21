@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,9 +32,6 @@ import {
   ArrowRight,
   Download,
   FileText,
-  Building2,
-  Users,
-  Globe,
   Loader2,
   Star,
   ChevronRight,
@@ -101,7 +98,6 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
 </body>
 </html>`;
 
-  // Use <a download> — works without popup blocker issues
   const blob = new Blob([html], { type: "text/html" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -113,28 +109,32 @@ const downloadChecklistPDF = (type: "branch" | "subsidiary") => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 
+const eyebrow = "text-sm font-montserrat font-semibold text-prime-gold tracking-[0.26em] uppercase mb-2";
+const sectionTitle = "text-3xl lg:text-4xl font-serif font-bold text-white tracking-[-0.02em]";
+
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const HeroSection = () => {
   const { t } = useTranslation();
   const { locale } = useParams();
   return (
-    <section className="bg-prime-blue text-white py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-prime-blue-deepest text-white py-20 lg:py-28">
+      <div className="ledger-dots absolute inset-0 opacity-40" />
+      <div className="relative max-w-[1320px] mx-auto px-6 lg:px-10">
         <div className="max-w-3xl">
-          <Badge className="bg-prime-gold/20 text-prime-gold border-prime-gold/30 mb-6 font-montserrat text-xs tracking-wider uppercase">
+          <Badge className="bg-prime-gold/15 text-prime-gold border-prime-gold/30 mb-6 font-montserrat text-xs tracking-wider uppercase">
             Foreign Investor Services
           </Badge>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-bold leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mb-6 tracking-[-0.02em]">
             {t("fi.hero.headline")}
           </h1>
-          <p className="text-lg text-white/80 font-open-sans leading-relaxed mb-8 max-w-2xl">
+          <p className="text-lg text-white/70 font-open-sans leading-relaxed mb-8 max-w-2xl">
             {t("fi.hero.subheadline")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             <a href="#inquiry-form">
               <Button
                 size="lg"
-                className="bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold shadow-xl w-full sm:w-auto"
+                className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.12em] rounded-none w-full sm:w-auto"
               >
                 {t("fi.hero.cta1")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -142,14 +142,16 @@ const HeroSection = () => {
             <Link to={`/${locale}/get-quote`}>
               <Button
                 size="lg"
-                className="bg-white text-prime-blue hover:bg-white/90 font-montserrat font-bold w-full sm:w-auto shadow-lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 font-montserrat font-semibold uppercase tracking-[0.1em] rounded-none w-full sm:w-auto"
               >
                 <FileText className="mr-2 w-4 h-4" /> Get an Instant Quote
               </Button>
             </Link>
             <Button
               size="lg"
-              className="bg-white/15 border border-white/40 text-white hover:bg-white/25 w-full sm:w-auto backdrop-blur-sm"
+              variant="outline"
+              className="border-white/20 text-white/80 hover:bg-white/10 rounded-none w-full sm:w-auto"
               onClick={() => downloadChecklistPDF("branch")}
             >
               <Download className="mr-2 w-4 h-4" /> {t("fi.hero.cta2")}
@@ -165,7 +167,7 @@ const HeroSection = () => {
             ].map((badge) => (
               <span
                 key={badge}
-                className="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5 font-montserrat text-white/90"
+                className="text-xs bg-white/5 border border-prime-gold/25 px-3 py-1.5 font-montserrat text-prime-gold/90"
               >
                 ✓ {badge}
               </span>
@@ -181,50 +183,28 @@ const HeroSection = () => {
 const WhyChooseUs = () => {
   const { t } = useTranslation();
   const cards = [
-    {
-      icon: MapPin,
-      title: t("fi.why.card1Title"),
-      desc: t("fi.why.card1Desc"),
-      color: "text-blue-600",
-      bg: "bg-blue-50",
-    },
-    {
-      icon: DollarSign,
-      title: t("fi.why.card2Title"),
-      desc: t("fi.why.card2Desc"),
-      color: "text-prime-gold",
-      bg: "bg-prime-gold/10",
-    },
-    {
-      icon: Shield,
-      title: t("fi.why.card3Title"),
-      desc: t("fi.why.card3Desc"),
-      color: "text-prime-blue",
-      bg: "bg-prime-blue/10",
-    },
+    { icon: MapPin, title: t("fi.why.card1Title"), desc: t("fi.why.card1Desc") },
+    { icon: DollarSign, title: t("fi.why.card2Title"), desc: t("fi.why.card2Desc") },
+    { icon: Shield, title: t("fi.why.card3Title"), desc: t("fi.why.card3Desc") },
   ];
   return (
-    <section className="py-16 lg:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-20 bg-prime-blue-deep">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            {t("fi.why.title")}
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">
-            {t("fi.why.subtitle")}
-          </h2>
+          <p className={eyebrow}>{t("fi.why.title")}</p>
+          <h2 className={sectionTitle}>{t("fi.why.subtitle")}</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {cards.map((c) => (
-            <Card key={c.title} className="border border-gray-100 shadow-lg hover:shadow-xl transition-all bg-white">
+            <Card key={c.title} className="border border-white/10 bg-white/[0.03] hover:border-prime-gold/30 transition-colors">
               <CardContent className="p-8">
-                <div className={`w-12 h-12 rounded-xl ${c.bg} flex items-center justify-center mb-4`}>
-                  <c.icon className={`w-6 h-6 ${c.color}`} />
+                <div className="w-12 h-12 rounded-sm bg-prime-gold/10 border border-prime-gold/20 flex items-center justify-center mb-4">
+                  <c.icon className="w-6 h-6 text-prime-gold" />
                 </div>
-                <h3 className="font-montserrat font-bold text-prime-blue text-lg mb-3">
+                <h3 className="font-serif font-bold text-white text-lg mb-3">
                   {c.title}
                 </h3>
-                <p className="text-gray-700 font-open-sans leading-relaxed text-sm">
+                <p className="text-white/60 font-open-sans leading-relaxed text-sm">
                   {c.desc}
                 </p>
               </CardContent>
@@ -239,7 +219,6 @@ const WhyChooseUs = () => {
 // ─── Service Packages ─────────────────────────────────────────────────────────
 const ServicePackages = () => {
   const { t } = useTranslation();
-  const { locale } = useParams();
 
   const packages = [
     {
@@ -249,12 +228,8 @@ const ServicePackages = () => {
       cta: t("fi.packages.starter.cta"),
       popular: false,
       features: [
-        t("fi.packages.starter.f1"),
-        t("fi.packages.starter.f2"),
-        t("fi.packages.starter.f3"),
-        t("fi.packages.starter.f4"),
-        t("fi.packages.starter.f5"),
-        t("fi.packages.starter.f6"),
+        t("fi.packages.starter.f1"), t("fi.packages.starter.f2"), t("fi.packages.starter.f3"),
+        t("fi.packages.starter.f4"), t("fi.packages.starter.f5"), t("fi.packages.starter.f6"),
       ],
       prefix: null,
     },
@@ -265,11 +240,8 @@ const ServicePackages = () => {
       cta: t("fi.packages.growth.cta"),
       popular: true,
       features: [
-        t("fi.packages.growth.f1"),
-        t("fi.packages.growth.f2"),
-        t("fi.packages.growth.f3"),
-        t("fi.packages.growth.f4"),
-        t("fi.packages.growth.f5"),
+        t("fi.packages.growth.f1"), t("fi.packages.growth.f2"), t("fi.packages.growth.f3"),
+        t("fi.packages.growth.f4"), t("fi.packages.growth.f5"),
       ],
       prefix: t("fi.packages.includes"),
     },
@@ -280,38 +252,29 @@ const ServicePackages = () => {
       cta: t("fi.packages.enterprise.cta"),
       popular: false,
       features: [
-        t("fi.packages.enterprise.f1"),
-        t("fi.packages.enterprise.f2"),
-        t("fi.packages.enterprise.f3"),
-        t("fi.packages.enterprise.f4"),
-        t("fi.packages.enterprise.f5"),
-        t("fi.packages.enterprise.f6"),
-        t("fi.packages.enterprise.f7"),
-        t("fi.packages.enterprise.f8"),
+        t("fi.packages.enterprise.f1"), t("fi.packages.enterprise.f2"), t("fi.packages.enterprise.f3"),
+        t("fi.packages.enterprise.f4"), t("fi.packages.enterprise.f5"), t("fi.packages.enterprise.f6"),
+        t("fi.packages.enterprise.f7"), t("fi.packages.enterprise.f8"),
       ],
       prefix: t("fi.packages.includesGrowth"),
     },
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-prime-light-grey">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            {t("fi.packages.title")}
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">
-            {t("fi.packages.subtitle")}
-          </h2>
+          <p className={eyebrow}>{t("fi.packages.title")}</p>
+          <h2 className={sectionTitle}>{t("fi.packages.subtitle")}</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {packages.map((pkg) => (
             <div
               key={pkg.name}
-              className={`relative rounded-2xl p-8 flex flex-col ${
+              className={`relative p-8 flex flex-col border ${
                 pkg.popular
-                  ? "bg-prime-blue text-white shadow-2xl scale-105 ring-4 ring-prime-gold"
-                  : "bg-white shadow-lg"
+                  ? "bg-prime-blue-deep border-prime-gold shadow-2xl lg:scale-105"
+                  : "bg-white/[0.03] border-white/10"
               }`}
             >
               {pkg.popular && (
@@ -322,63 +285,37 @@ const ServicePackages = () => {
                 </div>
               )}
               <div className="mb-6">
-                <h3
-                  className={`font-montserrat font-bold text-xl mb-1 ${
-                    pkg.popular ? "text-white" : "text-prime-blue"
-                  }`}
-                >
+                <h3 className="font-serif font-bold text-xl mb-1 text-white">
                   {pkg.name}
                 </h3>
-                <div
-                  className={`text-3xl font-montserrat font-bold mt-2 ${
-                    pkg.popular ? "text-prime-gold" : "text-prime-blue"
-                  }`}
-                >
+                <div className="text-3xl font-serif font-bold mt-2 text-prime-gold">
                   {pkg.price}
                 </div>
-                <p
-                  className={`text-xs mt-1 ${
-                    pkg.popular ? "text-white/70" : "text-gray-500"
-                  }`}
-                >
+                <p className="text-xs mt-1 text-white/55">
                   {t("fi.packages.timeline")} {pkg.timeline}
                 </p>
               </div>
               <div className="flex-grow mb-6">
                 {pkg.prefix && (
-                  <p
-                    className={`text-xs font-semibold mb-3 ${
-                      pkg.popular ? "text-prime-gold" : "text-prime-gold"
-                    }`}
-                  >
+                  <p className="text-xs font-semibold mb-3 text-prime-gold uppercase tracking-wide">
                     {pkg.prefix}
                   </p>
                 )}
                 <ul className="space-y-2.5">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm">
-                      <CheckCircle
-                        className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
-                          pkg.popular ? "text-prime-gold" : "text-green-500"
-                        }`}
-                      />
-                      <span
-                        className={
-                          pkg.popular ? "text-white/90" : "text-gray-600"
-                        }
-                      >
-                        {f}
-                      </span>
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-prime-gold" />
+                      <span className="text-white/70">{f}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <a href="#inquiry-form">
                 <Button
-                  className={`w-full font-montserrat font-semibold ${
+                  className={`w-full font-montserrat font-bold uppercase tracking-[0.1em] rounded-none ${
                     pkg.popular
-                      ? "bg-prime-gold hover:bg-prime-gold/90 text-prime-blue"
-                      : "bg-prime-blue hover:bg-prime-blue/90 text-white"
+                      ? "bg-prime-gold hover:bg-prime-gold-bright text-prime-blue"
+                      : "bg-transparent border border-prime-gold/40 text-prime-gold hover:bg-prime-gold/10"
                   }`}
                 >
                   {pkg.cta}
@@ -387,7 +324,7 @@ const ServicePackages = () => {
             </div>
           ))}
         </div>
-        <p className="text-center text-sm text-gray-500 font-open-sans max-w-2xl mx-auto">
+        <p className="text-center text-sm text-white/50 font-open-sans max-w-2xl mx-auto">
           * {t("fi.packages.note")}
         </p>
       </div>
@@ -409,52 +346,48 @@ const ServicesAccordion = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deep">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            {t("fi.svc.title")}
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">
-            {t("fi.svc.subtitle")}
-          </h2>
+          <p className={eyebrow}>{t("fi.svc.title")}</p>
+          <h2 className={sectionTitle}>{t("fi.svc.subtitle")}</h2>
         </div>
         <Accordion type="single" collapsible className="space-y-3">
           {services.map((svc, i) => (
             <AccordionItem
               key={svc.id}
               value={svc.id}
-              className="border border-prime-border rounded-xl px-6 shadow-sm"
+              className="border border-white/10 bg-white/[0.03] px-6"
             >
-              <AccordionTrigger className="font-montserrat font-semibold text-prime-blue hover:no-underline py-5">
+              <AccordionTrigger className="font-montserrat font-semibold text-white hover:no-underline py-5">
                 <span className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-prime-gold/10 text-prime-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
+                  <span className="w-7 h-7 rounded-full bg-prime-gold/10 border border-prime-gold/25 text-prime-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
                     {i + 1}
                   </span>
                   {svc.title}
                 </span>
               </AccordionTrigger>
               <AccordionContent className="pb-5">
-                <p className="text-gray-600 font-open-sans text-sm leading-relaxed mb-4">
+                <p className="text-white/60 font-open-sans text-sm leading-relaxed mb-4">
                   {svc.desc}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="bg-prime-light-grey rounded-lg p-4">
+                  <div className="bg-white/[0.04] border border-white/10 p-4">
                     <p className="text-xs font-montserrat font-semibold text-prime-gold uppercase tracking-wider mb-1">
                       {t("fi.svc.price")}
                     </p>
-                    <p className="text-sm text-prime-blue font-semibold">{svc.price}</p>
+                    <p className="text-sm text-white font-semibold">{svc.price}</p>
                   </div>
-                  <div className="bg-prime-light-grey rounded-lg p-4">
+                  <div className="bg-white/[0.04] border border-white/10 p-4">
                     <p className="text-xs font-montserrat font-semibold text-prime-gold uppercase tracking-wider mb-1">
                       {t("fi.svc.deliverables")}
                     </p>
-                    <p className="text-sm text-gray-600">{svc.del}</p>
+                    <p className="text-sm text-white/60">{svc.del}</p>
                   </div>
                 </div>
                 <div className="mt-4">
                   <a href="#inquiry-form">
-                    <Button size="sm" className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat text-xs">
+                    <Button size="sm" className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] text-xs rounded-none">
                       Enquire About This Service <ChevronRight className="ml-1 w-3 h-3" />
                     </Button>
                   </a>
@@ -479,28 +412,24 @@ const HowItWorks = () => {
     { n: "05", title: t("fi.steps.s5title"), desc: t("fi.steps.s5desc") },
   ];
   return (
-    <section className="py-16 lg:py-24 bg-prime-light-grey">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            {t("fi.steps.title")}
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">
-            {t("fi.steps.subtitle")}
-          </h2>
+          <p className={eyebrow}>{t("fi.steps.title")}</p>
+          <h2 className={sectionTitle}>{t("fi.steps.subtitle")}</h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((s, i) => (
             <div key={s.n} className="relative">
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-prime-gold/30 z-0 -translate-x-1/2" />
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-prime-gold/30 z-0 -translate-x-1/2" />
               )}
-              <div className="bg-white rounded-2xl p-6 shadow-sm relative z-10 h-full">
-                <div className="w-12 h-12 rounded-full bg-prime-blue flex items-center justify-center mb-4">
+              <div className="bg-white/[0.03] border border-white/10 p-6 relative z-10 h-full">
+                <div className="w-12 h-12 rounded-full bg-prime-gold/10 border border-prime-gold/25 flex items-center justify-center mb-4">
                   <span className="text-prime-gold font-montserrat font-bold text-sm">{s.n}</span>
                 </div>
-                <h3 className="font-montserrat font-bold text-prime-blue mb-2 text-sm">{s.title}</h3>
-                <p className="text-gray-500 text-xs font-open-sans leading-relaxed">{s.desc}</p>
+                <h3 className="font-serif font-bold text-white mb-2 text-base">{s.title}</h3>
+                <p className="text-white/55 text-xs font-open-sans leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}
@@ -513,7 +442,6 @@ const HowItWorks = () => {
 // ─── Document Checklist ───────────────────────────────────────────────────────
 const DocumentChecklist = () => {
   const { t } = useTranslation();
-  const [showModal, setShowModal] = useState(false);
 
   const branchDocs = [
     t("fi.docs.branch.d1"), t("fi.docs.branch.d2"), t("fi.docs.branch.d3"),
@@ -527,23 +455,19 @@ const DocumentChecklist = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deep">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-10">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            Documents
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-3">
-            {t("fi.docs.title")}
-          </h2>
-          <p className="text-gray-600 font-open-sans">{t("fi.docs.subtitle")}</p>
+          <p className={eyebrow}>Documents</p>
+          <h2 className={`${sectionTitle} mb-3`}>{t("fi.docs.title")}</h2>
+          <p className="text-white/60 font-open-sans">{t("fi.docs.subtitle")}</p>
         </div>
         <Tabs defaultValue="branch" className="mb-8">
-          <TabsList className="w-full mb-6">
-            <TabsTrigger value="branch" className="flex-1 font-montserrat">
+          <TabsList className="w-full mb-6 bg-white/[0.04] border border-white/10">
+            <TabsTrigger value="branch" className="flex-1 font-montserrat data-[state=active]:bg-prime-gold data-[state=active]:text-prime-blue">
               {t("fi.docs.tab1")}
             </TabsTrigger>
-            <TabsTrigger value="subsidiary" className="flex-1 font-montserrat">
+            <TabsTrigger value="subsidiary" className="flex-1 font-montserrat data-[state=active]:bg-prime-gold data-[state=active]:text-prime-blue">
               {t("fi.docs.tab2")}
             </TabsTrigger>
           </TabsList>
@@ -552,18 +476,18 @@ const DocumentChecklist = () => {
             { value: "subsidiary", docs: subDocs, type: "subsidiary" as const },
           ].map((tab) => (
             <TabsContent key={tab.value} value={tab.value}>
-              <div className="bg-prime-light-grey rounded-2xl p-6">
+              <div className="bg-white/[0.03] border border-white/10 p-6">
                 <ul className="space-y-3 mb-6">
                   {tab.docs.map((doc, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-prime-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700 font-open-sans">{doc}</span>
+                      <span className="text-sm text-white/70 font-open-sans">{doc}</span>
                     </li>
                   ))}
                 </ul>
                 <Button
                   onClick={() => downloadChecklistPDF(tab.type)}
-                  className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat font-semibold"
+                  className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none"
                 >
                   <Download className="mr-2 w-4 h-4" /> {t("fi.docs.download")}
                 </Button>
@@ -571,8 +495,8 @@ const DocumentChecklist = () => {
             </TabsContent>
           ))}
         </Tabs>
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
-          <p className="text-sm text-amber-900 font-open-sans leading-relaxed">
+        <div className="bg-prime-gold/10 border border-prime-gold/30 p-5">
+          <p className="text-sm text-prime-gold/90 font-open-sans leading-relaxed">
             <strong>📌 Note:</strong> {t("fi.docs.note")}
           </p>
         </div>
@@ -665,16 +589,18 @@ WhatsApp: ${whatsapp}`;
     }
   };
 
+  const fieldLabel = "block text-xs font-montserrat font-semibold text-white/70 mb-1.5 uppercase tracking-wide";
+
   if (submitted) {
     return (
-      <section id="inquiry-form" className="py-16 lg:py-24 bg-prime-light-grey">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-2xl p-12 shadow-lg">
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-            <h3 className="text-2xl font-montserrat font-bold text-prime-blue mb-4">
+      <section id="inquiry-form" className="py-16 lg:py-24 bg-prime-blue-deepest">
+        <div className="max-w-2xl mx-auto px-6 lg:px-10 text-center">
+          <div className="bg-white/[0.03] border border-prime-gold/30 p-12">
+            <CheckCircle className="w-16 h-16 text-prime-gold mx-auto mb-6" />
+            <h3 className="text-2xl font-serif font-bold text-white mb-4">
               Inquiry Received!
             </h3>
-            <p className="text-gray-600 font-open-sans leading-relaxed">
+            <p className="text-white/60 font-open-sans leading-relaxed">
               {t("fi.form.success")}
             </p>
           </div>
@@ -684,47 +610,37 @@ WhatsApp: ${whatsapp}`;
   }
 
   return (
-    <section id="inquiry-form" className="py-16 lg:py-24 bg-prime-light-grey scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="inquiry-form" className="py-16 lg:py-24 bg-prime-blue-deepest scroll-mt-20">
+      <div className="max-w-3xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-10">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            Contact Us
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-2">
-            {t("fi.form.title")}
-          </h2>
-          <p className="text-gray-500 font-open-sans">{t("fi.form.subtitle")}</p>
+          <p className={eyebrow}>Contact Us</p>
+          <h2 className={`${sectionTitle} mb-2`}>{t("fi.form.title")}</h2>
+          <p className="text-white/55 font-open-sans">{t("fi.form.subtitle")}</p>
         </div>
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-2xl shadow-lg p-8 space-y-6"
+          className="bg-white/[0.03] border border-white/10 p-8 space-y-6"
         >
           {/* Name + Company */}
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.name")} *
-              </label>
+              <label className={fieldLabel}>{t("fi.form.name")} *</label>
               <Input value={name} onChange={(e) => setName(e.target.value)}
-                className={errors.name ? "border-red-500" : "border-gray-200"} />
-              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                className={errors.name ? "border-red-500" : "border-white/15"} />
+              {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.company")}
-              </label>
+              <label className={fieldLabel}>{t("fi.form.company")}</label>
               <Input value={company} onChange={(e) => setCompany(e.target.value)}
-                className="border-gray-200" />
+                className="border-white/15" />
             </div>
           </div>
 
           {/* Country */}
           <div>
-            <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-              {t("fi.form.country")}
-            </label>
+            <label className={fieldLabel}>{t("fi.form.country")}</label>
             <Select onValueChange={setCountry}>
-              <SelectTrigger className="border-gray-200">
+              <SelectTrigger className="border-white/15">
                 <SelectValue placeholder="Select country..." />
               </SelectTrigger>
               <SelectContent>
@@ -736,38 +652,32 @@ WhatsApp: ${whatsapp}`;
           {/* Email + WhatsApp */}
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.email")} *
-              </label>
+              <label className={fieldLabel}>{t("fi.form.email")} *</label>
               <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                className={errors.email ? "border-red-500" : "border-gray-200"} />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                className={errors.email ? "border-red-500" : "border-white/15"} />
+              {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.whatsapp")} *
-              </label>
+              <label className={fieldLabel}>{t("fi.form.whatsapp")} *</label>
               <Input placeholder="+86 / +44 / +1..." value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
-                className={errors.whatsapp ? "border-red-500" : "border-gray-200"} />
-              {errors.whatsapp && <p className="text-red-500 text-xs mt-1">{errors.whatsapp}</p>}
+                className={errors.whatsapp ? "border-red-500" : "border-white/15"} />
+              {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
             </div>
           </div>
 
           {/* Services checkboxes */}
           <div>
-            <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-3 uppercase tracking-wide">
-              {t("fi.form.services")}
-            </label>
+            <label className={`${fieldLabel} mb-3`}>{t("fi.form.services")}</label>
             <div className="grid sm:grid-cols-2 gap-2.5">
               {SERVICES_OPTIONS.map((opt) => (
                 <label key={opt.value} className="flex items-center gap-2.5 cursor-pointer">
                   <Checkbox
                     checked={services.includes(opt.value)}
                     onCheckedChange={() => toggleService(opt.value)}
-                    className="border-gray-300"
+                    className="border-white/30 data-[state=checked]:bg-prime-gold data-[state=checked]:border-prime-gold data-[state=checked]:text-prime-blue"
                   />
-                  <span className="text-sm text-gray-700 font-open-sans">{t(opt.key)}</span>
+                  <span className="text-sm text-white/70 font-open-sans">{t(opt.key)}</span>
                 </label>
               ))}
             </div>
@@ -775,9 +685,7 @@ WhatsApp: ${whatsapp}`;
 
           {/* Structure radio */}
           <div>
-            <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-3 uppercase tracking-wide">
-              {t("fi.form.structure")}
-            </label>
+            <label className={`${fieldLabel} mb-3`}>{t("fi.form.structure")}</label>
             <RadioGroup value={structure} onValueChange={setStructure} className="flex flex-wrap gap-4">
               {[
                 { label: t("fi.form.str.branch"), value: "branch" },
@@ -785,8 +693,8 @@ WhatsApp: ${whatsapp}`;
                 { label: t("fi.form.str.unsure"), value: "unsure" },
               ].map((opt) => (
                 <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
-                  <RadioGroupItem value={opt.value} />
-                  <span className="text-sm text-gray-700 font-open-sans">{opt.label}</span>
+                  <RadioGroupItem value={opt.value} className="border-white/30 text-prime-gold" />
+                  <span className="text-sm text-white/70 font-open-sans">{opt.label}</span>
                 </label>
               ))}
             </RadioGroup>
@@ -795,11 +703,9 @@ WhatsApp: ${whatsapp}`;
           {/* Sector + Source */}
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.sector")}
-              </label>
+              <label className={fieldLabel}>{t("fi.form.sector")}</label>
               <Select onValueChange={setSector}>
-                <SelectTrigger className="border-gray-200">
+                <SelectTrigger className="border-white/15">
                   <SelectValue placeholder="Select sector..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -808,11 +714,9 @@ WhatsApp: ${whatsapp}`;
               </Select>
             </div>
             <div>
-              <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-                {t("fi.form.source")}
-              </label>
+              <label className={fieldLabel}>{t("fi.form.source")}</label>
               <Select onValueChange={setSource}>
-                <SelectTrigger className="border-gray-200">
+                <SelectTrigger className="border-white/15">
                   <SelectValue placeholder="Select..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -832,14 +736,12 @@ WhatsApp: ${whatsapp}`;
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-montserrat font-semibold text-prime-blue mb-1.5 uppercase tracking-wide">
-              {t("fi.form.description")}
-            </label>
+            <label className={fieldLabel}>{t("fi.form.description")}</label>
             <Textarea
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="border-gray-200 resize-none"
+              className="border-white/15 resize-none"
               placeholder="Tell us about your plans..."
             />
           </div>
@@ -847,7 +749,7 @@ WhatsApp: ${whatsapp}`;
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold text-base py-6"
+            className="w-full bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.12em] text-base py-6 rounded-none"
           >
             {isSubmitting ? (
               <><Loader2 className="mr-2 w-5 h-5 animate-spin" />{t("fi.form.submitting")}</>
@@ -865,44 +767,25 @@ WhatsApp: ${whatsapp}`;
 const CaseStudies = () => {
   const { t } = useTranslation();
   const cases = [
-    {
-      flag: "🇨🇳",
-      country: t("fi.cases.c1country"),
-      text: t("fi.cases.c1text"),
-      tag: t("fi.cases.c1tag"),
-    },
-    {
-      flag: "🇮🇳",
-      country: t("fi.cases.c2country"),
-      text: t("fi.cases.c2text"),
-      tag: t("fi.cases.c2tag"),
-    },
-    {
-      flag: "🇬🇧",
-      country: t("fi.cases.c3country"),
-      text: t("fi.cases.c3text"),
-      tag: t("fi.cases.c3tag"),
-    },
+    { flag: "🇨🇳", country: t("fi.cases.c1country"), text: t("fi.cases.c1text"), tag: t("fi.cases.c1tag") },
+    { flag: "🇮🇳", country: t("fi.cases.c2country"), text: t("fi.cases.c2text"), tag: t("fi.cases.c2tag") },
+    { flag: "🇬🇧", country: t("fi.cases.c3country"), text: t("fi.cases.c3text"), tag: t("fi.cases.c3tag") },
   ];
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deep">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            {t("fi.cases.title")}
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue">
-            {t("fi.cases.subtitle")}
-          </h2>
+          <p className={eyebrow}>{t("fi.cases.title")}</p>
+          <h2 className={sectionTitle}>{t("fi.cases.subtitle")}</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {cases.map((c) => (
-            <Card key={c.country} className="border-0 shadow-lg hover:shadow-xl transition-all">
+            <Card key={c.country} className="border border-white/10 bg-white/[0.03] hover:border-prime-gold/30 transition-colors">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-4xl">{c.flag}</span>
                   <div>
-                    <p className="font-montserrat font-bold text-prime-blue text-sm">{c.country}</p>
+                    <p className="font-serif font-bold text-white text-sm">{c.country}</p>
                     <Badge variant="outline" className="text-xs border-prime-gold/40 text-prime-gold mt-1">
                       {c.tag}
                     </Badge>
@@ -913,7 +796,7 @@ const CaseStudies = () => {
                     <Star key={i} className="w-4 h-4 fill-prime-gold text-prime-gold" />
                   ))}
                 </div>
-                <p className="text-gray-600 font-open-sans text-sm leading-relaxed">"{c.text}"</p>
+                <p className="text-white/60 font-open-sans text-sm leading-relaxed">"{c.text}"</p>
               </CardContent>
             </Card>
           ))}
@@ -937,28 +820,24 @@ const FAQSection = () => {
     { q: t("fi.faq.q8"), a: t("fi.faq.a8") },
   ];
   return (
-    <section className="py-16 lg:py-24 bg-prime-light-grey">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+      <div className="max-w-3xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-2">
-            FAQ
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-montserrat font-bold text-prime-blue mb-3">
-            {t("fi.faq.title")}
-          </h2>
-          <p className="text-gray-500 font-open-sans">{t("fi.faq.subtitle")}</p>
+          <p className={eyebrow}>FAQ</p>
+          <h2 className={`${sectionTitle} mb-3`}>{t("fi.faq.title")}</h2>
+          <p className="text-white/55 font-open-sans">{t("fi.faq.subtitle")}</p>
         </div>
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
             <AccordionItem
               key={i}
               value={`faq-${i}`}
-              className="bg-white border border-prime-border rounded-xl px-6 shadow-sm"
+              className="bg-white/[0.03] border border-white/10 px-6"
             >
-              <AccordionTrigger className="font-montserrat font-semibold text-prime-blue hover:no-underline py-5 text-left">
+              <AccordionTrigger className="font-montserrat font-semibold text-white hover:no-underline py-5 text-left">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 font-open-sans leading-relaxed pb-5 text-sm">
+              <AccordionContent className="text-white/60 font-open-sans leading-relaxed pb-5 text-sm">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -973,9 +852,10 @@ const FAQSection = () => {
 const FIFinalCTA = () => {
   const { locale } = useParams();
   return (
-    <section className="py-16 bg-prime-blue text-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl lg:text-4xl font-montserrat font-bold mb-4">
+    <section className="relative overflow-hidden py-16 bg-prime-blue text-white">
+      <div className="ledger-dots-soft absolute inset-0 opacity-[0.06]" />
+      <div className="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 tracking-[-0.02em]">
           Ready to Start Your Business in Tanzania?
         </h2>
         <p className="text-white/70 font-open-sans mb-8 max-w-2xl mx-auto">
@@ -983,12 +863,12 @@ const FIFinalCTA = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#inquiry-form">
-            <Button size="lg" className="bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold">
+            <Button size="lg" className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.12em] rounded-none">
               Get Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </a>
           <Link to={`/${locale}/get-quote`}>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-montserrat uppercase tracking-[0.1em] rounded-none">
               <FileText className="mr-2 w-4 h-4" /> Get an Instant Quote
             </Button>
           </Link>

@@ -56,12 +56,12 @@ const Chat = ({ conversationUserId, currentUserId }: Props) => {
   };
 
   return (
-    <div className="flex flex-col h-[500px] border rounded-lg bg-white">
+    <div className="flex flex-col h-[500px] border border-white/10 rounded-lg bg-white/[0.03]">
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
-        {messages.length === 0 && <p className="text-center text-sm text-gray-400 mt-8">No messages yet. Start the conversation.</p>}
+        {messages.length === 0 && <p className="text-center text-sm text-white/40 mt-8">No messages yet. Start the conversation.</p>}
         {messages.map((m) => (
           <div key={m.id} className={`flex ${m.sender_id === currentUserId ? "justify-end" : "justify-start"}`}>
-            <div className={`max-w-[75%] px-3 py-2 rounded-lg text-sm ${m.sender_id === currentUserId ? "bg-prime-blue text-white" : "bg-gray-100 text-gray-900"}`}>
+            <div className={`max-w-[75%] px-3 py-2 rounded-lg text-sm ${m.sender_id === currentUserId ? "bg-prime-gold text-prime-blue" : "bg-white/10 text-white"}`}>
               {m.content}
               <div className="text-[10px] opacity-70 mt-1">{new Date(m.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
             </div>
@@ -69,9 +69,9 @@ const Chat = ({ conversationUserId, currentUserId }: Props) => {
         ))}
         <div ref={endRef} />
       </div>
-      <form onSubmit={(e) => { e.preventDefault(); send(); }} className="p-3 border-t flex gap-2">
+      <form onSubmit={(e) => { e.preventDefault(); send(); }} className="p-3 border-t border-white/10 flex gap-2">
         <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type a message..." />
-        <Button type="submit" size="icon" className="bg-prime-blue hover:bg-prime-blue/90"><Send className="w-4 h-4" /></Button>
+        <Button type="submit" size="icon" className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue"><Send className="w-4 h-4" /></Button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -89,10 +89,6 @@ const GetQuote = () => {
   }, [step]);
 
   const printQuote = () => {
-    const addonLines = ADDONS.filter((a) => selectedAddons.includes(a.key))
-      .map((a) => `<li>${t(a.label)} — ${a.display}</li>`)
-      .join("");
-
     const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -145,31 +141,29 @@ const GetQuote = () => {
   };
 
   const submitAsInquiry = () => {
-    const params = new URLSearchParams({
-      structure: selectedStructure?.value || "",
-      sector: selectedSector,
-      addons: selectedAddons.join(","),
-    });
     navigate(`/${locale}/foreign-investors#inquiry-form`);
   };
 
+  const stepHeading = "text-xl font-serif font-bold text-white mb-6 tracking-[-0.01em]";
+  const selectableBase = "text-left border p-5 transition-colors";
+
   return (
-    <div className="min-h-screen bg-prime-light-grey">
+    <div className="min-h-screen bg-prime-blue-deepest">
       {/* Header */}
-      <div className="bg-prime-blue text-white py-12">
+      <div className="bg-prime-blue-deep text-white py-12 border-b border-white/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Badge className="bg-prime-gold/20 text-prime-gold border-prime-gold/30 mb-4 font-montserrat text-xs tracking-wider uppercase">
+          <Badge className="bg-prime-gold/15 text-prime-gold border-prime-gold/30 mb-4 font-montserrat text-xs tracking-wider uppercase">
             Instant Quote
           </Badge>
-          <h1 className="text-3xl lg:text-4xl font-montserrat font-bold mb-3">
+          <h1 className="text-3xl lg:text-4xl font-serif font-bold mb-3 tracking-[-0.02em]">
             {t("fi.quote.title")}
           </h1>
-          <p className="text-white/70 font-open-sans">{t("fi.quote.subtitle")}</p>
+          <p className="text-white/65 font-open-sans">{t("fi.quote.subtitle")}</p>
         </div>
       </div>
 
       {/* Progress steps */}
-      <div className="bg-white border-b border-prime-border">
+      <div className="bg-prime-blue-deep/40 border-b border-white/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2">
             {[1, 2, 3, 4].map((s) => (
@@ -177,18 +171,18 @@ const GetQuote = () => {
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold font-montserrat flex-shrink-0 ${
                     step > s
-                      ? "bg-green-500 text-white"
+                      ? "bg-prime-gold text-prime-blue"
                       : step === s
-                      ? "bg-prime-blue text-white"
-                      : "bg-gray-200 text-gray-400"
+                      ? "bg-white text-prime-blue"
+                      : "bg-white/10 text-white/40"
                   }`}
                 >
                   {step > s ? <CheckCircle className="w-4 h-4" /> : s}
                 </div>
-                <span className={`text-xs font-montserrat hidden sm:block ${step === s ? "text-prime-blue font-semibold" : "text-gray-400"}`}>
+                <span className={`text-xs font-montserrat hidden sm:block ${step === s ? "text-white font-semibold" : "text-white/40"}`}>
                   {t(`fi.quote.step${s}`)}
                 </span>
-                {s < 4 && <div className={`flex-1 h-0.5 ${step > s ? "bg-green-500" : "bg-gray-200"}`} />}
+                {s < 4 && <div className={`flex-1 h-0.5 ${step > s ? "bg-prime-gold" : "bg-white/10"}`} />}
               </div>
             ))}
           </div>
@@ -200,22 +194,20 @@ const GetQuote = () => {
         {/* Step 1: Structure */}
         {step === 1 && (
           <div>
-            <h2 className="text-xl font-montserrat font-bold text-prime-blue mb-6">
-              {t("fi.quote.step1")}
-            </h2>
+            <h2 className={stepHeading}>{t("fi.quote.step1")}</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {STRUCTURES.map((s) => (
                 <button
                   key={s.value}
                   onClick={() => setSelectedStructure(s)}
-                  className={`text-left rounded-xl border-2 p-5 transition-all ${
+                  className={`${selectableBase} ${
                     selectedStructure?.value === s.value
-                      ? "border-prime-gold bg-prime-gold/5"
-                      : "border-gray-200 bg-white hover:border-prime-gold/50"
+                      ? "border-prime-gold bg-prime-gold/10"
+                      : "border-white/15 bg-white/[0.03] hover:border-prime-gold/50"
                   }`}
                 >
                   <div className="flex justify-between items-start">
-                    <p className="font-montserrat font-semibold text-prime-blue text-sm">
+                    <p className="font-montserrat font-semibold text-white text-sm">
                       {t(s.label)}
                     </p>
                     {selectedStructure?.value === s.value && (
@@ -230,7 +222,7 @@ const GetQuote = () => {
               <Button
                 onClick={() => setStep(2)}
                 disabled={!selectedStructure}
-                className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat"
+                className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none"
               >
                 {t("fi.quote.next")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -241,18 +233,16 @@ const GetQuote = () => {
         {/* Step 2: Sector */}
         {step === 2 && (
           <div>
-            <h2 className="text-xl font-montserrat font-bold text-prime-blue mb-6">
-              {t("fi.quote.step2")}
-            </h2>
+            <h2 className={stepHeading}>{t("fi.quote.step2")}</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {SECTORS.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSelectedSector(t(s))}
-                  className={`text-left rounded-xl border-2 p-4 transition-all text-sm font-montserrat ${
+                  className={`text-left border p-4 transition-colors text-sm font-montserrat ${
                     selectedSector === t(s)
-                      ? "border-prime-gold bg-prime-gold/5 text-prime-blue font-semibold"
-                      : "border-gray-200 bg-white hover:border-prime-gold/50 text-gray-600"
+                      ? "border-prime-gold bg-prime-gold/10 text-white font-semibold"
+                      : "border-white/15 bg-white/[0.03] hover:border-prime-gold/50 text-white/65"
                   }`}
                 >
                   <div className="flex justify-between items-center">
@@ -263,13 +253,13 @@ const GetQuote = () => {
               ))}
             </div>
             <div className="mt-8 flex justify-between">
-              <Button variant="outline" onClick={() => setStep(1)} className="font-montserrat">
+              <Button variant="outline" onClick={() => setStep(1)} className="font-montserrat border-white/20 text-white hover:bg-white/5 rounded-none">
                 <ArrowLeft className="mr-2 w-4 h-4" /> {t("fi.quote.back")}
               </Button>
               <Button
                 onClick={() => setStep(3)}
                 disabled={!selectedSector}
-                className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat"
+                className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none"
               >
                 {t("fi.quote.next")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -280,26 +270,24 @@ const GetQuote = () => {
         {/* Step 3: Add-ons */}
         {step === 3 && (
           <div>
-            <h2 className="text-xl font-montserrat font-bold text-prime-blue mb-6">
-              {t("fi.quote.step3")}
-            </h2>
+            <h2 className={stepHeading}>{t("fi.quote.step3")}</h2>
             <div className="space-y-3">
               {ADDONS.map((a) => (
                 <label
                   key={a.key}
-                  className={`flex items-center gap-4 rounded-xl border-2 p-4 cursor-pointer transition-all ${
+                  className={`flex items-center gap-4 border p-4 cursor-pointer transition-colors ${
                     selectedAddons.includes(a.key)
-                      ? "border-prime-gold bg-prime-gold/5"
-                      : "border-gray-200 bg-white hover:border-prime-gold/30"
+                      ? "border-prime-gold bg-prime-gold/10"
+                      : "border-white/15 bg-white/[0.03] hover:border-prime-gold/30"
                   }`}
                 >
                   <Checkbox
                     checked={selectedAddons.includes(a.key)}
                     onCheckedChange={() => toggleAddon(a.key)}
-                    className="border-gray-300 flex-shrink-0"
+                    className="border-white/30 flex-shrink-0 data-[state=checked]:bg-prime-gold data-[state=checked]:border-prime-gold data-[state=checked]:text-prime-blue"
                   />
                   <div className="flex-1">
-                    <span className="text-sm font-open-sans text-gray-700">{t(a.label)}</span>
+                    <span className="text-sm font-open-sans text-white/75">{t(a.label)}</span>
                   </div>
                   <span className="text-prime-gold font-montserrat font-bold text-sm whitespace-nowrap">
                     {a.display}
@@ -308,12 +296,12 @@ const GetQuote = () => {
               ))}
             </div>
             <div className="mt-8 flex justify-between">
-              <Button variant="outline" onClick={() => setStep(2)} className="font-montserrat">
+              <Button variant="outline" onClick={() => setStep(2)} className="font-montserrat border-white/20 text-white hover:bg-white/5 rounded-none">
                 <ArrowLeft className="mr-2 w-4 h-4" /> {t("fi.quote.back")}
               </Button>
               <Button
                 onClick={() => setStep(4)}
-                className="bg-prime-blue hover:bg-prime-blue/90 text-white font-montserrat"
+                className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none"
               >
                 {t("fi.quote.next")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -324,17 +312,15 @@ const GetQuote = () => {
         {/* Step 4: Quote Summary */}
         {step === 4 && (
           <div>
-            <h2 className="text-xl font-montserrat font-bold text-prime-blue mb-6">
-              {t("fi.quote.step4")}
-            </h2>
-            <Card className="border-0 shadow-xl">
+            <h2 className={stepHeading}>{t("fi.quote.step4")}</h2>
+            <Card className="border border-white/10 bg-white/[0.03] rounded-none">
               <CardContent className="p-8">
                 {/* Header */}
-                <div className="border-b border-prime-border pb-4 mb-6">
+                <div className="border-b border-white/10 pb-4 mb-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-montserrat font-bold text-prime-blue text-lg">PRIME AUDITORS</p>
-                      <p className="text-xs text-gray-500">Reg. No. PF510 | Tanga, Tanzania</p>
+                      <p className="font-serif font-bold text-white text-lg">PRIME AUDITORS</p>
+                      <p className="text-xs text-white/50">Reg. No. PF510 | Tanga, Tanzania</p>
                     </div>
                     <Badge className="bg-prime-gold/10 text-prime-gold border-prime-gold/30">
                       {new Date().toLocaleDateString()}
@@ -345,47 +331,47 @@ const GetQuote = () => {
                 {/* Line items */}
                 <div className="space-y-3 mb-6">
                   {selectedStructure && (
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                      <span className="text-sm font-open-sans text-gray-700">{t(selectedStructure.label)}</span>
-                      <span className="font-montserrat font-semibold text-prime-blue text-sm">
+                    <div className="flex justify-between items-center py-2 border-b border-white/10">
+                      <span className="text-sm font-open-sans text-white/75">{t(selectedStructure.label)}</span>
+                      <span className="font-montserrat font-semibold text-white text-sm">
                         {selectedStructure.priceLabel}
                       </span>
                     </div>
                   )}
                   {ADDONS.filter((a) => selectedAddons.includes(a.key)).map((a) => (
-                    <div key={a.key} className="flex justify-between items-center py-2 border-b border-gray-100">
-                      <span className="text-sm font-open-sans text-gray-700">
+                    <div key={a.key} className="flex justify-between items-center py-2 border-b border-white/10">
+                      <span className="text-sm font-open-sans text-white/75">
                         {t(a.label).replace(/\(.*\)/, "").trim()}
                       </span>
-                      <span className="font-montserrat font-semibold text-prime-blue text-sm">{a.display}</span>
+                      <span className="font-montserrat font-semibold text-white text-sm">{a.display}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Totals */}
-                <div className="bg-prime-light-grey rounded-xl p-5 space-y-2">
+                <div className="bg-white/[0.04] border border-white/10 p-5 space-y-2">
                   {usdSubtotal > 0 && (
                     <div className="flex justify-between">
-                      <span className="text-sm font-montserrat font-semibold text-gray-600">
+                      <span className="text-sm font-montserrat font-semibold text-white/60">
                         {t("fi.quote.subtotal")} (USD)
                       </span>
-                      <span className="font-montserrat font-bold text-prime-blue">
+                      <span className="font-montserrat font-bold text-white">
                         USD {formatNum(usdSubtotal)}
                       </span>
                     </div>
                   )}
                   {tzsSubtotal > 0 && (
                     <div className="flex justify-between">
-                      <span className="text-sm font-montserrat font-semibold text-gray-600">
+                      <span className="text-sm font-montserrat font-semibold text-white/60">
                         Annual compliance (TZS)
                       </span>
-                      <span className="font-montserrat font-bold text-prime-blue">
+                      <span className="font-montserrat font-bold text-white">
                         TZS {formatNum(tzsSubtotal)}
                       </span>
                     </div>
                   )}
-                  <div className="pt-2 border-t border-prime-border flex justify-between">
-                    <span className="font-montserrat font-bold text-prime-blue">
+                  <div className="pt-2 border-t border-white/10 flex justify-between">
+                    <span className="font-montserrat font-bold text-white">
                       {t("fi.quote.total")}
                     </span>
                     <span className="font-montserrat font-bold text-prime-gold text-lg">
@@ -395,7 +381,7 @@ const GetQuote = () => {
                   </div>
                 </div>
 
-                <p className="text-xs text-gray-400 mt-3 font-open-sans">
+                <p className="text-xs text-white/40 mt-3 font-open-sans">
                   * {t("fi.quote.govNote")}
                 </p>
 
@@ -404,13 +390,13 @@ const GetQuote = () => {
                   <Button
                     onClick={printQuote}
                     variant="outline"
-                    className="flex-1 border-prime-blue text-prime-blue hover:bg-prime-blue/5 font-montserrat"
+                    className="flex-1 border-white/20 text-white hover:bg-white/5 font-montserrat rounded-none"
                   >
                     <Download className="mr-2 w-4 h-4" /> {t("fi.quote.downloadPdf")}
                   </Button>
                   <Button
                     onClick={submitAsInquiry}
-                    className="flex-1 bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-montserrat font-bold"
+                    className="flex-1 bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none"
                   >
                     <FileText className="mr-2 w-4 h-4" /> {t("fi.quote.submitInquiry")}
                   </Button>
@@ -419,13 +405,13 @@ const GetQuote = () => {
             </Card>
 
             <div className="mt-4 flex justify-between">
-              <Button variant="outline" onClick={() => setStep(3)} className="font-montserrat">
+              <Button variant="outline" onClick={() => setStep(3)} className="font-montserrat border-white/20 text-white hover:bg-white/5 rounded-none">
                 <ArrowLeft className="mr-2 w-4 h-4" /> {t("fi.quote.back")}
               </Button>
               <Button
                 variant="ghost"
                 onClick={() => { setStep(1); setSelectedStructure(null); setSelectedSector(""); setSelectedAddons([]); }}
-                className="text-gray-500 font-montserrat text-sm"
+                className="text-white/50 hover:text-white hover:bg-white/5 font-montserrat text-sm"
               >
                 <RefreshCw className="mr-2 w-4 h-4" /> {t("fi.quote.reset")}
               </Button>

@@ -44,34 +44,27 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full border-b backdrop-blur-[14px] transition-all duration-300 ${
         scrolled
-          ? 'bg-prime-blue shadow-[0_4px_24px_rgba(0,0,0,0.35)] border-b border-white/10'
-          : 'bg-prime-blue border-b border-white/5'
+          ? 'bg-prime-blue-deepest/90 border-prime-gold/20 shadow-[0_4px_24px_rgba(0,0,0,0.45)]'
+          : 'bg-prime-blue-deepest/80 border-prime-gold/15'
       }`}
     >
-      {/* ── Top accent line ─────────────────────────────────────────── */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-prime-gold to-transparent opacity-50" />
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
+        <div className="flex justify-between h-[70px] lg:h-[84px] items-center">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-[70px] lg:h-[76px] items-center">
-
-          {/* Logo */}
-          <Link to={`/${locale}/`} className="flex items-center gap-3 group flex-shrink-0">
-            <div className="relative h-9 w-28 transition-transform duration-200 group-hover:scale-105">
-              <img
-                src="/prime-auditors-logo.jpg"
-                alt="Prime Auditors"
-                className="w-full h-full object-contain"
-              />
+          {/* Logo — editorial monogram + serif wordmark */}
+          <Link to={`/${locale}/`} className="flex items-center gap-4 flex-shrink-0">
+            <div className="flex h-[38px] w-[38px] items-center justify-center border-[1.5px] border-prime-gold font-serif text-[18px] font-bold text-prime-gold">
+              Pa
             </div>
-            <div className="flex flex-col leading-none">
-              <span className="font-montserrat font-bold text-white text-[17px] tracking-tight">
-                Prime Auditors
-              </span>
-              <span className="text-[9px] text-prime-gold/80 font-open-sans tracking-[0.18em] uppercase mt-0.5 hidden sm:block">
+            <div className="leading-none">
+              <div className="font-serif text-[16px] font-semibold tracking-[0.14em] text-white">
+                PRIME&nbsp;AUDITORS
+              </div>
+              <div className="mt-[5px] font-montserrat text-[8px] font-medium uppercase tracking-[0.34em] text-white/40 hidden sm:block">
                 Certified Public Accountants
-              </span>
+              </div>
             </div>
           </Link>
 

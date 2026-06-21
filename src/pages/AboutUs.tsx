@@ -25,67 +25,67 @@ const AboutUs = () => {
     <>
       <PageHero eyebrow={t("about.title")} title={t("about.heroTitle")} description={t("about.heroDesc")} image="/office-reception.jpg" />
 
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-5">
-            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase">{t("about.subtitle")}</p>
-            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-prime-blue">{t("about.storyHeading")}</h2>
-            <p className="text-gray-600 font-open-sans leading-relaxed">{t("about.storyP1")}</p>
-            <p className="text-gray-600 font-open-sans leading-relaxed">
-              {t("about.storyP2Pre")} <strong className="text-prime-blue">PF510</strong>.
+            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-[0.26em] uppercase">{t("about.subtitle")}</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-white tracking-[-0.02em]">{t("about.storyHeading")}</h2>
+            <p className="text-white/60 font-open-sans leading-relaxed">{t("about.storyP1")}</p>
+            <p className="text-white/60 font-open-sans leading-relaxed">
+              {t("about.storyP2Pre")} <strong className="text-prime-gold">PF510</strong>.
             </p>
-            <Button asChild className="bg-prime-blue hover:bg-prime-blue/90 text-white">
+            <Button asChild className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.12em] rounded-none">
               <a href={NBAA_URL} target="_blank" rel="noopener noreferrer">
                 {t("about.verifyNbaa")} <ExternalLink className="ml-2 w-4 h-4" />
               </a>
             </Button>
           </div>
-          <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px] sm:h-[420px]">
+          <div className="relative overflow-hidden border border-white/10 h-[300px] sm:h-[420px]">
             <img src="/nbaa-certificate.jpg" alt="NBAA Certificate of Registration — Prime Auditors Reg. No. PF510" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-prime-light-grey">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-prime-blue-deep">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">{t("about.leadership")}</p>
-            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-prime-blue">{t("about.teamHeading")}</h2>
+            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-[0.26em] uppercase mb-3">{t("about.leadership")}</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-white tracking-[-0.02em]">{t("about.teamHeading")}</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((m) => (
-              <Card key={m.name} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white">
-                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-prime-blue/10 to-prime-gold/10">
-                  <img src={m.image} alt={m.name} loading="lazy" className={`w-full h-full object-cover ${m.position} transition-transform duration-700 group-hover:scale-105`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/80 via-prime-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute left-0 bottom-0 h-1 w-12 bg-prime-gold group-hover:w-full transition-all duration-500" />
+              <div key={m.name} className="group overflow-hidden border border-white/10 bg-white/[0.03] transition-colors duration-500 hover:border-prime-gold/30">
+                <div className="relative aspect-[4/5] overflow-hidden bg-prime-blue-deepest">
+                  <img src={m.image} alt={m.name} loading="lazy" className={`w-full h-full object-cover ${m.position} transition-transform duration-700 group-hover:scale-105`} style={{ filter: "grayscale(0.15) contrast(1.02)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-prime-blue-deepest/85 via-prime-blue-deepest/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute left-0 bottom-0 h-0.5 w-12 bg-prime-gold group-hover:w-full transition-all duration-500" />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="font-serif font-semibold text-prime-blue text-lg">{m.name}</h3>
+                <div className="p-6">
+                  <h3 className="font-serif font-semibold text-white text-lg">{m.name}</h3>
                   <p className="text-prime-gold text-sm font-semibold tracking-wide uppercase mb-3">{m.role}</p>
-                  <p className="text-sm text-gray-600 font-open-sans leading-relaxed">{m.bio}</p>
-                </CardContent>
-              </Card>
+                  <p className="text-sm text-white/55 font-open-sans leading-relaxed">{m.bio}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">{t("about.values")}</p>
-            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-prime-blue">{t("about.valuesHeading")}</h2>
+            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-[0.26em] uppercase mb-3">{t("about.values")}</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-white tracking-[-0.02em]">{t("about.valuesHeading")}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {values.map((v) => (
-              <Card key={v.title} className="border-0 shadow-md hover:shadow-xl transition-all">
+              <Card key={v.title} className="border border-white/10 bg-white/[0.03] hover:border-prime-gold/30 transition-colors">
                 <CardContent className="p-8 text-center">
-                  <div className="w-14 h-14 mx-auto rounded-xl bg-prime-gold/10 flex items-center justify-center mb-4">
+                  <div className="w-14 h-14 mx-auto rounded-sm bg-prime-gold/10 border border-prime-gold/20 flex items-center justify-center mb-4">
                     <v.icon className="w-7 h-7 text-prime-gold" />
                   </div>
-                  <h3 className="font-serif font-semibold text-prime-blue text-lg mb-2">{v.title}</h3>
-                  <p className="text-gray-600 font-open-sans text-sm">{v.desc}</p>
+                  <h3 className="font-serif font-semibold text-white text-lg mb-2">{v.title}</h3>
+                  <p className="text-white/55 font-open-sans text-sm">{v.desc}</p>
                 </CardContent>
               </Card>
             ))}

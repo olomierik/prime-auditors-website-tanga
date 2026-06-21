@@ -92,14 +92,14 @@ const InvestorDashboard = () => {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-prime-light-grey py-8 px-4">
+    <div className="min-h-screen bg-prime-blue-deepest py-8 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl lg:text-3xl font-montserrat font-bold text-prime-blue">Investor Portal</h1>
-            <p className="text-sm text-gray-600">{user.email}</p>
+            <h1 className="text-2xl lg:text-3xl font-serif font-bold text-white">Investor Portal</h1>
+            <p className="text-sm text-white/60">{user.email}</p>
           </div>
-          <Button variant="outline" onClick={signOut}><LogOut className="w-4 h-4 mr-2" />Sign Out</Button>
+          <Button variant="outline" onClick={signOut} className="border-white/20 text-white hover:bg-white/5"><LogOut className="w-4 h-4 mr-2" />Sign Out</Button>
         </div>
 
         <Tabs defaultValue="application">
@@ -111,7 +111,7 @@ const InvestorDashboard = () => {
 
           <TabsContent value="application">
             <Card>
-              <CardHeader><CardTitle>Application Details {app?.status && <span className="text-sm font-normal text-gray-500 ml-2">Status: {app.status}</span>}</CardTitle></CardHeader>
+              <CardHeader><CardTitle>Application Details {app?.status && <span className="text-sm font-normal text-white/50 ml-2">Status: {app.status}</span>}</CardTitle></CardHeader>
               <CardContent>
                 <form onSubmit={save} className="grid md:grid-cols-2 gap-4">
                   <div><Label>Full Name *</Label><Input required value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} /></div>
@@ -135,21 +135,21 @@ const InvestorDashboard = () => {
             <Card>
               <CardHeader><CardTitle>Upload Documents</CardTitle></CardHeader>
               <CardContent className="space-y-4">
-                <label className="flex items-center justify-center gap-2 border-2 border-dashed rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+                <label className="flex items-center justify-center gap-2 border-2 border-dashed border-white/20 rounded-lg p-6 cursor-pointer text-white/70 hover:bg-white/5 hover:border-prime-gold/40 transition-colors">
                   {uploading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
                   <span>{uploading ? "Uploading..." : "Click to upload (PDF, images, docs)"}</span>
                   <input type="file" multiple className="hidden" onChange={onUpload} disabled={uploading} />
                 </label>
                 <div className="space-y-2">
                   {files.map((f) => (
-                    <div key={f.id} className="flex items-center justify-between border rounded-lg p-3">
-                      <button onClick={() => download(f)} className="flex items-center gap-2 text-sm text-prime-blue hover:underline">
+                    <div key={f.id} className="flex items-center justify-between border border-white/10 rounded-lg p-3">
+                      <button onClick={() => download(f)} className="flex items-center gap-2 text-sm text-prime-gold hover:underline">
                         <FileText className="w-4 h-4" />{f.file_name}
                       </button>
-                      <Button variant="ghost" size="icon" onClick={() => remove(f)}><Trash2 className="w-4 h-4 text-red-500" /></Button>
+                      <Button variant="ghost" size="icon" onClick={() => remove(f)}><Trash2 className="w-4 h-4 text-red-400" /></Button>
                     </div>
                   ))}
-                  {files.length === 0 && <p className="text-sm text-gray-500 text-center py-4">No documents yet.</p>}
+                  {files.length === 0 && <p className="text-sm text-white/50 text-center py-4">No documents yet.</p>}
                 </div>
               </CardContent>
             </Card>

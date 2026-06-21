@@ -60,36 +60,36 @@ const JoinUs = () => {
   return (
     <>
       <PageHero eyebrow={t("join.eyebrow")} title={t("join.title")} description={t("join.description")} image="/team-conference-2.jpg" />
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-prime-blue-deepest">
+        <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {benefits.map((b) => (
-              <Card key={b.title} className="border-0 shadow-md hover:shadow-xl transition-all">
+              <Card key={b.title} className="border border-white/10 bg-white/[0.03] hover:border-prime-gold/30 transition-colors">
                 <CardContent className="p-8 text-center">
-                  <div className="w-14 h-14 mx-auto rounded-xl bg-prime-gold/10 flex items-center justify-center mb-4">
+                  <div className="w-14 h-14 mx-auto rounded-sm bg-prime-gold/10 border border-prime-gold/20 flex items-center justify-center mb-4">
                     <b.icon className="w-7 h-7 text-prime-gold" />
                   </div>
-                  <h3 className="font-serif font-semibold text-prime-blue text-lg mb-2">{b.title}</h3>
-                  <p className="text-gray-600 font-open-sans text-sm">{b.desc}</p>
+                  <h3 className="font-serif font-semibold text-white text-lg mb-2">{b.title}</h3>
+                  <p className="text-white/55 font-open-sans text-sm">{b.desc}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="text-center mb-10">
-            <h2 className="text-2xl lg:text-3xl font-serif font-semibold text-prime-blue mb-3">{t("join.openPositions")}</h2>
-            <p className="text-gray-600 font-open-sans">{t("join.applyHint")}</p>
+            <h2 className="text-2xl lg:text-3xl font-serif font-semibold text-white mb-3 tracking-[-0.02em]">{t("join.openPositions")}</h2>
+            <p className="text-white/55 font-open-sans">{t("join.applyHint")}</p>
           </div>
 
           <div className="space-y-4 max-w-3xl mx-auto mb-12">
             {positions.map((p) => (
-              <Card key={p.title} className="border border-gray-100 shadow-sm hover:shadow-md transition-all">
+              <Card key={p.title} className="border border-white/10 bg-white/[0.03] hover:border-prime-gold/30 transition-colors">
                 <CardContent className="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div>
-                    <h3 className="font-serif font-semibold text-prime-blue">{p.title}</h3>
-                    <p className="text-sm text-gray-600 font-open-sans">{p.type} · {p.location}</p>
+                    <h3 className="font-serif font-semibold text-white">{p.title}</h3>
+                    <p className="text-sm text-white/55 font-open-sans">{p.type} · {p.location}</p>
                   </div>
-                  <Button onClick={() => { update("specialization", p.title); document.getElementById("application-form")?.scrollIntoView({ behavior: "smooth" }); }} className="bg-prime-blue hover:bg-prime-blue/90 text-white">
+                  <Button onClick={() => { update("specialization", p.title); document.getElementById("application-form")?.scrollIntoView({ behavior: "smooth" }); }} className="bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none">
                     {t("join.applyNow")}
                   </Button>
                 </CardContent>
@@ -97,9 +97,9 @@ const JoinUs = () => {
             ))}
           </div>
 
-          <div id="application-form" className="max-w-3xl mx-auto bg-white rounded-2xl border border-gray-100 shadow-xl p-6 sm:p-8">
-            <h3 className="text-2xl font-serif font-semibold text-prime-blue mb-2">{t("join.submit")}</h3>
-            <p className="text-gray-600 font-open-sans text-sm mb-6">{t("join.submitHint")}</p>
+          <div id="application-form" className="max-w-3xl mx-auto bg-white/[0.03] border border-white/10 p-6 sm:p-8">
+            <h3 className="text-2xl font-serif font-semibold text-white mb-2">{t("join.submit")}</h3>
+            <p className="text-white/55 font-open-sans text-sm mb-6">{t("join.submitHint")}</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <Input placeholder={t("join.fullName")} value={form.full_name} onChange={(e) => update("full_name", e.target.value)} />
@@ -110,7 +110,7 @@ const JoinUs = () => {
               <Input placeholder={t("join.experience")} value={form.experience} onChange={(e) => update("experience", e.target.value)} />
               <Input placeholder={t("join.qualifications")} value={form.qualifications} onChange={(e) => update("qualifications", e.target.value)} />
               <Textarea placeholder={t("join.coverLetter")} rows={5} value={form.cover_letter} onChange={(e) => update("cover_letter", e.target.value)} />
-              <Button type="submit" disabled={submitting} className="w-full bg-prime-gold hover:bg-prime-gold/90 text-prime-blue font-semibold">
+              <Button type="submit" disabled={submitting} className="w-full bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.12em] rounded-none">
                 {submitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />{t("join.submitting")}</> : <><Send className="mr-2 h-4 w-4" />{t("join.submitBtn")}</>}
               </Button>
             </form>

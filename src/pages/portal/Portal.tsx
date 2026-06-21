@@ -8,7 +8,7 @@ const Portal = () => {
   const { locale = "en" } = useParams();
   const { user, role, loading } = useAuth();
 
-  if (loading) return <div className="min-h-[60vh] flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-prime-blue" /></div>;
+  if (loading) return <div className="min-h-[60vh] flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-prime-gold" /></div>;
   if (!user) return <Navigate to={`/${locale}/auth`} replace />;
   return role === "admin" ? <AdminDashboard /> : <InvestorDashboard />;
 };

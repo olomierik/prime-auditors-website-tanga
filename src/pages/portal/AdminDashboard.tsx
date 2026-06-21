@@ -58,14 +58,14 @@ const AdminDashboard = () => {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-prime-light-grey py-8 px-4">
+    <div className="min-h-screen bg-prime-blue-deepest py-8 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl lg:text-3xl font-montserrat font-bold text-prime-blue">Admin Dashboard</h1>
-            <p className="text-sm text-gray-600">{investors.length} registered investors</p>
+            <h1 className="text-2xl lg:text-3xl font-serif font-bold text-white">Admin Dashboard</h1>
+            <p className="text-sm text-white/60">{investors.length} registered investors</p>
           </div>
-          <Button variant="outline" onClick={signOut}><LogOut className="w-4 h-4 mr-2" />Sign Out</Button>
+          <Button variant="outline" onClick={signOut} className="border-white/20 text-white hover:bg-white/5"><LogOut className="w-4 h-4 mr-2" />Sign Out</Button>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -74,18 +74,18 @@ const AdminDashboard = () => {
             <CardContent className="space-y-2 max-h-[700px] overflow-y-auto">
               {investors.map((inv) => (
                 <button key={inv.user_id} onClick={() => setSelected(inv)}
-                  className={`w-full text-left p-3 rounded-lg border transition ${selected?.user_id === inv.user_id ? "bg-prime-blue text-white border-prime-blue" : "hover:bg-gray-50"}`}>
+                  className={`w-full text-left p-3 rounded-lg border transition ${selected?.user_id === inv.user_id ? "bg-prime-gold/15 text-white border-prime-gold/50" : "border-white/10 text-white/80 hover:bg-white/5"}`}>
                   <div className="font-semibold text-sm">{inv.full_name}</div>
                   <div className="text-xs opacity-80">{inv.email}</div>
                   <div className="text-xs mt-1 opacity-70">{inv.country} • {inv.status}</div>
                 </button>
               ))}
-              {investors.length === 0 && <p className="text-sm text-gray-500 text-center py-4">No investors yet.</p>}
+              {investors.length === 0 && <p className="text-sm text-white/50 text-center py-4">No investors yet.</p>}
             </CardContent>
           </Card>
 
           <div className="lg:col-span-2 space-y-6">
-            {!selected && <Card><CardContent className="py-16 text-center text-gray-500">Select an investor to view details</CardContent></Card>}
+            {!selected && <Card><CardContent className="py-16 text-center text-white/50">Select an investor to view details</CardContent></Card>}
             {selected && (
               <>
                 <Card>
@@ -100,12 +100,12 @@ const AdminDashboard = () => {
                     </div>
                   </CardHeader>
                   <CardContent className="grid sm:grid-cols-2 gap-3 text-sm">
-                    <div><span className="text-gray-500">Email:</span> {selected.email}</div>
-                    <div><span className="text-gray-500">Phone:</span> {selected.phone || "—"}</div>
-                    <div><span className="text-gray-500">Country:</span> {selected.country || "—"}</div>
-                    <div><span className="text-gray-500">Sector:</span> {selected.sector || "—"}</div>
-                    <div className="sm:col-span-2"><span className="text-gray-500">Investment:</span> {selected.investment_size || "—"}</div>
-                    <div className="sm:col-span-2"><span className="text-gray-500">Description:</span><br />{selected.business_description || "—"}</div>
+                    <div><span className="text-white/50">Email:</span> {selected.email}</div>
+                    <div><span className="text-white/50">Phone:</span> {selected.phone || "—"}</div>
+                    <div><span className="text-white/50">Country:</span> {selected.country || "—"}</div>
+                    <div><span className="text-white/50">Sector:</span> {selected.sector || "—"}</div>
+                    <div className="sm:col-span-2"><span className="text-white/50">Investment:</span> {selected.investment_size || "—"}</div>
+                    <div className="sm:col-span-2"><span className="text-white/50">Description:</span><br />{selected.business_description || "—"}</div>
                   </CardContent>
                 </Card>
 
@@ -113,11 +113,11 @@ const AdminDashboard = () => {
                   <CardHeader><CardTitle className="flex items-center gap-2"><FileText className="w-5 h-5" />Documents ({files.length})</CardTitle></CardHeader>
                   <CardContent className="space-y-2">
                     {files.map((f) => (
-                      <button key={f.id} onClick={() => download(f)} className="flex items-center gap-2 text-sm text-prime-blue hover:underline border rounded p-2 w-full">
+                      <button key={f.id} onClick={() => download(f)} className="flex items-center gap-2 text-sm text-prime-gold hover:underline border border-white/10 rounded p-2 w-full">
                         <FileText className="w-4 h-4" />{f.file_name}
                       </button>
                     ))}
-                    {files.length === 0 && <p className="text-sm text-gray-500">No documents uploaded.</p>}
+                    {files.length === 0 && <p className="text-sm text-white/50">No documents uploaded.</p>}
                   </CardContent>
                 </Card>
 

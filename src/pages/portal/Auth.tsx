@@ -77,20 +77,20 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-prime-light-grey">
-      <Card className="w-full max-w-md shadow-xl">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-prime-blue-deepest">
+      <Card className="w-full max-w-md border-white/10 bg-white/[0.03] shadow-xl">
         <CardHeader>
-          <CardTitle className="text-2xl font-montserrat text-prime-blue text-center">
+          <CardTitle className="text-2xl font-serif text-white text-center">
             {mode === "signin" ? "Investor Sign In" : "Create Investor Account"}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button onClick={handleGoogle} disabled={loading} variant="outline" className="w-full">
+          <Button onClick={handleGoogle} disabled={loading} variant="outline" className="w-full border-white/20 text-white hover:bg-white/5 rounded-none">
             Continue with Google
           </Button>
-          <div className="relative text-center text-xs text-gray-500">
-            <span className="bg-white px-2 relative z-10">or</span>
-            <div className="absolute inset-x-0 top-1/2 border-t" />
+          <div className="relative text-center text-xs text-white/50">
+            <span className="bg-prime-blue-deepest px-2 relative z-10">or</span>
+            <div className="absolute inset-x-0 top-1/2 border-t border-white/10" />
           </div>
           <form onSubmit={handleEmail} className="space-y-3">
             {mode === "signup" && (
@@ -107,18 +107,18 @@ const Auth = () => {
               <Label htmlFor="pw">Password</Label>
               <Input id="pw" type="password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
-            <Button type="submit" disabled={loading} className="w-full bg-prime-blue hover:bg-prime-blue/90">
+            <Button type="submit" disabled={loading} className="w-full bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold uppercase tracking-[0.1em] rounded-none">
               {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
               {mode === "signin" ? "Sign In" : "Sign Up"}
             </Button>
           </form>
-          <p className="text-center text-sm">
+          <p className="text-center text-sm text-white/60">
             {mode === "signin" ? "No account?" : "Have an account?"}{" "}
             <button onClick={() => setMode(mode === "signin" ? "signup" : "signin")} className="text-prime-gold font-semibold">
               {mode === "signin" ? "Sign up" : "Sign in"}
             </button>
           </p>
-          <p className="text-center text-xs text-gray-500">
+          <p className="text-center text-xs text-white/50">
             <Link to={`/${locale}`}>← Back to website</Link>
           </p>
         </CardContent>

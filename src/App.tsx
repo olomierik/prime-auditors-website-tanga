@@ -55,7 +55,7 @@ const Layout = () => {
   }, [locale]);
 
   return (
-    <div className="flex min-h-screen flex-col font-inter">
+    <div className="dark flex min-h-screen flex-col bg-prime-blue-deepest font-open-sans text-white">
       <ScrollProgress />
       {/* Accessibility: skip navigation */}
       <a
