@@ -6,6 +6,7 @@ import LedgerNav from "@/components/ledger/LedgerNav";
 import LedgerHero from "@/components/ledger/LedgerHero";
 import LedgerMarquee from "@/components/ledger/LedgerMarquee";
 import LedgerServices from "@/components/ledger/LedgerServices";
+import LedgerBento from "@/components/ledger/LedgerBento";
 import LedgerPractice from "@/components/ledger/LedgerPractice";
 import LedgerStatement from "@/components/ledger/LedgerStatement";
 import LedgerContact from "@/components/ledger/LedgerContact";
@@ -30,6 +31,7 @@ const Index = () => {
         <LedgerHero />
         <LedgerMarquee />
         <LedgerServices />
+        <LedgerBento />
         <LedgerPractice />
         <LedgerStatement />
         <LedgerContact />
