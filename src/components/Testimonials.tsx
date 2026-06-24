@@ -26,13 +26,13 @@ const Testimonials = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase
+    (supabase as any)
       .from("testimonials")
       .select("id, quote, name, role, initials, country_flag, rating")
       .order("sort_order", { ascending: true })
-      .then(({ data }) => {
+      .then(({ data }: { data: Testimonial[] | null }) => {
         if (data && data.length > 0) {
-          setItems(data as Testimonial[]);
+          setItems(data);
         } else {
           // Use i18n static content as fallback
           setItems([

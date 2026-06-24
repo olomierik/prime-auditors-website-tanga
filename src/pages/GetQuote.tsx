@@ -77,7 +77,7 @@ const GetQuote = () => {
   useEffect(() => {
     if (step === 4 && !quoteSaved && selectedStructure) {
       setQuoteSaved(true);
-      supabase.from("quotes").insert([{
+      (supabase as any).from("quotes").insert([{
         structure: selectedStructure.value,
         structure_price_label: selectedStructure.priceLabel,
         sector: selectedSector,
