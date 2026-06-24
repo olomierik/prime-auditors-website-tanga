@@ -12,12 +12,12 @@ const PageHero = ({ eyebrow, title, description, image = "/hero-bg.jpg" }: PageH
   const { locale } = useParams();
 
   return (
-    <section className="relative min-h-[42vh] sm:min-h-[48vh] flex items-center bg-prime-blue-deepest">
+    <section className="relative min-h-[42vh] sm:min-h-[48vh] flex items-center bg-prime-blue">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <img src={image} alt="" className="w-full h-full object-cover scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-r from-prime-blue-deepest/95 via-prime-blue-deepest/85 to-prime-blue-deepest/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-prime-blue-deepest/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-prime-blue/95 via-prime-blue/85 to-prime-blue/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/50 to-transparent" />
       </div>
 
       {/* Dot pattern */}
@@ -57,6 +57,9 @@ const PageHero = ({ eyebrow, title, description, image = "/hero-bg.jpg" }: PageH
           )}
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
     </section>
   );
 };

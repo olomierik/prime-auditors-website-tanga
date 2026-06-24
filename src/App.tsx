@@ -1,49 +1,20 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams, useOutlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import CookieConsent from "@/components/CookieConsent";
 import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "@/components/ui/sonner";
-import { AnimatePresence, motion } from "framer-motion";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import AboutUs from "./pages/AboutUs";
-import ForeignInvestors from "./pages/ForeignInvestors";
-import GetQuote from "./pages/GetQuote";
 import News from "./pages/News";
 import NewsArticle from "./pages/NewsArticle";
-import JoinUs from "./pages/JoinUs";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import ScrollToTop from "./components/ScrollToTop";
-import Portal from "./pages/portal/Portal";
-import PortalAuth from "./pages/portal/Auth";
-import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
-
-const pageVariants = {
-  initial: { opacity: 0, y: 10 },
-  enter:   { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" as const } },
-};
-
-const PageOutlet = () => {
-  const element = useOutlet();
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={element?.key ?? "page"}
-        variants={pageVariants}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-      >
-        {element}
-      </motion.div>
-    </AnimatePresence>
-  );
-};
 
 const Layout = () => {
   const { locale } = useParams();
@@ -55,7 +26,7 @@ const Layout = () => {
   }, [locale]);
 
   return (
-    <div className="dark flex min-h-screen flex-col bg-prime-blue-deepest font-open-sans text-white">
+    <div className="flex min-h-screen flex-col bg-white font-open-sans text-foreground">
       <ScrollProgress />
       {/* Accessibility: skip navigation */}
       <a
@@ -66,7 +37,7 @@ const Layout = () => {
       </a>
       <Header />
       <main id="main-content" className="flex-grow">
-        <PageOutlet />
+        <Outlet />
       </main>
       <Footer />
       <FloatingContact />
@@ -79,29 +50,19 @@ const Layout = () => {
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <AuthProvider>
-      <Routes>
-        <Route path="/:locale">
-          {/* Homepage — self-contained "Ledger" editorial design (its own nav + footer) */}
-          <Route index element={<Index />} />
-          {/* All other pages keep the shared Header/Footer chrome */}
-          <Route element={<Layout />}>
-            <Route path="services" element={<Services />} />
-            <Route path="about" element={<AboutUs />} />
-            <Route path="foreign-investors" element={<ForeignInvestors />} />
-            <Route path="get-quote" element={<GetQuote />} />
-            <Route path="news" element={<News />} />
-            <Route path="news/:id" element={<NewsArticle />} />
-            <Route path="join" element={<JoinUs />} />
-            <Route path="portal" element={<Portal />} />
-            <Route path="auth" element={<PortalAuth />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Route>
-        <Route path="/" element={<Navigate to="/en" replace />} />
-        <Route path="*" element={<Navigate to="/en" replace />} />
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path="/:locale" element={<Layout />}>
+        <Route index element={<Index />} />
+        <Route path="services" element={<Services />} />
+        <Route path="about" element={<AboutUs />} />
+        <Route path="news" element={<News />} />
+        <Route path="news/:id" element={<NewsArticle />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+      <Route path="/" element={<Navigate to="/en" replace />} />
+      <Route path="*" element={<Navigate to="/en" replace />} />
+    </Routes>
   </BrowserRouter>
 );
 

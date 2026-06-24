@@ -9,13 +9,11 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   const quickLinks = [
-    { to: `/${locale}/`,                 label: t('nav.home') },
-    { to: `/${locale}/services`,         label: t('nav.services') },
-    { to: `/${locale}/about`,            label: t('nav.about') },
-    { to: `/${locale}/foreign-investors`,label: t('nav.investors') },
-    { to: `/${locale}/news`,             label: t('nav.news') },
-    { to: `/${locale}/join`,             label: t('nav.join') },
-    { to: `/${locale}/portal`,           label: t('nav.portal') },
+    { to: `/${locale}/`,         label: t('nav.home') },
+    { to: `/${locale}/services`, label: t('nav.services') },
+    { to: `/${locale}/about`,    label: t('nav.about') },
+    { to: `/${locale}/news`,     label: t('nav.news') },
+    { to: `/${locale}/contact`,  label: t('nav.contact') },
   ];
 
   const serviceLinks = [

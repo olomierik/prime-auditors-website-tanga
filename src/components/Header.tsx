@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header: React.FC = () => {
@@ -10,151 +10,87 @@ const Header: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => { setMobileMenuOpen(false); }, [location.pathname]);
 
   const isActive = (path: string) =>
     location.pathname === `/${locale}${path}` || location.pathname === `/${locale}${path}/`;
 
-  const serviceLinks = [
-    { href: `/${locale}/services#audit`,        label: t('service.audit') },
-    { href: `/${locale}/services#tax`,          label: t('service.tax') },
-    { href: `/${locale}/services#registration`, label: t('service.registration') },
-    { href: `/${locale}/services#accounting`,   label: t('service.accounting') },
-    { href: `/${locale}/services#holding`,      label: t('service.holding') },
-    { href: `/${locale}/services#corporate`,    label: t('service.corporate') },
-    { href: `/${locale}/foreign-investors`,     label: "Foreign Investor Services" },
-  ];
-
   const navItems = [
-    { href: `/${locale}/`, label: t('nav.home'), exact: true },
-    { href: `/${locale}/about`, label: t('nav.about') },
-    { href: `/${locale}/news`, label: t('nav.news') },
-    { href: `/${locale}/join`, label: t('nav.join') },
-    { href: `/${locale}/portal`, label: t('nav.portal') },
+    { href: `/${locale}/`, label: t('nav.home'), match: '/' },
+    { href: `/${locale}/services`, label: t('nav.services'), match: '/services' },
+    { href: `/${locale}/about`, label: t('nav.about'), match: '/about' },
+    { href: `/${locale}/news`, label: t('nav.news'), match: '/news' },
+    { href: `/${locale}/contact`, label: t('nav.contact'), match: '/contact' },
   ];
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur-[14px] transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-prime-blue-deepest/90 border-prime-gold/20 shadow-[0_4px_24px_rgba(0,0,0,0.45)]'
-          : 'bg-prime-blue-deepest/80 border-prime-gold/15'
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(15,42,74,0.08)] border-b border-gray-100'
+          : 'bg-white border-b border-gray-100'
       }`}
     >
-      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
-        <div className="flex justify-between h-[70px] lg:h-[84px] items-center">
+      {/* Top gold hairline */}
+      <div className="h-[3px] bg-gradient-to-r from-prime-gold via-prime-gold/60 to-transparent" />
 
-          {/* Logo — editorial monogram + serif wordmark */}
-          <Link to={`/${locale}/`} className="flex items-center gap-4 flex-shrink-0">
-            <div className="flex h-[38px] w-[38px] items-center justify-center border-[1.5px] border-prime-gold font-serif text-[18px] font-bold text-prime-gold">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-[68px] lg:h-[80px] items-center">
+
+          {/* Logo */}
+          <Link to={`/${locale}/`} className="flex items-center gap-3 group flex-shrink-0">
+            <div className="h-10 w-10 rounded-md bg-prime-blue flex items-center justify-center font-serif font-bold text-prime-gold text-lg transition-transform duration-200 group-hover:scale-105">
               Pa
             </div>
-            <div className="leading-none">
-              <div className="font-serif text-[16px] font-semibold tracking-[0.14em] text-white">
-                PRIME&nbsp;AUDITORS
-              </div>
-              <div className="mt-[5px] font-montserrat text-[8px] font-medium uppercase tracking-[0.34em] text-white/40 hidden sm:block">
+            <div className="flex flex-col leading-none">
+              <span className="font-serif font-bold text-prime-blue text-[18px] tracking-tight">
+                Prime Auditors
+              </span>
+              <span className="text-[9px] text-prime-gold font-montserrat font-semibold tracking-[0.18em] uppercase mt-1 hidden sm:block">
                 Certified Public Accountants
-              </div>
+              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-
-            {/* Home */}
-            <Link
-              to={`/${locale}/`}
-              className={`relative px-3.5 py-2 text-[13px] font-montserrat font-medium transition-colors rounded-sm group ${
-                isActive('/') ? 'text-prime-gold' : 'text-white/75 hover:text-white'
-              }`}
-            >
-              {t('nav.home')}
-              <span className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-prime-gold rounded-full transition-all duration-200 ${isActive('/') ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}`} />
-            </Link>
-
-            {/* Services dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button
-                className={`relative px-3.5 py-2 text-[13px] font-montserrat font-medium transition-colors rounded-sm flex items-center gap-1 group ${
-                  isActive('/services') ? 'text-prime-gold' : 'text-white/75 hover:text-white'
-                }`}
-              >
-                {t('nav.services')}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
-                <span className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-prime-gold rounded-full transition-all duration-200 ${isActive('/services') ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}`} />
-              </button>
-
-              {/* Dropdown */}
-              <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
-                <div className="bg-white rounded-xl shadow-[0_16px_48px_rgba(0,0,0,0.18)] border border-gray-100 py-2 w-56 overflow-hidden">
-                  {/* Gold top accent */}
-                  <div className="h-0.5 bg-gradient-to-r from-prime-gold to-prime-gold/30 mx-4 mb-2 rounded-full" />
-                  {serviceLinks.map((s) => (
-                    <Link
-                      key={s.label}
-                      to={s.href}
-                      className="flex items-center gap-2 px-4 py-2.5 text-[13px] font-open-sans text-gray-700 hover:text-prime-blue hover:bg-prime-light-grey transition-colors group"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-prime-gold/50 group-hover:bg-prime-gold transition-colors" />
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Foreign Investors highlight */}
-            <Link
-              to={`/${locale}/foreign-investors`}
-              className={`relative px-3.5 py-2 text-[13px] font-montserrat font-medium transition-colors rounded-sm group ${
-                isActive('/foreign-investors') ? 'text-prime-gold' : 'text-white/75 hover:text-white'
-              }`}
-            >
-              {t('nav.investors')}
-              <span className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-prime-gold rounded-full transition-all duration-200 ${isActive('/foreign-investors') ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}`} />
-            </Link>
-
-            {navItems.slice(1).map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`relative px-3.5 py-2 text-[13px] font-montserrat font-medium transition-colors rounded-sm group ${
-                  isActive(item.href.replace(`/${locale}`, '')) ? 'text-prime-gold' : 'text-white/75 hover:text-white'
-                }`}
-              >
-                {item.label}
-                <span className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-prime-gold rounded-full transition-all duration-200 ${isActive(item.href.replace(`/${locale}`, '')) ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}`} />
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = item.match === '/' ? isActive('/') : isActive(item.match);
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`relative px-4 py-2 text-[13.5px] font-montserrat font-medium transition-colors group ${
+                    active ? 'text-prime-blue' : 'text-gray-500 hover:text-prime-blue'
+                  }`}
+                >
+                  {item.label}
+                  <span className={`absolute bottom-0 left-4 right-4 h-[2px] bg-prime-gold rounded-full transition-all duration-200 ${active ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+255752401012"
-              className="flex items-center gap-2 text-[12px] text-white/60 hover:text-prime-gold transition-colors font-open-sans"
+              className="flex items-center gap-2 text-[12px] text-gray-500 hover:text-prime-gold transition-colors font-open-sans"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>+255 752 401 012</span>
             </a>
-            <div className="w-px h-5 bg-white/15" />
+            <div className="w-px h-5 bg-gray-200" />
             <LanguageSwitcher />
-            <Link to={`/${locale}/#contact`}>
-              <button className="ml-1 bg-prime-gold hover:bg-[#d4af26] text-prime-blue font-montserrat font-bold text-[12px] tracking-wide uppercase px-5 py-2.5 rounded-sm transition-all duration-200 shadow-[0_2px_12px_rgba(197,160,33,0.3)] hover:shadow-[0_4px_20px_rgba(197,160,33,0.45)] hover:-translate-y-px">
+            <Link to={`/${locale}/contact`}>
+              <button className="ml-1 bg-prime-gold hover:bg-prime-gold-bright text-prime-blue font-montserrat font-bold text-[12px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-all duration-200 shadow-[0_2px_12px_rgba(197,160,33,0.3)] hover:shadow-[0_4px_20px_rgba(197,160,33,0.45)] hover:-translate-y-px">
                 {t('nav.schedule')}
               </button>
             </Link>
@@ -165,7 +101,7 @@ const Header: React.FC = () => {
             <LanguageSwitcher />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg text-prime-blue hover:bg-prime-light-grey transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -175,35 +111,27 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-[600px]' : 'max-h-0'}`}>
-        <div className="bg-prime-blue/98 border-t border-white/8 px-4 pb-6 pt-3 space-y-1">
-          {[
-            { href: `/${locale}/`, label: t('nav.home') },
-            { href: `/${locale}/services`, label: t('nav.services') },
-            { href: `/${locale}/about`, label: t('nav.about') },
-            { href: `/${locale}/foreign-investors`, label: t('nav.investors') },
-            { href: `/${locale}/news`, label: t('nav.news') },
-            { href: `/${locale}/join`, label: t('nav.join') },
-            { href: `/${locale}/portal`, label: t('nav.portal') },
-          ].map((item) => (
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-[480px]' : 'max-h-0'}`}>
+        <div className="bg-white border-t border-gray-100 px-4 pb-6 pt-3 space-y-1">
+          {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
-              className="flex items-center justify-between px-4 py-3.5 rounded-xl text-[14px] font-montserrat font-medium text-white/80 hover:text-white hover:bg-white/[0.08] transition-all"
+              className="flex items-center justify-between px-4 py-3.5 rounded-xl text-[14px] font-montserrat font-medium text-prime-blue hover:bg-prime-light-grey transition-all"
             >
               {item.label}
-              <span className="w-1.5 h-1.5 rounded-full bg-prime-gold/40" />
+              <span className="w-1.5 h-1.5 rounded-full bg-prime-gold/50" />
             </Link>
           ))}
-          <div className="pt-4 border-t border-white/10 space-y-3">
+          <div className="pt-4 border-t border-gray-100 space-y-3">
             <a
               href="tel:+255752401012"
-              className="flex items-center gap-3 px-4 py-3 text-[13px] text-white/60 hover:text-prime-gold transition-colors"
+              className="flex items-center gap-3 px-4 py-3 text-[13px] text-gray-500 hover:text-prime-gold transition-colors"
             >
               <Phone className="w-4 h-4" />
               +255 752 401 012
             </a>
-            <Link to={`/${locale}/#contact`}>
+            <Link to={`/${locale}/contact`}>
               <button className="w-full bg-prime-gold text-prime-blue font-montserrat font-bold text-[13px] uppercase tracking-wide py-3.5 rounded-xl">
                 {t('nav.schedule')}
               </button>
