@@ -17,23 +17,23 @@ export default {
         },
         extend: {
             fontFamily: {
-                'montserrat': ['Montserrat', 'sans-serif'],
-                'open-sans': ['Open Sans', 'sans-serif'],
-                'inter': ['Inter', 'sans-serif'],
-                'serif': ['"Source Serif 4"', 'Georgia', 'serif'],
-                'source-serif': ['"Source Serif 4"', 'Georgia', 'serif'],
+                'montserrat': ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+                'open-sans': ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+                'inter': ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+                'serif': ['"Libre Baskerville"', 'Georgia', 'serif'],
+                'source-serif': ['"Libre Baskerville"', 'Georgia', 'serif'],
             },
             colors: {
-                // Custom Prime Auditors Brand Colors
-                'prime-blue': '#0f2a4a',
-                'prime-blue-deep': '#0a1e35',
-                'prime-blue-deepest': '#07161f',
-                'prime-footer': '#050f16',
-                'prime-gold': '#c5a021',
-                'prime-gold-bright': '#d4af26',
-                'prime-light-grey': '#f6f3f2',
-                'prime-off-white': '#fcf9f8',
-                'prime-border': '#dcd9d9',
+                // Prime Auditors — "Midnight Indigo" corporate palette
+                'prime-blue': '#141432',
+                'prime-blue-deep': '#0d0d24',
+                'prime-blue-deepest': '#0a0a1a',
+                'prime-footer': '#07071a',
+                'prime-gold': '#6366f1',
+                'prime-gold-bright': '#818cf8',
+                'prime-light-grey': '#eceaf5',
+                'prime-off-white': '#f6f5fb',
+                'prime-border': '#d6d6e0',
                 
                 // Shadcn colors
                 border: 'hsl(var(--border))',
