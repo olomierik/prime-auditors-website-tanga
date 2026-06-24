@@ -39,7 +39,6 @@ const Header: React.FC = () => {
     { href: `/${locale}/about`, label: t('nav.about') },
     { href: `/${locale}/news`, label: t('nav.news') },
     { href: `/${locale}/join`, label: t('nav.join') },
-    { href: `/${locale}/portal`, label: t('nav.portal') },
   ];
 
   return (
@@ -191,7 +190,6 @@ const Header: React.FC = () => {
             { href: `/${locale}/foreign-investors`, label: t('nav.investors') },
             { href: `/${locale}/news`, label: t('nav.news') },
             { href: `/${locale}/join`, label: t('nav.join') },
-            { href: `/${locale}/portal`, label: t('nav.portal') },
           ].map((item) => (
             <Link
               key={item.href}

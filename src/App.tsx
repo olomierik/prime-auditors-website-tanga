@@ -16,8 +16,6 @@ import NewsArticle from "./pages/NewsArticle";
 import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import Portal from "./pages/portal/Portal";
-import PortalAuth from "./pages/portal/Auth";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from "react";
 import i18n from "./i18n";
@@ -93,8 +91,6 @@ const App = () => (
             <Route path="news" element={<News />} />
             <Route path="news/:id" element={<NewsArticle />} />
             <Route path="join" element={<JoinUs />} />
-            <Route path="portal" element={<Portal />} />
-            <Route path="auth" element={<PortalAuth />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
