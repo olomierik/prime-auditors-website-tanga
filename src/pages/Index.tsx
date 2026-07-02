@@ -170,8 +170,8 @@ const WhyChooseUs = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/50 to-transparent" />
             </div>
             <div className="absolute -bottom-5 -right-5 bg-prime-blue text-white px-6 py-4 rounded-xl shadow-2xl">
-              <div className="text-3xl font-serif font-bold text-prime-gold leading-none">2014</div>
-              <div className="text-[10px] text-white/70 font-montserrat tracking-wide mt-1 uppercase">Founded in Tanga</div>
+              <div className="text-3xl font-serif font-bold text-prime-gold leading-none">2024</div>
+              <div className="text-[10px] text-white/70 font-montserrat tracking-wide mt-1 uppercase">{t("home.practice.founded")}</div>
             </div>
           </motion.div>
         </div>
