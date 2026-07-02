@@ -72,7 +72,7 @@ const FloatingContact: React.FC = () => {
         <Tooltip>
           <TooltipTrigger asChild>
             <a 
-              href="https://wa.me/255752401012?text=Hello%20Prime%20Auditors%2C%20I%20am%20interested%20in%20your%20foreign%20investor%20services."
+              href="https://wa.me/255752401012?text=Hello%20Prime%20Auditors%2C%20I%20am%20interested%20in%20your%20services."
               target="_blank" 
               rel="noopener noreferrer"
             >
@@ -84,7 +84,7 @@ const FloatingContact: React.FC = () => {
               </Button>
             </a>
           </TooltipTrigger>
-          <TooltipContent side="left">{t('floating.whatsapp')}</TooltipContent>
+          <TooltipContent side="left">{t('floating.whatsapp')} (24/7)</TooltipContent>
         </Tooltip>
 
         {/* WeChat */}
