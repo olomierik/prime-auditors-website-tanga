@@ -81,11 +81,12 @@ const Header: React.FC = () => {
           {/* Desktop actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+255752401012"
+              href="tel:+255798509683"
               className="flex items-center gap-2 text-[12px] text-gray-500 hover:text-prime-gold transition-colors font-open-sans"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>+255 752 401 012</span>
+              <span>+255 798 509 683</span>
+              <span className="text-[10px] text-prime-gold/80">(Office Hours)</span>
             </a>
             <div className="w-px h-5 bg-gray-200" />
             <LanguageSwitcher />
@@ -125,11 +126,12 @@ const Header: React.FC = () => {
           ))}
           <div className="pt-4 border-t border-gray-100 space-y-3">
             <a
-              href="tel:+255752401012"
+              href="tel:+255798509683"
               className="flex items-center gap-3 px-4 py-3 text-[13px] text-gray-500 hover:text-prime-gold transition-colors"
             >
               <Phone className="w-4 h-4" />
-              +255 752 401 012
+              +255 798 509 683
+              <span className="text-[10px] text-prime-gold/80">(Office Hours)</span>
             </a>
             <Link to={`/${locale}/contact`}>
               <button className="w-full bg-prime-gold text-prime-blue font-montserrat font-bold text-[13px] uppercase tracking-wide py-3.5 rounded-xl">

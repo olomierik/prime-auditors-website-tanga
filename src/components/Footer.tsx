@@ -120,7 +120,8 @@ const Footer: React.FC = () => {
             </h4>
             <div className="space-y-4">
               {[
-                { href: "tel:+255752401012", Icon: Phone, text: "+255 752 401 012" },
+                { href: "tel:+255798509683", Icon: Phone, text: "+255 798 509 683 (Office Hours)" },
+                { href: "tel:+255752401012", Icon: Phone, text: "+255 752 401 012 (24/7)" },
                 { href: "mailto:erick.olomi@primeauditors.co.tz", Icon: Mail, text: "erick.olomi@primeauditors.co.tz" },
               ].map(({ href, Icon, text }) => (
                 <a key={text} href={href} className="flex items-center gap-3 group">

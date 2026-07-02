@@ -12,9 +12,14 @@ const Contact = () => {
       Icon: MapPin,
       label: t("contact.address"),
       lines: ["P.O. Box 5667, Market Street", "Central Ward, Tanga, Tanzania"],
-      href: "https://maps.google.com/maps?q=Market+Street+Central+Ward+Tanga+Tanzania",
+      href: "https://www.google.com/maps/place/PRIME+AUDITORS/@-5.0712875,39.1006692,16z",
     },
-    { Icon: Phone, label: t("contact.phone"), lines: ["+255 752 401 012"], href: "tel:+255752401012" },
+    {
+      Icon: Phone,
+      label: t("contact.phone"),
+      lines: ["+255 798 509 683 (Office Hours)", "+255 752 401 012 (24/7)"],
+      href: "tel:+255798509683",
+    },
     { Icon: Mail, label: t("contact.email"), lines: ["info@primeauditors.co.tz"], href: "mailto:info@primeauditors.co.tz" },
   ];
 
@@ -109,7 +114,7 @@ const Contact = () => {
             <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-md h-64">
               <iframe
                 title="Prime Auditors location — Tanga, Tanzania"
-                src="https://maps.google.com/maps?q=Market+Street+Central+Ward+Tanga+Tanzania&output=embed&z=15"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15935!2d39.1006692!3d-5.0712875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1645faa7ad8cb5d%3A0x14db072dd373b726!2sPRIME%20AUDITORS!5e0!3m2!1sen!2stz!4v1"
                 className="w-full h-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

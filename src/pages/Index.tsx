@@ -170,8 +170,8 @@ const WhyChooseUs = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/50 to-transparent" />
             </div>
             <div className="absolute -bottom-5 -right-5 bg-prime-blue text-white px-6 py-4 rounded-xl shadow-2xl">
-              <div className="text-3xl font-serif font-bold text-prime-gold leading-none">2014</div>
-              <div className="text-[10px] text-white/70 font-montserrat tracking-wide mt-1 uppercase">Founded in Tanga</div>
+              <div className="text-3xl font-serif font-bold text-prime-gold leading-none">2024</div>
+              <div className="text-[10px] text-white/70 font-montserrat tracking-wide mt-1 uppercase">{t("home.practice.founded")}</div>
             </div>
           </motion.div>
         </div>
@@ -261,7 +261,7 @@ const ContactCTA = () => {
             </Link>
             <a href="tel:+255752401012">
               <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white hover:bg-white/10 text-white font-montserrat font-semibold text-sm uppercase tracking-wide px-8 py-4 rounded-md transition-all duration-200">
-                <Phone className="w-4 h-4" /> +255 752 401 012
+                <Phone className="w-4 h-4" /> +255 752 401 012 <span className="text-[10px] opacity-60 ml-1">(24/7)</span>
               </button>
             </a>
           </div>
