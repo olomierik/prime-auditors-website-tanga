@@ -12,9 +12,14 @@ const Contact = () => {
       Icon: MapPin,
       label: t("contact.address"),
       lines: ["P.O. Box 5667, Market Street", "Central Ward, Tanga, Tanzania"],
-      href: "https://maps.google.com/maps?q=Market+Street+Central+Ward+Tanga+Tanzania",
+      href: "https://www.google.com/maps/place/PRIME+AUDITORS/@-5.0712875,39.1006692,16z",
     },
-    { Icon: Phone, label: t("contact.phone"), lines: ["+255 752 401 012"], href: "tel:+255752401012" },
+    {
+      Icon: Phone,
+      label: t("contact.phone"),
+      lines: ["+255 798 509 683 (Office Hours)", "+255 752 401 012 (24/7)"],
+      href: "tel:+255798509683",
+    },
     { Icon: Mail, label: t("contact.email"), lines: ["info@primeauditors.co.tz"], href: "mailto:info@primeauditors.co.tz" },
   ];
 
