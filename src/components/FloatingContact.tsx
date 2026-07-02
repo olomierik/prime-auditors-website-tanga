@@ -65,7 +65,7 @@ const FloatingContact: React.FC = () => {
               </Button>
             </a>
           </TooltipTrigger>
-          <TooltipContent side="left">{t('floating.callUs')}</TooltipContent>
+          <TooltipContent side="left">{t('floating.callUs')} (24/7)</TooltipContent>
         </Tooltip>
 
         {/* WhatsApp */}
