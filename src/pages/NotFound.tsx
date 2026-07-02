@@ -41,7 +41,7 @@ const NotFound = () => {
         </div>
 
         <a href="tel:+255752401012" className="inline-flex items-center gap-2 mt-8 text-sm text-gray-400 hover:text-prime-gold transition-colors font-open-sans">
-          <Phone className="w-4 h-4" /> +255 752 401 012
+          <Phone className="w-4 h-4" /> +255 752 401 012 (24/7)
         </a>
       </div>
     </section>
