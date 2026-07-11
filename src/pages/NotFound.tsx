@@ -1,11 +1,22 @@
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Home, ArrowRight, Phone } from "lucide-react";
+import { useEffect } from "react";
 
 const NotFound = () => {
   const { t } = useTranslation();
   const { locale } = useParams();
   const loc = locale ?? "en";
+
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
 
   return (
     <section className="min-h-[80vh] flex items-center justify-center bg-prime-light-grey px-4 py-20">
