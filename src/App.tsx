@@ -58,7 +58,7 @@ const App = () => (
         <Route path="news" element={<News />} />
         <Route path="news/:id" element={<NewsArticle />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="join" element={<Navigate to="." replace />} />
+        <Route path="join" element={<NotFound />} />
         <Route path="*" element={<Navigate to="." replace />} />
       </Route>
       <Route path="/" element={<Navigate to="/en" replace />} />
