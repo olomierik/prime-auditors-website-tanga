@@ -61,7 +61,7 @@ const BookingForm = () => {
         `Phone: ${data.phone}\n` +
         `Company: ${data.company || '-'}\n\n` +
         `Message:\n${data.message}`;
-      window.location.href = `mailto:olomierik@gmail.com?subject=${encodeURIComponent(
+      window.location.href = `mailto:info@primeauditors.co.tz?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
 
