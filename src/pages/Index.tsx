@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowRight, ShieldCheck, Globe2, BarChart3, Users, CheckCircle2,
-  Phone, Star, Quote,
+  Star, Quote,
 } from "lucide-react";
 import ServicesGrid from "@/components/ServicesGrid";
 import Stats from "@/components/Stats";
@@ -259,11 +259,6 @@ const ContactCTA = () => {
                 {t("cta.cta1")} <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </Link>
-            <a href="tel:+255752401012">
-              <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white hover:bg-white/10 text-white font-montserrat font-semibold text-sm uppercase tracking-wide px-8 py-4 rounded-md transition-all duration-200">
-                <Phone className="w-4 h-4" /> +255 752 401 012 <span className="text-[10px] opacity-60 ml-1">(24/7)</span>
-              </button>
-            </a>
           </div>
         </motion.div>
       </div>
