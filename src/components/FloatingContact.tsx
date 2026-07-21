@@ -14,7 +14,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
-import wechatQrAsset from '@/assets/wechat-qr-code.jpeg.asset.json';
+const WECHAT_QR_URL = '/wechat-qr-code.jpeg';
 
 const FloatingContact: React.FC = () => {
   const { t } = useTranslation();
