@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import BookingForm from "@/components/BookingForm";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
-import wechatQrAsset from "@/assets/wechat-qr-code.jpeg.asset.json";
+const WECHAT_QR_URL = "/wechat-qr-code.jpeg";
 
 const Contact = () => {
   const { t } = useTranslation();
