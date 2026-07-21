@@ -91,7 +91,7 @@ const Contact = () => {
                 <div className="flex-shrink-0">
                   <div className="relative w-44 h-44 border-4 border-white rounded-2xl overflow-hidden shadow-lg bg-white">
                     <img
-                      src={wechatQrAsset.url}
+                      src={WECHAT_QR_URL}
                       alt="WeChat QR code for Prime Auditors"
                       className="w-full h-full object-contain"
                       loading="lazy"
