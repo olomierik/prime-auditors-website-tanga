@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { QRCodeSVG } from 'qrcode.react';
 import { Phone, MessageSquare, ArrowUp, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,6 +14,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
+import wechatQrAsset from '@/assets/wechat-qr-code.jpeg.asset.json';
 
 const FloatingContact: React.FC = () => {
   const { t } = useTranslation();
@@ -56,7 +56,7 @@ const FloatingContact: React.FC = () => {
         {/* Call Us */}
         <Tooltip>
           <TooltipTrigger asChild>
-            <a href="tel:+255752401012">
+            <a href="tel:+255798509683">
               <Button
                 size="icon"
                 className="w-12 h-12 rounded-full bg-prime-blue text-white shadow-2xl hover:scale-110 transition-transform"
@@ -65,7 +65,7 @@ const FloatingContact: React.FC = () => {
               </Button>
             </a>
           </TooltipTrigger>
-          <TooltipContent side="left">{t('floating.callUs')} (24/7)</TooltipContent>
+          <TooltipContent side="left">{t('floating.callUs')} (Office Hours)</TooltipContent>
         </Tooltip>
 
         {/* WhatsApp */}
@@ -84,7 +84,7 @@ const FloatingContact: React.FC = () => {
               </Button>
             </a>
           </TooltipTrigger>
-          <TooltipContent side="left">{t('floating.whatsapp')} (24/7)</TooltipContent>
+          <TooltipContent side="left">{t('floating.whatsapp')} +255 752 401 012</TooltipContent>
         </Tooltip>
 
         {/* WeChat */}
@@ -98,7 +98,7 @@ const FloatingContact: React.FC = () => {
               <MessageSquare className="w-6 h-6" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="left">{t('floating.wechat')}</TooltipContent>
+          <TooltipContent side="left">{t('floating.wechat')} +255 752 401 012</TooltipContent>
         </Tooltip>
       </TooltipProvider>
 
@@ -111,17 +111,18 @@ const FloatingContact: React.FC = () => {
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center gap-6">
-            <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl flex items-center justify-center p-3 bg-white shadow-xl">
-              <QRCodeSVG
-                value="weixin://contacts/profile/PrimeAuditors"
-                size={220}
-                level="H"
-                includeMargin={false}
+            <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl flex items-center justify-center p-3 bg-white shadow-xl overflow-hidden">
+              <img
+                src={wechatQrAsset.url}
+                alt="WeChat QR code for Prime Auditors"
+                className="w-full h-full object-contain"
+                loading="lazy"
               />
             </div>
             <div className="text-center">
               <p className="text-gray-600 font-open-sans">{t('floating.wechatScan')}</p>
               <p className="text-prime-blue font-bold mt-2">{t('floating.wechatId')}</p>
+              <p className="text-sm text-gray-500 mt-1">WhatsApp / WeChat: +255 752 401 012</p>
             </div>
             <Button 
               onClick={() => setShowWeChatModal(false)}
