@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import BookingForm from "@/components/BookingForm";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+const WECHAT_QR_URL = "/wechat-qr-code.jpeg";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -17,7 +18,10 @@ const Contact = () => {
     {
       Icon: Phone,
       label: t("contact.phone"),
-      lines: ["+255 798 509 683 (Office Hours)", "+255 752 401 012 (24/7)"],
+      lines: [
+        "+255 798 509 683 — " + t("contact.officeHours"),
+        "+255 752 401 012 — " + t("contact.available24_7"),
+      ],
       href: "tel:+255798509683",
     },
     { Icon: Mail, label: t("contact.email"), lines: ["info@primeauditors.co.tz"], href: "mailto:info@primeauditors.co.tz" },
@@ -75,6 +79,43 @@ const Contact = () => {
                   </div>
                 </a>
               ))}
+            </div>
+
+            {/* WhatsApp / WeChat card */}
+            <div className="bg-prime-light-grey rounded-2xl p-6 border border-gray-100">
+              <h4 className="font-montserrat font-semibold text-sm text-prime-blue mb-4 flex items-center gap-2">
+                <span className="w-4 h-0.5 bg-prime-gold rounded-full" />
+                {t("contact.connectWithUs")}
+              </h4>
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="flex-shrink-0">
+                  <div className="relative w-44 h-44 border-4 border-white rounded-2xl overflow-hidden shadow-lg bg-white">
+                    <img
+                      src={WECHAT_QR_URL}
+                      alt="WeChat QR code for Prime Auditors"
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="text-center text-xs text-gray-500 mt-2 font-open-sans">{t("contact.scanWechat")}</p>
+                </div>
+                <div className="space-y-4 flex-1">
+                  <div>
+                    <div className="text-sm font-semibold text-prime-blue font-montserrat">{t("contact.wechatNumber")}</div>
+                    <div className="text-lg font-bold text-prime-blue">+255 752 401 012</div>
+                    <p className="text-xs text-gray-500 font-open-sans mt-1">{t("contact.wechatHint")}</p>
+                  </div>
+                  <a
+                    href="https://wa.me/255752401012?text=Hello%20Prime%20Auditors%2C%20I%20am%20interested%20in%20your%20services."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    {t("contact.whatsappLink")}
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Hours */}
