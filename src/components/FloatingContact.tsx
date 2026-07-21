@@ -113,7 +113,7 @@ const FloatingContact: React.FC = () => {
           <div className="flex flex-col items-center gap-6">
             <div className="relative w-64 h-64 border-4 border-prime-gold/20 rounded-2xl flex items-center justify-center p-3 bg-white shadow-xl overflow-hidden">
               <img
-                src={wechatQrAsset.url}
+                src={WECHAT_QR_URL}
                 alt="WeChat QR code for Prime Auditors"
                 className="w-full h-full object-contain"
                 loading="lazy"
