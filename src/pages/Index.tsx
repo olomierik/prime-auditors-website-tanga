@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import ServicesGrid from "@/components/ServicesGrid";
 import Stats from "@/components/Stats";
+import TrustedBy from "@/components/TrustedBy";
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 const Hero = () => {
