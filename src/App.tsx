@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet } from "react
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
+import FloatingTrustedBy from "@/components/FloatingTrustedBy";
 import CookieConsent from "@/components/CookieConsent";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "./components/ScrollToTop";
@@ -41,6 +42,7 @@ const Layout = () => {
       </main>
       <Footer />
       <FloatingContact />
+      <FloatingTrustedBy />
       <CookieConsent />
       <Toaster />
     </div>
