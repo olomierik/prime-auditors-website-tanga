@@ -271,6 +271,7 @@ const ContactCTA = () => {
 const Index = () => (
   <>
     <Hero />
+    <TrustedBy />
     <ServicesGrid />
     <WhyChooseUs />
     <Stats />
