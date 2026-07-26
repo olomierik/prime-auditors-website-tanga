@@ -3,8 +3,8 @@ import { Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
 const NAMESPACE = "primeauditors-xyz";
-const KEY = "visits";
-const SESSION_FLAG = "pa-visit-counted";
+const KEY = "visits-2026-07-26";
+const SESSION_FLAG = "pa-visit-counted-2026-07-26";
 
 const VisitorCounter = () => {
   const [count, setCount] = useState<number | null>(null);
@@ -27,28 +27,20 @@ const VisitorCounter = () => {
   }, []);
 
   return (
-    <section className="bg-prime-blue py-12 sm:py-14 border-y-2 border-prime-gold/40">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 text-center sm:text-left"
-        >
-          <div className="w-16 h-16 rounded-full bg-prime-gold flex items-center justify-center flex-shrink-0 shadow-lg">
-            <Eye className="w-7 h-7 text-prime-blue" />
-          </div>
-          <div>
-            <div className="text-xs sm:text-sm font-montserrat font-semibold text-prime-gold uppercase tracking-[0.25em] mb-2">
-              Visitors to Prime Auditors
-            </div>
-            <div className="text-5xl sm:text-6xl font-serif font-bold text-white tabular-nums leading-none">
-              {count === null ? "…" : count.toLocaleString()}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="inline-flex items-center gap-2 bg-prime-blue border border-prime-gold/40 rounded-full px-3 py-1.5 shadow-sm"
+    >
+      <Eye className="w-3.5 h-3.5 text-prime-gold" />
+      <span className="text-[10px] font-montserrat font-semibold text-prime-gold uppercase tracking-[0.15em]">
+        Visitors
+      </span>
+      <span className="text-xs font-semibold text-white tabular-nums">
+        {count === null ? "…" : count.toLocaleString()}
+      </span>
+    </motion.div>
   );
 };
 

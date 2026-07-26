@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import ServicesGrid from "@/components/ServicesGrid";
 import Stats from "@/components/Stats";
-import VisitorCounter from "@/components/VisitorCounter";
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 const Hero = () => {
@@ -271,7 +270,6 @@ const ContactCTA = () => {
 const Index = () => (
   <>
     <Hero />
-    <VisitorCounter />
     <ServicesGrid />
     <WhyChooseUs />
     <Stats />

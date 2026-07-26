@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -164,6 +165,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex items-center gap-4">
               <img src="/nbaa-certificate.jpg" alt="NBAA Certified Public Accountants — Registration No. PF510" className="h-7 object-contain opacity-40 hover:opacity-70 transition-opacity" />
+              <VisitorCounter />
             </div>
           </div>
         </div>
