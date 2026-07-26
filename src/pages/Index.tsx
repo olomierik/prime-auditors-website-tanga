@@ -271,10 +271,10 @@ const ContactCTA = () => {
 const Index = () => (
   <>
     <Hero />
+    <VisitorCounter />
     <ServicesGrid />
     <WhyChooseUs />
     <Stats />
-    <VisitorCounter />
     <Testimonials />
     <ContactCTA />
   </>
