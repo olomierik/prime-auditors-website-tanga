@@ -164,6 +164,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex items-center gap-4">
               <img src="/nbaa-certificate.jpg" alt="NBAA Certified Public Accountants — Registration No. PF510" className="h-7 object-contain opacity-40 hover:opacity-70 transition-opacity" />
+              <VisitorCounter />
             </div>
           </div>
         </div>
