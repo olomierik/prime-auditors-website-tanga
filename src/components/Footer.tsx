@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
