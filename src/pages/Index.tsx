@@ -270,7 +270,6 @@ const ContactCTA = () => {
 const Index = () => (
   <>
     <Hero />
-    <VisitorCounter />
     <ServicesGrid />
     <WhyChooseUs />
     <Stats />
