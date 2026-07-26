@@ -27,23 +27,22 @@ const VisitorCounter = () => {
   }, []);
 
   return (
-    <section className="bg-white py-10 border-t border-gray-100">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-prime-blue py-12 sm:py-14 border-y-2 border-prime-gold/40">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 bg-prime-blue/5 border border-prime-blue/10 rounded-xl px-6 py-5"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 text-center sm:text-left"
         >
-          <div className="w-12 h-12 rounded-full bg-prime-gold/15 flex items-center justify-center flex-shrink-0">
-            <Eye className="w-5 h-5 text-prime-gold" />
+          <div className="w-16 h-16 rounded-full bg-prime-gold flex items-center justify-center flex-shrink-0 shadow-lg">
+            <Eye className="w-7 h-7 text-prime-blue" />
           </div>
-          <div className="text-center sm:text-left">
-            <div className="text-[11px] font-montserrat font-semibold text-prime-blue/60 uppercase tracking-[0.2em] mb-1">
+          <div>
+            <div className="text-xs sm:text-sm font-montserrat font-semibold text-prime-gold uppercase tracking-[0.25em] mb-2">
               Visitors to Prime Auditors
             </div>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-prime-blue tabular-nums">
+            <div className="text-5xl sm:text-6xl font-serif font-bold text-white tabular-nums leading-none">
               {count === null ? "…" : count.toLocaleString()}
             </div>
           </div>
