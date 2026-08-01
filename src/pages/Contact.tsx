@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import BookingForm from "@/components/BookingForm";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import officeFrontDesk from "@/assets/office-front-desk.jpg.asset.json";
 const WECHAT_QR_URL = "/wechat-qr-code.jpeg";
 
 const Contact = () => {
@@ -33,7 +34,7 @@ const Contact = () => {
         eyebrow={t("contact.title")}
         title={t("contact.subtitle")}
         description={t("contact.description")}
-        image="/office-workspace.jpg"
+        image={officeFrontDesk.url}
       />
 
       <section className="section-spacing bg-white">
