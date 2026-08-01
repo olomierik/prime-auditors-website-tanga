@@ -3,6 +3,10 @@ import PageHero from "@/components/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Users, Briefcase, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import officeFrontDesk from "@/assets/office-front-desk.jpg.asset.json";
+import officeMeetingRoom from "@/assets/office-meeting-room.jpg.asset.json";
+import officeLounge from "@/assets/office-lounge.jpg.asset.json";
+import officeConsultingRoom from "@/assets/office-consulting-room.jpg.asset.json";
 
 const NBAA_URL = "https://www.nbaa.go.tz/nbaa-firm-list";
 
@@ -19,6 +23,13 @@ const AboutUs = () => {
     { icon: Award, title: t("about.value1Title"), desc: t("about.value1Desc") },
     { icon: Users, title: t("about.value2Title"), desc: t("about.value2Desc") },
     { icon: Briefcase, title: t("about.value3Title"), desc: t("about.value3Desc") },
+  ];
+
+  const office = [
+    { src: officeFrontDesk.url, alt: "Prime Auditors front desk with client service team in Tanga", span: "sm:col-span-2 sm:row-span-2" },
+    { src: officeConsultingRoom.url, alt: "Private client consulting room at Prime Auditors", span: "" },
+    { src: officeMeetingRoom.url, alt: "Meeting and audit workspace at Prime Auditors", span: "" },
+    { src: officeLounge.url, alt: "Client waiting lounge at the Prime Auditors office", span: "sm:col-span-2" },
   ];
 
   return (
@@ -72,6 +83,23 @@ const AboutUs = () => {
       </section>
 
       <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">Our Office</p>
+            <h2 className="text-3xl lg:text-4xl font-serif font-semibold text-prime-blue">Inside Prime Auditors, Tanga</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[150px] sm:auto-rows-[180px] gap-4">
+            {office.map((o) => (
+              <div key={o.src} className={`group relative overflow-hidden rounded-2xl shadow-md ${o.span}`}>
+                <img src={o.src} alt={o.alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-prime-blue/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-prime-light-grey">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-sm font-montserrat font-semibold text-prime-gold tracking-widest uppercase mb-3">{t("about.values")}</p>
